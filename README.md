@@ -9,7 +9,7 @@
 ## 👥 팀원
 | GitHub | 역할 |
 |---|---|
-| [@jihwanqp1o](https://github.com/jihwanqp1o) | 팀장 / 저장소 관리 |
+| [@jihwanqp1o](https://github.com/jihwanqp1o) |  |
 | [@Hongsee16](https://github.com/Hongsee16) |  |
 | [@miuomshelter](https://github.com/miuomshelter) |  |
 | [@rupee-1025](https://github.com/rupee-1025) |  |
