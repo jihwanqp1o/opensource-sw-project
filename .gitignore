@@ -1,0 +1,18 @@
+# Vosk 모델 (용량이 커서 각자 내려받음)
+models/
+
+# 가상환경
+venv/
+.venv/
+
+# 개인 설정, API 키
+.env
+
+# Python 캐시
+__pycache__/
+*.pyc
+
+# 에디터/OS
+.vscode/settings.json
+.DS_Store
+Thumbs.db
