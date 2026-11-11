@@ -74,14 +74,19 @@ pip install -r requirements.txt
 python main.py              # 마이크로 주문 외치기
 python main.py --keyboard   # 마이크·모델 없이 키보드로 주문 입력 (테스트용)
 ```
-정상이면 슬라임 아스키 아트와 체력바가 나오고, 아래에 `주문을 외치세요: fireball / shield / heal`이 보입니다.
+정상이면 슬라임 아스키 아트와 체력바가 나오고, 아래에 `주문을 외치세요: fireball / lightning / shield / heal`이 보입니다.
 주문을 말하면(또는 입력하면) 큰 글씨 주문 이름 → 몬스터 체력 감소 → 몬스터 반격 순서로 진행되고, 끝나면 `VICTORY` 또는 `GAME OVER`가 나옵니다.
 
 | 주문 | 말하는 법 | 효과 |
 |---|---|---|
-| fireball | "fireball" / "fire ball" / "fire" | 몬스터에게 20 데미지 |
-| shield | "shield" | 몬스터의 다음 공격을 막음 |
-| heal | "heal" | 체력 15 회복 |
+| fireball | "fireball" / "fire ball" / "fire" | 몬스터에게 25 데미지 |
+| lightning | "lightning" / "thunder" | 몬스터에게 15 데미지, 40% 확률로 크리티컬 50 데미지 |
+| shield | "shield" / "protect" / "defend" | 몬스터의 다음 공격을 완전히 막음 |
+| heal | "heal" / "cure" / "health" | 체력 20 회복 (최대 100) |
+
+- 플레이어 체력 100, 몬스터(슬라임) 체력 80
+- 몬스터는 기본 공격(15)과 강화 공격(20)을 번갈아 씁니다.
+- 주문을 알아듣지 못하면 플레이어 턴이 넘어가고 몬스터가 공격합니다.
 
 ### 내 모듈만 확인하기
 | 명령 | 정상이면 보이는 것 |
@@ -210,7 +215,7 @@ git branch -d feature/voice-input
 |---|---|---|
 | 마이크 입력 라이브러리 | sounddevice | Vosk 공식 예제와 같음 |
 | 음성 인식 언어 | 영어 | 인식 단어를 주문 목록으로 제한해 정확도 확보 |
-| 전투 로직 범위 | 최소 (1차) | 체력, 주문별 고정 데미지, 몬스터 1마리 고정 반격. 이후 확장은 석현 담당 |
+| 전투 로직 범위 | 주문 4종 + 몬스터 공격 패턴 | 번개 확률 크리티컬, 몬스터 기본/강화 공격 교대, 인식 실패 시 턴 넘김. 몬스터 추가 등 이후 확장은 미정 (석현 담당) |
 
 ## 📄 라이선스
 이 프로젝트는 [MIT License](LICENSE)를 따릅니다.

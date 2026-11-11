@@ -9,7 +9,7 @@
 ```
 listener.listen()            → 주문 key (예: "fireball") 또는 None
    ↓
-player_turn(state, key)      → 전투 기록 문장 (state가 바뀜)
+player_turn(state, key)      → 전투 기록 문장 (state가 바뀜, key가 None이면 턴 넘김)
    ↓
 screen.show(... banner=spell_banner(SPELLS[key].display), hit=True)
    ↓
@@ -18,7 +18,7 @@ monster_turn(state)          → 전투 기록 문장
 winner(state)                → "player" / "monster" / None  (None이면 처음으로)
 ```
 
-모듈끼리 주고받는 주문 값은 항상 **주문 key 문자열**(`"fireball"`, `"shield"`, `"heal"`)입니다.
+모듈끼리 주고받는 주문 값은 항상 **주문 key 문자열**(`"fireball"`, `"lightning"`, `"shield"`, `"heal"`)입니다. 주문 목록은 `battle/spells.py`의 `SPELLS`가 기준이며, 다른 모듈은 key를 직접 나열하지 말고 `SPELLS`에서 읽습니다.
 
 ## battle — 전투 로직 (담당: 석현)
 
@@ -32,7 +32,7 @@ winner(state)                → "player" / "monster" / None  (None이면 처음
 | 함수 | 인자 → 반환 | 설명 |
 |---|---|---|
 | `new_battle()` | → `BattleState` | 새 전투 상태 |
-| `player_turn(state, spell_key)` | → `str` | 주문 효과 적용, 기록 문장 반환 |
+| `player_turn(state, spell_key)` | → `str` | 주문 효과 적용, 기록 문장 반환. `spell_key`가 `None`이거나 없는 주문이면 턴을 넘기는 문장 반환 |
 | `monster_turn(state)` | → `str` | 몬스터 반격, 기록 문장 반환 |
 | `winner(state)` | → `"player"` / `"monster"` / `None` | 승부 판정 |
 
