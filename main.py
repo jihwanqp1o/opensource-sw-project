@@ -18,7 +18,9 @@ from voice.recognizer import KeyboardListener, VoiceListener
 def make_listener(mode):
     if mode == "keyboard":
         return KeyboardListener(SPELLS)
-    return VoiceListener(config.VOSK_MODEL_PATH, SPELLS)
+    return VoiceListener(config.VOSK_MODEL_PATH, SPELLS,
+                         min_confidence=config.VOICE_MIN_CONFIDENCE,
+                         reject_unknown=config.VOICE_REJECT_UNKNOWN)
 
 
 def main():

@@ -11,7 +11,7 @@ def _phrase_table(spells):
 class VoiceListener:
     """마이크로 주문을 듣는다. listen()은 주문 key를 돌려주고, 못 알아들으면 None."""
 
-    def __init__(self, model_path, spells):
+    def __init__(self, model_path, spells, min_confidence=0.0, reject_unknown=False):
         import sounddevice as sd
         from vosk import Model, SetLogLevel
 
@@ -22,11 +22,15 @@ class VoiceListener:
         # 인식할 단어를 주문 목록으로 제한하면 정확도가 크게 오른다
         self.grammar = json.dumps(list(self.phrases) + ["[unk]"])
         self.samplerate = int(sd.query_devices(kind="input")["default_samplerate"])
+        # 오인식 필터 (docs/experiments/voice-accuracy.md 참고)
+        self.min_confidence = min_confidence
+        self.reject_unknown = reject_unknown
 
     def listen(self):
         from vosk import KaldiRecognizer
 
         rec = KaldiRecognizer(self.model, self.samplerate, self.grammar)
+        rec.SetWords(True)  # 단어별 신뢰도(conf)를 받기 위해
         audio = queue.Queue()
 
         def callback(indata, frames, time, status):
@@ -37,9 +41,22 @@ class VoiceListener:
             while True:
                 # 말이 한 번 끝날 때마다(AcceptWaveform이 True) 결과를 확인한다
                 if rec.AcceptWaveform(audio.get()):
-                    text = json.loads(rec.Result())["text"]
-                    if text:
-                        return self._match(text)
+                    result = json.loads(rec.Result())
+                    if result["text"]:
+                        return self.decide(result)
+
+    def decide(self, result):
+        """Vosk 결과에서 주문 key를 고른다. 오인식으로 의심되면 None."""
+        key = self._match(result["text"])
+        words = result.get("result", [])
+        if key is None or not words:
+            return key
+        # "hello there" → "heal [unk]"처럼 주문 옆에 모르는 말이 붙으면 오인식일 가능성이 크다
+        if self.reject_unknown and any(w["word"] == "[unk]" for w in words):
+            return None
+        if min(w["conf"] for w in words) < self.min_confidence:
+            return None
+        return key
 
     def _match(self, text):
         # 긴 말부터 확인해서 "fire ball"이 "fire"보다 먼저 잡히게 한다
@@ -65,7 +82,9 @@ if __name__ == "__main__":
     import config
     from battle.spells import SPELLS
 
-    listener = VoiceListener(config.VOSK_MODEL_PATH, SPELLS)
+    listener = VoiceListener(config.VOSK_MODEL_PATH, SPELLS,
+                             min_confidence=config.VOICE_MIN_CONFIDENCE,
+                             reject_unknown=config.VOICE_REJECT_UNKNOWN)
     print("말해 보세요:", ", ".join(listener.phrases))
     while True:
         print("인식 결과:", listener.listen())

@@ -46,7 +46,7 @@ winner(state)                → "player" / "monster" / None  (None이면 처음
 `voice/recognizer.py`
 | 클래스 | 만들기 | `listen()` 반환 |
 |---|---|---|
-| `VoiceListener` | `VoiceListener(model_path, SPELLS)` | 주문 key 또는 `None`(못 알아들음) |
+| `VoiceListener` | `VoiceListener(model_path, SPELLS, min_confidence=0.0, reject_unknown=False)` | 주문 key 또는 `None`(못 알아들었거나 오인식으로 의심됨) |
 | `KeyboardListener` | `KeyboardListener(SPELLS)` | 주문 key 또는 `None` |
 
 두 클래스는 `listen()` 모양이 같아서 `main.py`는 어느 쪽인지 신경 쓰지 않습니다.
@@ -79,6 +79,8 @@ winner(state)                → "player" / "monster" / None  (None이면 처음
 | `MONSTER_IMAGE` | `MONSTER_IMAGE` | `assets/monsters/slime.png` |
 | `MONSTER_ART_WIDTH` | `MONSTER_ART_WIDTH` | `40` |
 | `EFFECT_DELAY` | `EFFECT_DELAY` | `1.2` (초) |
+| `VOICE_MIN_CONFIDENCE` | `VOICE_MIN_CONFIDENCE` | `0.4` (이보다 낮은 신뢰도는 버림, 0이면 끔) |
+| `VOICE_REJECT_UNKNOWN` | `VOICE_REJECT_UNKNOWN` | `1` (주문 옆에 모르는 말이 섞이면 버림, `0`이면 끔) |
 
 ## 모듈별 단독 실행 (내 모듈만 확인하기)
 

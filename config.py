@@ -23,3 +23,9 @@ MONSTER_ART_WIDTH = int(os.environ.get("MONSTER_ART_WIDTH", "40"))
 
 # 연출 사이 대기 시간(초)
 EFFECT_DELAY = float(os.environ.get("EFFECT_DELAY", "1.2"))
+
+# 음성 오인식 필터: 주문 단어 신뢰도가 이 값보다 낮으면 버린다 (0이면 끔)
+VOICE_MIN_CONFIDENCE = float(os.environ.get("VOICE_MIN_CONFIDENCE", "0.4"))
+
+# 음성 오인식 필터: 주문 옆에 모르는 말([unk])이 섞여 있으면 버린다 ("0"이면 끔)
+VOICE_REJECT_UNKNOWN = os.environ.get("VOICE_REJECT_UNKNOWN", "1") == "1"
