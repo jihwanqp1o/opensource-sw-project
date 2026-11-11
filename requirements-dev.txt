@@ -1,0 +1,3 @@
+# 실행 파일 빌드용 (게임 실행에는 필요 없음)
+-r requirements.txt
+pyinstaller==6.22.3

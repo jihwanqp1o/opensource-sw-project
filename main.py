@@ -4,8 +4,13 @@
       python main.py --test  테스트 모드 (개발용: 바로 전투, 키보드, 화면 위에 TEST MODE)
 """
 import argparse
+import sys
 import time
 from collections import Counter
+
+# 영어 Windows(cp1252) 등에서도 한글 출력이 멈추지 않게 항상 UTF-8로 내보낸다
+for _stream in (sys.stdout, sys.stderr):
+    _stream.reconfigure(encoding="utf-8", errors="replace")
 
 import config
 from ascii_art.monster import image_to_ascii

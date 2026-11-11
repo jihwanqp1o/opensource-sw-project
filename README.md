@@ -1,6 +1,18 @@
 # opensource-sw-project
 오픈소스SW 팀 프로젝트 - 오픈소스를 활용한 응용 프로그램 개발
 
+## ▶ 바로 플레이하기 (Windows)
+Python 설치 없이 실행할 수 있어요.
+
+| 파일 | 실행 방법 | |
+|---|---|---|
+| [**VoiceShell.zip 받기**](https://github.com/jihwanqp1o/opensource-sw-project/releases/latest/download/VoiceShell.zip) | 압축 풀기 → `VoiceShell.bat` 더블클릭 | 추천. 어느 Windows PC에서나 실행 |
+| [VoiceShell.exe 받기](https://github.com/jihwanqp1o/opensource-sw-project/releases/latest/download/VoiceShell.exe) | 받아서 바로 더블클릭 | 빠른 실행용. 스마트 앱 컨트롤이 켜진 PC에서는 막힐 수 있음 |
+
+- "Windows의 PC 보호" 경고가 뜨면 "추가 정보" → "실행"을 누르세요.
+- exe가 "애플리케이션 제어 정책"으로 막히면 zip을 쓰세요. zip은 python.org의 서명된 공식 Python으로 실행해서 막히지 않아요.
+- 모든 버전은 [Releases](https://github.com/jihwanqp1o/opensource-sw-project/releases)에 있어요.
+
 ## 📌 과제 개요
 - **주제**: 오픈소스 SW를 활용한 응용 프로그램 개발
 - 일상에서 해결하고 싶은 문제나 만들고 싶은 서비스를 정한 뒤, 오픈 SW를 활용하여 하나의 프로그램 제작
@@ -144,7 +156,9 @@ opensource-sw-project/
 │   ├── INTERFACES.md        # 연결 규칙
 │   └── experiments/         # 음성 인식 정확도 실험 결과
 ├── .github/copilot-instructions.md  # VS Code Copilot이 자동으로 읽는 작업 규칙
+├── packaging/               # 배포 파일(zip, exe) 만들기: build.py, READ_ME.txt (지환)
 ├── requirements.txt         # 의존성 목록
+├── requirements-dev.txt     # 배포 파일 빌드용 (PyInstaller)
 ├── CLAUDE.md                # Claude Code용 작업 규칙
 └── README.md
 ```
@@ -228,6 +242,13 @@ git branch -d feature/voice-input
 
 ### 자동 확인 (CI)
 PR을 올리면 GitHub Actions(CI)가 Windows와 Ubuntu에서 모듈 단독 실행과 `python main.py --keyboard`를 자동으로 돌립니다. PR 화면 아래에 초록 체크가 뜨면 통과, 빨간 X면 **Details**를 눌러 어느 단계에서 실패했는지 확인하세요.
+
+### 배포 파일 만들기 (지환)
+`v0.1.0`처럼 버전 태그를 올리면 GitHub Actions가 휴대용 zip과 exe를 만들어 [Releases](https://github.com/jihwanqp1o/opensource-sw-project/releases)에 올립니다. 내 PC에서 직접 만들려면 아래처럼 하면 되고, 결과는 `dist/release/`에 생깁니다.
+```powershell
+pip install -r requirements-dev.txt
+python packaging/build.py
+```
 
 ### 올리면 안 되는 것 (`.gitignore` 대상)
 - Vosk 모델 파일 (`models/`)

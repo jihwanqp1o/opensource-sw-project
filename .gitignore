@@ -12,6 +12,10 @@ venv/
 __pycache__/
 *.pyc
 
+# 실행 파일 빌드 결과 (python packaging/build.py)
+build/
+dist/
+
 # 에디터/OS
 .vscode/settings.json
 .DS_Store

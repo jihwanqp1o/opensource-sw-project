@@ -1,0 +1,59 @@
+# 시연용 배포 파일(휴대용 zip, 단일 exe)을 만든다.
+# - 버전 태그(v0.1.0 등)를 올리면: 빌드 후 GitHub Releases에 올린다
+# - 배포 관련 파일을 고친 PR: 빌드와 실행 확인만 한다
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+  pull_request:
+    paths:
+      - "packaging/**"
+      - ".github/workflows/release.yml"
+      - "requirements*.txt"
+      - "config.py"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+    env:
+      EFFECT_DELAY: "0"
+      COLUMNS: "100"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: 빌드 도구 설치
+        run: pip install -r requirements-dev.txt
+
+      - name: 휴대용 zip, 단일 exe 만들기
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python packaging/build.py
+
+      # 실행 확인은 일부러 UTF-8 설정 없이(영어 Windows 기본 상태) 돌린다
+
+      - name: 만든 파일로 게임 실행 확인 (테스트 모드)
+        run: |
+          printf 'fireball\n%.0s' {1..8} | cmd //c "dist\\portable\\VoiceShell\\VoiceShell.bat --test" > zip.log
+          printf 'fireball\n%.0s' {1..8} | dist/release/VoiceShell.exe --test > exe.log
+          grep -q "데미지" zip.log
+          grep -q "데미지" exe.log
+
+      - name: Releases에 올리기
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/release/VoiceShell.zip dist/release/VoiceShell.exe \
+            --title "VOICE SHELL $GITHUB_REF_NAME" --notes-file packaging/release-notes.md
