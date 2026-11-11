@@ -1,0 +1,46 @@
+# PR과 main push 때 게임이 정상 실행되는지 자동으로 확인한다.
+# 마이크와 Vosk 모델이 없어도 되는 키보드 모드로 실행한다.
+name: check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  run:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    env:
+      PYTHONIOENCODING: utf-8
+      EFFECT_DELAY: "0"
+      COLUMNS: "100"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: 의존성 설치
+        run: pip install -r requirements.txt
+
+      - name: 모듈 단독 실행
+        run: |
+          python -m battle.engine
+          python -m ascii_art.monster
+          python -m ascii_art.spell_text
+          python -m ui.screen
+
+      - name: 게임 전체 실행 (키보드 모드)
+        run: |
+          # fireball만 외쳐서 끝까지 진행. 입력이 모자라면 EOFError로 실패한다.
+          printf 'fireball\n%.0s' {1..8} | python main.py --keyboard > game.log
+          tail -n 20 game.log

@@ -156,6 +156,8 @@ opensource-sw-project/
 3. 팀원 1명 이상 리뷰 후 지환([@jihwanqp1o](https://github.com/jihwanqp1o))이 merge합니다.
 4. merge 후 로컬에서 `main`을 pull 받고, 작업 브랜치는 삭제합니다.
 
+PR을 올리면 GitHub Actions(CI)가 Windows와 Ubuntu에서 모듈 단독 실행과 `python main.py --keyboard`를 자동으로 돌립니다. PR 화면 아래에 초록 체크가 뜨면 통과, 빨간 X면 **Details**를 눌러 어느 단계에서 실패했는지 확인하세요.
+
 ```bash
 git checkout -b feature/voice-input
 # 작업 후
