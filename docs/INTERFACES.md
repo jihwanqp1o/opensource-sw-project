@@ -68,6 +68,16 @@ winner(state)                → "player" / "monster" / None  (None이면 처음
 | `render(state, monster_art, banner=None, logs=(), hit=False, prompt="")` | → rich 렌더러블 | 화면 한 장 만들기 |
 | `show(...)` | 인자는 `render`와 같음 | 화면 지우고 그리기 |
 
+`ui/menu.py` (전투 밖 화면, 플레이 모드용)
+| 함수 | 인자 → 반환 | 설명 |
+|---|---|---|
+| `title_screen()` | → rich 렌더러블 | 타이틀(메인) 화면과 메뉴 안내 |
+| `spell_list_screen(SPELLS)` | → rich 렌더러블 | 주문 목록 |
+| `result_screen(won, stats)` | → rich 렌더러블 | 결과 화면. `stats`: `seconds`, `turns`, `spells`(Counter), `recognized`, `missed` |
+| `test_banner(state, input_mode)` | → rich 렌더러블 | 테스트 모드 화면 맨 위에 붙는 노란 줄 |
+
+플레이 모드와 테스트 모드 흐름은 `main.py`가 정하고, ui는 화면만 만듭니다.
+
 규칙: ui는 **게임 로직을 계산하지 않습니다**. 받은 `state` 값을 보여 주기만 합니다.
 
 ## 설정 (`config.py`, 담당: 지환)
@@ -96,5 +106,6 @@ winner(state)                → "player" / "monster" / None  (None이면 처음
 | `python -m ascii_art.monster` | 슬라임 모양 아스키 아트 |
 | `python -m ascii_art.spell_text` | 큰 글씨 `FIREBALL` |
 | `python -m ui.screen` | 가짜 값으로 그린 전투 화면 (체력바, 주문 칸, 기록 칸) |
+| `python -m ui.menu` | 타이틀, 주문 목록, 결과 화면, TEST MODE 줄 |
 | `python -m voice.recognizer` | 마이크에 "fireball"이라고 말하면 `인식 결과: fireball` |
 | `python -m voice.recognizer --devices` | 마이크 번호와 이름 목록 (`*`가 기본 마이크) |

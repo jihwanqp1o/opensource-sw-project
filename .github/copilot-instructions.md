@@ -14,8 +14,8 @@
 5. 경로나 설정 숫자를 코드에 직접 쓰지 않는다. `config.py`의 값을 쓰거나 거기에 추가하도록 안내한다.
 6. Vosk 모델(`models/`), `venv/`, `.env`, API 키는 저장소에 넣지 않는다.
 7. 코드를 줄 때는 **실행 명령**과 **정상이면 화면에 무엇이 보이는지**를 함께 알려 준다.
-   - 모듈 단독 확인: `python -m battle.engine`, `python -m ascii_art.monster`, `python -m ascii_art.spell_text`, `python -m ui.screen`, `python -m voice.recognizer`
-   - 게임 전체: `python main.py --keyboard` (마이크 없이), `python main.py` (마이크)
+   - 모듈 단독 확인: `python -m battle.engine`, `python -m ascii_art.monster`, `python -m ascii_art.spell_text`, `python -m ui.screen`, `python -m ui.menu`, `python -m voice.recognizer`
+   - 게임 전체: `python main.py --test` (테스트 모드: 키보드, 바로 전투), `python main.py` (플레이 모드: 타이틀 → 전투 → 결과, 마이크)
 8. 커밋 메시지는 접두사를 붙인다: `feat:` 새 기능, `fix:` 버그 수정, `docs:` 문서, `refactor:` 구조 변경. 예: `fix: 주문 이름 대소문자 인식 오류 수정`
 9. `main`에 직접 push하지 않는다. `feature/기능이름` 브랜치에서 작업하고 PR을 올린다.
 10. PR을 올릴 때는 `.github/pull_request_template.md` 양식을 채우고, 관련 이슈가 있으면 `Closes #이슈번호`를 적는다.
