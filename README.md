@@ -180,6 +180,28 @@ git branch -d feature/voice-input
 | 음성 인식 언어 | 영어 | 인식 단어를 주문 목록으로 제한해 정확도 확보 |
 | 전투 로직 범위 | 최소 (1차) | 체력, 주문별 고정 데미지, 몬스터 1마리 고정 반격. 이후 확장은 석현 담당 |
 
+## 📄 라이선스
+이 프로젝트는 [MIT License](LICENSE)를 따릅니다.
+
+### 사용한 오픈소스
+| 이름 | 용도 | 라이선스 |
+|---|---|---|
+| [Vosk](https://github.com/alphacep/vosk-api) | 음성 인식 | Apache-2.0 |
+| [vosk-model-small-en-us-0.15](https://alphacephei.com/vosk/models) | 영어 음성 인식 모델 (저장소에 포함하지 않음) | Apache-2.0 |
+| [sounddevice](https://github.com/spatialaudio/python-sounddevice) | 마이크 입력 | MIT |
+| [Pillow](https://github.com/python-pillow/Pillow) | 몬스터 이미지 처리 | MIT-CMU |
+| [pyfiglet](https://github.com/pwaller/pyfiglet) | 주문 이름 큰 글씨 | MIT |
+| [rich](https://github.com/Textualize/rich) | 터미널 화면 UI | MIT |
+
+모두 상업적 이용과 수정이 허용되는 라이선스이며 MIT 라이선스인 이 프로젝트와 함께 쓸 수 있습니다. Apache-2.0인 Vosk는 재배포할 때 원본 라이선스 고지를 유지해야 합니다.
+
+### 이미지·리소스 출처
+| 파일 | 출처 | 라이선스 |
+|---|---|---|
+| `assets/monsters/slime.png` | 팀 자체 제작 (Pillow로 그린 임시 그림) | MIT (이 프로젝트) |
+
+새 이미지나 리소스를 추가할 때는 직접 만들었거나 사용이 허용된 라이선스(CC0 등)인지 확인하고, 이 표에 출처를 함께 적습니다.
+
 ## 🎯 평가지표 (총 100점)
 | 항목 | 배점 | 평가 기준 |
 |---|:---:|---|
