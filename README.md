@@ -150,11 +150,39 @@ opensource-sw-project/
 
 예: `fix: 주문 이름 대소문자 인식 오류 수정`
 
+### 이슈
+- 할 일과 버그는 [Issues](https://github.com/jihwanqp1o/opensource-sw-project/issues)에 등록합니다. 담당자(Assignees)와 모듈 라벨(`voice`, `battle`, `ui`, `ascii-art`, `main`, `qa`, `presentation`)을 붙입니다.
+- 작업은 내게 배정된 이슈에서 시작하고, PR에 `Closes #이슈번호`를 적으면 merge될 때 이슈가 자동으로 닫힙니다.
+
 ### PR 절차
 1. 작업 브랜치를 push하고 PR을 올립니다.
-2. PR 설명에 **무엇을 바꿨는지**, **어떻게 확인했는지**를 적습니다.
-3. 팀원 1명 이상 리뷰 후 지환([@jihwanqp1o](https://github.com/jihwanqp1o))이 merge합니다.
+2. PR을 열면 템플릿이 자동으로 나옵니다. **무엇을 바꿨는지**, **어떻게 확인했는지**, **관련 이슈**를 채우고 체크리스트를 확인합니다.
+3. 팀원 1명 이상 리뷰(Approve) 후 지환([@jihwanqp1o](https://github.com/jihwanqp1o))이 merge합니다. main은 승인 없이는 merge되지 않도록 보호되어 있습니다.
 4. merge 후 로컬에서 `main`을 pull 받고, 작업 브랜치는 삭제합니다.
+
+### 리뷰하는 법
+Approve만 누르지 말고 **코멘트를 한두 줄이라도** 남겨 주세요. 리뷰 기록이 협업 평가 자료가 됩니다.
+1. PR의 **Files changed** 탭에서 바뀐 내용을 봅니다. 궁금하거나 고칠 점이 있는 줄은 줄 번호 옆 `+`를 눌러 코멘트를 남깁니다.
+2. 직접 실행해 봅니다.
+   ```bash
+   git fetch origin
+   git checkout 브랜치이름        # PR 상단에 적힌 브랜치
+   python main.py --keyboard
+   git checkout main              # 확인 후 돌아오기
+   ```
+3. 아래를 확인합니다.
+   - PR 설명대로 동작하는가
+   - 담당 폴더 밖 파일이나 함수 모양(연결 규칙)이 바뀌지 않았는가
+   - 게임 전체(`python main.py --keyboard`)가 여전히 끝까지 진행되는가
+4. **Review changes** 버튼에서 결과를 고릅니다.
+   - Approve: 문제 없음 (좋았던 점 한 줄이라도 적기)
+   - Comment: 의견만 남김
+   - Request changes: 고쳐야 merge 가능
+
+Copilot에게 리뷰를 도와 달라고 할 때는 이렇게 요청하면 됩니다.
+```
+PR 브랜치 "브랜치이름"과 main의 차이를 보여 주고, 연결 규칙(docs/INTERFACES.md)을 어긴 부분이나 버그가 있는지 확인해 줘. 그리고 python main.py --keyboard로 실행해 줘.
+```
 
 ```bash
 git checkout -b feature/voice-input
