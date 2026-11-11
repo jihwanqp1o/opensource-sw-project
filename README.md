@@ -74,14 +74,6 @@ pip install -r requirements.txt
 python main.py              # 마이크로 주문 외치기
 python main.py --keyboard   # 마이크·모델 없이 키보드로 주문 입력 (테스트용)
 ```
-게임 화면이 40줄 정도 되니 **PowerShell 창을 최대화한 상태**에서 실행해 주세요.
-
-마이크가 여러 개라 원하지 않는 마이크로 잡히면, 번호를 확인해서 지정합니다.
-```powershell
-python -m voice.recognizer --devices   # 마이크 번호 확인 (*가 기본 마이크)
-$env:MIC_DEVICE = "9"                  # 사용할 번호 지정 (이 창에서만 유지)
-python main.py
-```
 정상이면 슬라임 아스키 아트와 체력바가 나오고, 아래에 `주문을 외치세요: fireball / shield / heal`이 보입니다.
 주문을 말하면(또는 입력하면) 큰 글씨 주문 이름 → 몬스터 체력 감소 → 몬스터 반격 순서로 진행되고, 끝나면 `VICTORY` 또는 `GAME OVER`가 나옵니다.
 
@@ -101,6 +93,15 @@ python main.py
 | `python -m voice.recognizer` | "fireball"이라고 말하면 `인식 결과: fireball` |
 | `python -m voice.recognizer --devices` | 마이크 번호 목록 (`*`가 기본 마이크) |
 | `python -m voice.experiment --speaker 이름` | 안내에 따라 말하면 마지막에 정답률 요약표 ([실험 문서](docs/experiments/voice-accuracy.md)) |
+
+### 실행 환경과 마이크 설정
+- 게임 화면이 40줄 정도 되니 **PowerShell 창을 최대화한 상태**에서 실행해 주세요.
+- 마이크가 여러 개라 원하지 않는 마이크로 잡히면, 번호를 확인해서 지정합니다.
+  ```powershell
+  python -m voice.recognizer --devices   # 마이크 번호 확인 (*가 기본 마이크)
+  $env:MIC_DEVICE = "9"                  # 사용할 번호 지정 (이 창에서만 유지)
+  python main.py
+  ```
 
 ## 📁 폴더 구조
 > 폴더·파일 구조 구축과 변경은 지환([@jihwanqp1o](https://github.com/jihwanqp1o))이 담당합니다. 구조를 바꿔야 할 때는 먼저 이야기해 주세요.
