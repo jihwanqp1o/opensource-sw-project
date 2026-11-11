@@ -46,7 +46,9 @@ winner(state)                → "player" / "monster" / None  (None이면 처음
 `voice/recognizer.py`
 | 클래스 | 만들기 | `listen()` 반환 |
 |---|---|---|
-| `VoiceListener` | `VoiceListener(model_path, SPELLS)` | 주문 key 또는 `None`(못 알아들음) |
+| `VoiceListener` | `VoiceListener(model_path, SPELLS, min_confidence=0.0, reject_unknown=False, device=None, timeout=None, on_status=None)` | 주문 key, 또는 `timeout`초 안에 주문이 인식되지 않으면 `None` |
+
+`on_status(heard, remaining)`: 듣는 동안 약 0.2초마다 불립니다. `heard`는 지금까지 들린 말, `remaining`은 남은 초(시간 제한이 없으면 `None`)입니다. 화면에 듣는 중 상태를 보여 줄 때 씁니다.
 | `KeyboardListener` | `KeyboardListener(SPELLS)` | 주문 key 또는 `None` |
 
 두 클래스는 `listen()` 모양이 같아서 `main.py`는 어느 쪽인지 신경 쓰지 않습니다.
@@ -79,6 +81,10 @@ winner(state)                → "player" / "monster" / None  (None이면 처음
 | `MONSTER_IMAGE` | `MONSTER_IMAGE` | `assets/monsters/slime.png` |
 | `MONSTER_ART_WIDTH` | `MONSTER_ART_WIDTH` | `40` |
 | `EFFECT_DELAY` | `EFFECT_DELAY` | `1.2` (초) |
+| `VOICE_MIN_CONFIDENCE` | `VOICE_MIN_CONFIDENCE` | `0.4` (이보다 낮은 신뢰도는 버림, 0이면 끔) |
+| `VOICE_REJECT_UNKNOWN` | `VOICE_REJECT_UNKNOWN` | `1` (주문 옆에 모르는 말이 섞이면 버림, `0`이면 끔) |
+| `VOICE_TIMEOUT` | `VOICE_TIMEOUT` | `10` (초, 이 안에 주문이 인식되지 않으면 턴 넘김, 0이면 제한 없음) |
+| `MIC_DEVICE` | `MIC_DEVICE` | 비어 있음 (Windows 기본 마이크). 번호는 `python -m voice.recognizer --devices`로 확인 |
 
 ## 모듈별 단독 실행 (내 모듈만 확인하기)
 
@@ -91,3 +97,4 @@ winner(state)                → "player" / "monster" / None  (None이면 처음
 | `python -m ascii_art.spell_text` | 큰 글씨 `FIREBALL` |
 | `python -m ui.screen` | 가짜 값으로 그린 전투 화면 (체력바, 주문 칸, 기록 칸) |
 | `python -m voice.recognizer` | 마이크에 "fireball"이라고 말하면 `인식 결과: fireball` |
+| `python -m voice.recognizer --devices` | 마이크 번호와 이름 목록 (`*`가 기본 마이크) |

@@ -98,7 +98,18 @@ python main.py --keyboard   # 마이크·모델 없이 키보드로 주문 입�
 | `python -m ascii_art.spell_text` | 큰 글씨 `FIREBALL` |
 | `python -m ui.screen` | 가짜 값으로 그린 전투 화면 |
 | `python -m voice.recognizer` | "fireball"이라고 말하면 `인식 결과: fireball` |
+| `python -m voice.recognizer --devices` | 마이크 번호 목록 (`*`가 기본 마이크) |
 | `python -m voice.experiment --speaker 이름` | 안내에 따라 말하면 마지막에 정답률 요약표 ([실험 문서](docs/experiments/voice-accuracy.md)) |
+
+### 실행 환경과 마이크 설정
+- 게임 화면이 40줄 정도 되니 **PowerShell 창을 최대화한 상태**에서 실행해 주세요.
+- 마이크 모드에서는 화면 맨 아래에 남은 시간과 들린 말이 표시됩니다. 주문을 말하고 잠깐 멈추면 인식되고, 10초 안에 주문이 인식되지 않으면 턴이 넘어갑니다. 시간은 환경 변수 `VOICE_TIMEOUT`(초)로 바꿀 수 있습니다.
+- 마이크가 여러 개라 원하지 않는 마이크로 잡히면, 번호를 확인해서 지정합니다.
+  ```powershell
+  python -m voice.recognizer --devices   # 마이크 번호 확인 (*가 기본 마이크)
+  $env:MIC_DEVICE = "9"                  # 사용할 번호 지정 (이 창에서만 유지)
+  python main.py
+  ```
 
 ## 📁 폴더 구조
 > 폴더·파일 구조 구축과 변경은 지환([@jihwanqp1o](https://github.com/jihwanqp1o))이 담당합니다. 구조를 바꿔야 할 때는 먼저 이야기해 주세요.
