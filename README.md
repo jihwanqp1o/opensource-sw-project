@@ -91,6 +91,7 @@ python main.py --keyboard   # 마이크·모델 없이 키보드로 주문 입�
 | `python -m ascii_art.spell_text` | 큰 글씨 `FIREBALL` |
 | `python -m ui.screen` | 가짜 값으로 그린 전투 화면 |
 | `python -m voice.recognizer` | "fireball"이라고 말하면 `인식 결과: fireball` |
+| `python -m voice.experiment --speaker 이름` | 안내에 따라 말하면 마지막에 정답률 요약표 ([실험 문서](docs/experiments/voice-accuracy.md)) |
 
 ## 📁 폴더 구조
 > 폴더·파일 구조 구축과 변경은 지환([@jihwanqp1o](https://github.com/jihwanqp1o))이 담당합니다. 구조를 바꿔야 할 때는 먼저 이야기해 주세요.
@@ -101,7 +102,8 @@ opensource-sw-project/
 ├── main.py                  # 게임 시작점, 모듈 연결 (지환)
 ├── config.py                # 경로·설정값, 환경 변수로 변경 가능 (지환)
 ├── voice/
-│   └── recognizer.py        # 마이크 → Vosk → 주문 key, 키보드 입력 (지환)
+│   ├── recognizer.py        # 마이크 → Vosk → 주문 key, 키보드 입력 (지환)
+│   └── experiment.py        # 음성 인식 정확도 실험 (지환)
 ├── battle/
 │   ├── spells.py            # 주문 목록 (석현)
 │   └── engine.py            # 체력, 데미지, 턴 진행, 승부 판정 (석현)
@@ -112,7 +114,9 @@ opensource-sw-project/
 │   └── screen.py            # rich 화면: 체력바, 화면 분할, 피격 색 (수빈)
 ├── assets/monsters/         # 몬스터 이미지 (slime.png는 임시 그림)
 ├── models/                  # Vosk 모델 (저장소에 올리지 않음)
-├── docs/INTERFACES.md       # 연결 규칙
+├── docs/
+│   ├── INTERFACES.md        # 연결 규칙
+│   └── experiments/         # 음성 인식 정확도 실험 결과
 ├── .github/copilot-instructions.md  # VS Code Copilot이 자동으로 읽는 작업 규칙
 ├── requirements.txt         # 의존성 목록
 ├── CLAUDE.md                # Claude Code용 작업 규칙
