@@ -38,15 +38,15 @@ def main():
         # 1. 영창
         screen.show(state, art, logs=logs, prompt=prompt)
         spell_key = listener.listen()
-        if spell_key is None:
-            logs.append("...주문을 알아듣지 못했다. 다시!")
-            continue
 
-        # 2. 주문 발동과 피격 연출
-        spell = SPELLS[spell_key]
+        # 2. 주문 발동과 피격 연출 (못 알아들으면 None → player_turn이 턴을 넘긴다)
         logs.append(player_turn(state, spell_key))
-        screen.show(state, art, banner=spell_banner(spell.display), logs=logs,
-                    hit=spell.kind == "attack")
+        if spell_key is None:
+            screen.show(state, art, logs=logs)
+        else:
+            spell = SPELLS[spell_key]
+            screen.show(state, art, banner=spell_banner(spell.display), logs=logs,
+                        hit=spell.kind == "attack")
         time.sleep(config.EFFECT_DELAY)
         if winner(state):
             break
