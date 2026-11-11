@@ -28,6 +28,9 @@ EFFECT_DELAY = float(os.environ.get("EFFECT_DELAY", "1.2"))
 MIC_DEVICE = os.environ.get("MIC_DEVICE", "")
 MIC_DEVICE = int(MIC_DEVICE) if MIC_DEVICE.isdigit() else None
 
+# 주문을 기다리는 시간(초). 이 시간 안에 주문이 인식되지 않으면 턴이 넘어간다 (0이면 제한 없음)
+VOICE_TIMEOUT = float(os.environ.get("VOICE_TIMEOUT", "10"))
+
 # 음성 오인식 필터: 주문 단어 신뢰도가 이 값보다 낮으면 버린다 (0이면 끔)
 VOICE_MIN_CONFIDENCE = float(os.environ.get("VOICE_MIN_CONFIDENCE", "0.4"))
 

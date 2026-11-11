@@ -15,13 +15,21 @@ from ui import screen
 from voice.recognizer import KeyboardListener, VoiceListener
 
 
+def show_listening(heard, remaining):
+    """마이크로 듣는 동안 화면 맨 아래 한 줄에 남은 시간과 들린 말을 보여 준다."""
+    left = f"{remaining:4.1f}초" if remaining is not None else ""
+    print(f"\r  [마이크] 듣는 중... {left} | {heard}".ljust(70), end="", flush=True)
+
+
 def make_listener(mode):
     if mode == "keyboard":
         return KeyboardListener(SPELLS)
     return VoiceListener(config.VOSK_MODEL_PATH, SPELLS,
                          min_confidence=config.VOICE_MIN_CONFIDENCE,
                          reject_unknown=config.VOICE_REJECT_UNKNOWN,
-                         device=config.MIC_DEVICE)
+                         device=config.MIC_DEVICE,
+                         timeout=config.VOICE_TIMEOUT,
+                         on_status=show_listening)
 
 
 def main():

@@ -26,7 +26,7 @@
 - `battle.engine`: `new_battle() -> BattleState`, `player_turn(state, spell_key) -> str`, `monster_turn(state) -> str`, `winner(state) -> "player" | "monster" | None`
   - `BattleState` 필수 필드: `monster_name, player_hp, player_max_hp, monster_hp, monster_max_hp, shield, turn`
   - battle은 print하지 않는다
-- `voice.recognizer`: `VoiceListener(model_path, SPELLS, min_confidence=..., reject_unknown=...).listen()`, `KeyboardListener(SPELLS).listen()` → 주문 key 또는 None
+- `voice.recognizer`: `VoiceListener(model_path, SPELLS, min_confidence=..., reject_unknown=..., device=..., timeout=..., on_status=...).listen()`, `KeyboardListener(SPELLS).listen()` → 주문 key 또는 None
 - `ascii_art.monster.image_to_ascii(path, width=40) -> str`, `ascii_art.spell_text.spell_banner(text) -> str` (영어만)
 - `ui.screen.render(state, monster_art, banner=None, logs=(), hit=False, prompt="")`, `ui.screen.show(...)` 같은 인자
   - ui는 게임 로직을 계산하지 않는다
