@@ -38,9 +38,18 @@ jobs:
           python -m ascii_art.monster
           python -m ascii_art.spell_text
           python -m ui.screen
+          python -m ui.menu
 
-      - name: 게임 전체 실행 (키보드 모드)
+      - name: 게임 전체 실행 (테스트 모드)
         run: |
           # fireball만 외쳐서 끝까지 진행. 입력이 모자라면 EOFError로 실패한다.
-          printf 'fireball\n%.0s' {1..8} | python main.py --keyboard > game.log
+          printf 'fireball\n%.0s' {1..8} | python main.py --test > game.log
           tail -n 20 game.log
+
+      - name: 게임 전체 실행 (플레이 모드 흐름)
+        env:
+          INPUT_MODE: keyboard
+        run: |
+          # 타이틀 → 주문 목록 → 전투 → 결과 → 타이틀 → 종료
+          { printf 'h\n\n\n'; printf 'fireball\n%.0s' {1..4}; printf '\nq\n'; } | python main.py > play.log
+          grep -q "걸린 시간" play.log

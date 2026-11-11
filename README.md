@@ -72,12 +72,18 @@ pip install -r requirements.txt
    ```
 
 ### 5. 실행
-```bash
-python main.py              # 마이크로 주문 외치기
-python main.py --keyboard   # 마이크·모델 없이 키보드로 주문 입력 (테스트용)
-```
-정상이면 슬라임 아스키 아트와 체력바가 나오고, 아래에 `주문을 외치세요: fireball / lightning / shield / heal`이 보입니다.
-주문을 말하면(또는 입력하면) 큰 글씨 주문 이름 → 몬스터 체력 감소 → 몬스터 반격 순서로 진행되고, 끝나면 `VICTORY` 또는 `GAME OVER`가 나옵니다.
+실행 방법은 두 가지이고, 화면이 다릅니다.
+
+| 모드 | 명령 | 용도 | 화면 |
+|---|---|---|---|
+| 플레이 모드 | `python main.py` | 시연, 실제 플레이 (마이크) | 타이틀 → 전투 → 결과 화면 |
+| 테스트 모드 | `python main.py --test` | 개발 중 확인 (키보드) | 메뉴 없이 바로 전투, 맨 위에 노란 `TEST MODE` 줄 |
+
+`--keyboard`는 `--test`와 같은 뜻입니다. 마이크 없이 플레이 모드 흐름을 보고 싶으면 `$env:INPUT_MODE = "keyboard"`를 먼저 실행하세요.
+
+**플레이 모드**: 타이틀 화면에서 `Enter` 시작, `H` 주문 목록, `Q` 종료. 주문을 말하면 큰 글씨 주문 이름 → 몬스터 체력 감소 → 몬스터 반격 순서로 진행되고, 끝나면 `SYSTEM RESTORED`(승리) 또는 `SEGMENTATION FAULT`(패배)와 함께 걸린 시간, 사용한 주문, 명령 인식 횟수가 나옵니다.
+
+**테스트 모드**: 바로 전투가 시작되고 `주문 입력>`에 주문 이름을 칩니다. 끝나면 `VICTORY` 또는 `GAME OVER`를 출력하고 종료합니다.
 
 | 주문 | 말하는 법 | 효과 |
 |---|---|---|
@@ -97,6 +103,7 @@ python main.py --keyboard   # 마이크·모델 없이 키보드로 주문 입�
 | `python -m ascii_art.monster` | 슬라임 아스키 아트 |
 | `python -m ascii_art.spell_text` | 큰 글씨 `FIREBALL` |
 | `python -m ui.screen` | 가짜 값으로 그린 전투 화면 |
+| `python -m ui.menu` | 타이틀, 주문 목록, 결과 화면, TEST MODE 줄 |
 | `python -m voice.recognizer` | "fireball"이라고 말하면 `인식 결과: fireball` |
 | `python -m voice.recognizer --devices` | 마이크 번호 목록 (`*`가 기본 마이크) |
 | `python -m voice.experiment --speaker 이름` | 안내에 따라 말하면 마지막에 정답률 요약표 ([실험 문서](docs/experiments/voice-accuracy.md)) |
@@ -129,7 +136,8 @@ opensource-sw-project/
 │   ├── monster.py           # 몬스터 이미지 → 아스키 아트 (태웅)
 │   └── spell_text.py        # 주문 이름 큰 글씨 (태웅)
 ├── ui/
-│   └── screen.py            # rich 화면: 체력바, 화면 분할, 피격 색 (수빈)
+│   ├── screen.py            # rich 전투 화면: 체력바, 화면 분할, 피격 색 (수빈)
+│   └── menu.py              # 타이틀, 주문 목록, 결과 화면, TEST MODE 줄 (수빈)
 ├── assets/monsters/         # 몬스터 이미지 (slime.png는 임시 그림)
 ├── models/                  # Vosk 모델 (저장소에 올리지 않음)
 ├── docs/
