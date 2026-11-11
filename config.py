@@ -1,9 +1,11 @@
 """게임 설정값. 경로는 하드코딩하지 않고 환경 변수로 바꿀 수 있게 둔다."""
 import os
+import sys
 from pathlib import Path
 
-# 프로젝트 루트 (이 파일이 있는 폴더)
-ROOT = Path(__file__).resolve().parent
+# 프로젝트 루트 (이 파일이 있는 폴더).
+# 실행 파일(exe)로 실행하면 모델과 이미지가 풀린 폴더(sys._MEIPASS)를 쓴다.
+ROOT = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent))
 
 # Vosk 모델 폴더. 환경 변수 VOSK_MODEL_PATH가 있으면 그 값을 쓴다.
 VOSK_MODEL_PATH = os.environ.get(
