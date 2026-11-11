@@ -8,11 +8,14 @@ class Spell:
     display: str          # 화면에 큰 글씨로 보여 줄 이름 (영어만 가능)
     kind: str             # "attack" / "shield" / "heal"
     power: int            # attack: 데미지, heal: 회복량, shield: 사용 안 함
-    phrases: tuple        # 음성으로 인식할 말 (모델 어휘에 있는 영어 단어)
+    phrases: tuple[str, ...]  # 음성으로 인식할 말 (모델 어휘에 있는 영어 단어)
 
 
 SPELLS = {
-    "fireball": Spell("fireball", "FIREBALL", "attack", 20, ("fireball", "fire ball", "fire")),
-    "shield": Spell("shield", "SHIELD", "shield", 0, ("shield",)),
-    "heal": Spell("heal", "HEAL", "heal", 15, ("heal",)),
+    "fireball": Spell("fireball", "FIREBALL", "attack", 25, ("fireball", "fire ball", "fire")),
+    "lightning": Spell(
+        "lightning", "LIGHTNING", "attack", 15, ("lightning", "lightening", "thunder")
+    ),
+    "shield": Spell("shield", "SHIELD", "shield", 0, ("shield", "protect", "defend")),
+    "heal": Spell("heal", "HEAL", "heal", 20, ("heal", "cure", "health")),
 }
