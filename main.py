@@ -20,7 +20,8 @@ def make_listener(mode):
         return KeyboardListener(SPELLS)
     return VoiceListener(config.VOSK_MODEL_PATH, SPELLS,
                          min_confidence=config.VOICE_MIN_CONFIDENCE,
-                         reject_unknown=config.VOICE_REJECT_UNKNOWN)
+                         reject_unknown=config.VOICE_REJECT_UNKNOWN,
+                         device=config.MIC_DEVICE)
 
 
 def main():

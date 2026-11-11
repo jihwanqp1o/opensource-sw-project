@@ -56,7 +56,8 @@ def record_takes(listener, repeats, seconds):
             input(f'[{i + 1}/{repeats}] "{say}" 라고 말할 준비가 되면 Enter > ')
             print(f"  녹음 중... ({seconds}초)")
             # sd.rec는 numpy가 필요해서, 게임과 같은 RawInputStream으로 녹음한다
-            with sd.RawInputStream(samplerate=rate, channels=1, dtype="int16") as stream:
+            with sd.RawInputStream(samplerate=rate, channels=1, dtype="int16",
+                                   device=listener.device) as stream:
                 audio, _ = stream.read(int(seconds * rate))
             yield expected, bytes(audio), rate
 
@@ -79,7 +80,8 @@ def main():
 
     listener = VoiceListener(config.VOSK_MODEL_PATH, SPELLS,
                              min_confidence=config.VOICE_MIN_CONFIDENCE,
-                             reject_unknown=config.VOICE_REJECT_UNKNOWN)
+                             reject_unknown=config.VOICE_REJECT_UNKNOWN,
+                             device=config.MIC_DEVICE)
     takes = read_wav_dir(args.wav_dir) if args.wav_dir else record_takes(listener, args.repeats, args.seconds)
 
     rows = []

@@ -24,6 +24,10 @@ MONSTER_ART_WIDTH = int(os.environ.get("MONSTER_ART_WIDTH", "40"))
 # 연출 사이 대기 시간(초)
 EFFECT_DELAY = float(os.environ.get("EFFECT_DELAY", "1.2"))
 
+# 사용할 마이크 번호 (python -m voice.recognizer --devices로 확인). 비우면 Windows 기본 마이크
+MIC_DEVICE = os.environ.get("MIC_DEVICE", "")
+MIC_DEVICE = int(MIC_DEVICE) if MIC_DEVICE.isdigit() else None
+
 # 음성 오인식 필터: 주문 단어 신뢰도가 이 값보다 낮으면 버린다 (0이면 끔)
 VOICE_MIN_CONFIDENCE = float(os.environ.get("VOICE_MIN_CONFIDENCE", "0.4"))
 
