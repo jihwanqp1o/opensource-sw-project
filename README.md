@@ -205,6 +205,9 @@ git pull
 git branch -d feature/voice-input
 ```
 
+### 자동 확인 (CI)
+PR을 올리면 GitHub Actions(CI)가 Windows와 Ubuntu에서 모듈 단독 실행과 `python main.py --keyboard`를 자동으로 돌립니다. PR 화면 아래에 초록 체크가 뜨면 통과, 빨간 X면 **Details**를 눌러 어느 단계에서 실패했는지 확인하세요.
+
 ### 올리면 안 되는 것 (`.gitignore` 대상)
 - Vosk 모델 파일 (`models/`)
 - 가상환경 폴더 (`venv/`)
