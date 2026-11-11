@@ -21,9 +21,9 @@
 
 ## 연결 규칙 요약
 
-- 모듈끼리 주고받는 주문 값은 주문 key 문자열 (`"fireball"`, `"shield"`, `"heal"`)
+- 모듈끼리 주고받는 주문 값은 주문 key 문자열 (`"fireball"`, `"lightning"`, `"shield"`, `"heal"`). 주문 목록은 `SPELLS`에서 읽고 직접 나열하지 않는다
 - `battle.spells.SPELLS: dict[str, Spell]` / `Spell(key, display, kind, power, phrases)`
-- `battle.engine`: `new_battle() -> BattleState`, `player_turn(state, spell_key) -> str`, `monster_turn(state) -> str`, `winner(state) -> "player" | "monster" | None`
+- `battle.engine`: `new_battle() -> BattleState`, `player_turn(state, spell_key | None) -> str` (None이면 턴 넘김), `monster_turn(state) -> str`, `winner(state) -> "player" | "monster" | None`
   - `BattleState` 필수 필드: `monster_name, player_hp, player_max_hp, monster_hp, monster_max_hp, shield, turn`
   - battle은 print하지 않는다
 - `voice.recognizer`: `VoiceListener(model_path, SPELLS).listen()`, `KeyboardListener(SPELLS).listen()` → 주문 key 또는 None
