@@ -17,5 +17,5 @@ SPELLS = {
         "lightning", "LIGHTNING", "attack", 15, ("lightning", "lightening", "thunder")
     ),
     "shield": Spell("shield", "SHIELD", "shield", 0, ("shield", "protect", "defend")),
-    "heal": Spell("heal", "HEAL", "heal", 20, ("heal", "cure", "health")),
+    "heal": Spell("heal", "HEAL", "heal", 30, ("heal",)),
 }
