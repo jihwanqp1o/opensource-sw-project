@@ -15,4 +15,4 @@
 - 경고를 아예 피하려면, zip을 오른쪽 클릭 → 속성 → "차단 해제"에 체크한 뒤 압축을 풀어 주세요.
 
 ## 조작
-타이틀에서 `Enter` 시작, `H` 주문 목록, `Q` 종료. 주문(fireball, lightning, shield, heal)을 말하고 잠깐 멈추면 인식돼요.
+타이틀에서 `Enter` 시작, `H` 주문 목록, `Q` 종료. 주문(처음에는 fireball, lightning, shield, heal)을 말하고 잠깐 멈추면 인식돼요. 몬스터를 쓰러뜨리면 상점에서 스탯을 강화하거나 새 주문(ice, meteor, focus, drain)을 배울 수 있어요.

@@ -34,19 +34,22 @@ def title_screen(demo=False):
 
 
 def spell_list_screen(spells):
-    """주문마다 말하는 법과 효과를 보여 준다."""
+    """주문마다 말하는 법, 마나, 효과, 얻는 방법을 보여 준다."""
     table = Table(border_style=GREEN, header_style=f"bold {GREEN}", expand=True)
     table.add_column("주문")
     table.add_column("말하는 법")
-    table.add_column("종류")
-    table.add_column("위력", justify="right")
+    table.add_column("MP", justify="right")
+    table.add_column("효과")
+    table.add_column("얻는 법")
     for spell in spells.values():
-        table.add_row(spell.display, " / ".join(spell.phrases), spell.kind, str(spell.power))
+        table.add_row(spell.display, " / ".join(spell.phrases), str(spell.mana_cost), spell.desc,
+                      "처음부터" if spell.starter else "상점")
 
     return Panel(Group(
         table,
         Text(""),
-        Text("주문을 말하고 잠깐 멈추면 인식됩니다.  [Enter] 돌아가기", style="dim"),
+        Text("주문을 말하고 잠깐 멈추면 인식됩니다. 마나는 몬스터 턴마다 10 회복.  [Enter] 돌아가기",
+             style="dim"),
     ), title="[bold] 주문 목록 [/]", border_style=GREEN)
 
 
@@ -75,12 +78,22 @@ def result_screen(won, stats):
     ), border_style=color)
 
 
-def upgrade_screen(state, options_text, total_stages):
-    """스테이지를 깬 뒤 업그레이드를 고르는 화면. 선택지 문장은 battle.engine에서 받는다."""
+def upgrade_screen(state, options, total_stages):
+    """스테이지를 깬 뒤 상점(패키지 저장소). options: [(번호, 설명)], battle.engine.get_shop_options에서 받는다."""
     bonus = Table.grid(padding=(0, 3))
     bonus.add_row("공격력", f"+{state.bonus_attack}")
     bonus.add_row("체력", f"{state.player_hp}/{state.player_max_hp}")
+    if hasattr(state, "player_mp"):
+        bonus.add_row("마나", f"{state.player_mp}/{state.player_max_mp}")
     bonus.add_row("힐량 / 크리티컬", f"+{state.bonus_heal} / +{state.bonus_crit:.0%}")
+    if hasattr(state, "known_spells"):
+        bonus.add_row("설치된 주문", ", ".join(state.known_spells))
+
+    choices = Table.grid(padding=(0, 2))
+    for number, label in options:
+        # 4번부터는 주문 설치라 색을 달리한다
+        style = "bold bright_cyan" if int(number) > 3 else "bold white"
+        choices.add_row(Text(f"[{number}]", style=f"bold {GREEN}"), Text(label, style=style))
 
     return Panel(Group(
         Text(""),
@@ -90,10 +103,11 @@ def upgrade_screen(state, options_text, total_stages):
         Text(""),
         Align.center(bonus),
         Text(""),
-        Align.center(Text(options_text, style="bold white")),
+        Align.center(Text("하나를 골라 스탯을 강화하거나 새 주문을 설치하세요", style="bold white")),
+        Align.center(choices),
         Text(""),
-        Align.center(Text("1 / 2 / 3 중 하나를 입력하고 Enter", style="dim")),
-    ), title="[bold] PERMISSION UPGRADE [/]", border_style=GREEN)
+        Align.center(Text("번호를 입력하고 Enter", style="dim")),
+    ), title="[bold] PACKAGE STORE · 패키지 저장소 [/]", border_style=GREEN)
 
 
 def test_banner(state, input_mode):
@@ -101,7 +115,8 @@ def test_banner(state, input_mode):
     stage = f" | 스테이지 {state.stage}" if hasattr(state, "stage") else ""
     return Text(
         f" TEST MODE{stage} | 입력: {input_mode} | 플레이어 {state.player_hp}/{state.player_max_hp}"
-        f" | 몬스터 {state.monster_hp}/{state.monster_max_hp} | 턴 {state.turn}"
+        + (f" | 마나 {state.player_mp}/{state.player_max_mp}" if hasattr(state, "player_mp") else "")
+        + f" | 몬스터 {state.monster_hp}/{state.monster_max_hp} | 턴 {state.turn}"
         f" | 실드 {'ON' if state.shield else 'OFF'} ",
         style="bold black on yellow",
     )
@@ -123,5 +138,6 @@ if __name__ == "__main__":
     fake = SimpleNamespace(player_hp=70, player_max_hp=100, monster_hp=40, monster_max_hp=80,
                            turn=3, shield=False, stage=2, monster_name="버그 고블린",
                            bonus_attack=10, bonus_heal=0, bonus_crit=0.0)
-    console.print(upgrade_screen(fake, "[1] 공격력 (+10)  [2] 체력 (+20)  [3] 마력", 4))
+    console.print(upgrade_screen(fake, [("1", "공격력 +10"), ("2", "체력 +20"), ("3", "마력"),
+                                        ("4", "ice 설치 (MP 15) - 프로세스 일시정지")], 4))
     console.print(test_banner(fake, "키보드"))

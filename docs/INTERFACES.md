@@ -27,7 +27,7 @@ winner(state)                → "player"(마지막 스테이지 처치) / "mons
 `battle/spells.py`
 | 이름 | 모양 | 설명 |
 |---|---|---|
-| `Spell` | `key, display, kind, power, phrases` | `kind`는 `"attack"` / `"shield"` / `"heal"`, `display`는 영어 대문자, `phrases`는 음성으로 인식할 영어 말 |
+| `Spell` | `key, display, kind, power, phrases, mana_cost, starter, desc` | `kind`는 `"attack"` / `"shield"` / `"heal"` / `"freeze"` / `"mana"` / `"drain"`, `display`는 영어 대문자, `phrases`는 음성으로 인식할 영어 말, `starter=False`면 상점에서 배워야 함 |
 | `SPELLS` | `dict[str, Spell]` | 주문 key → Spell. 다른 모듈은 이 표만 보고 주문 목록을 안다 |
 
 `battle/engine.py`
@@ -37,12 +37,15 @@ winner(state)                → "player"(마지막 스테이지 처치) / "mons
 | `new_battle(monster_hp_rate=1.0)` | → `BattleState` | 1스테이지부터 시작하는 새 전투 상태. `monster_hp_rate`로 모든 몬스터 체력을 줄임 (시연 모드 0.4) |
 | `player_turn(state, spell_key)` | → `str` | 주문 효과 적용, 기록 문장 반환. `spell_key`가 `None`이거나 없는 주문이면 턴을 넘기는 문장 반환. 중간 스테이지 몬스터를 쓰러뜨리면 `state.awaiting_upgrade = True` |
 | `monster_turn(state)` | → `str` | 몬스터 반격, 기록 문장 반환 |
-| `get_upgrade_prompt()` | → `str` | 업그레이드 선택지 문장 |
-| `apply_upgrade(state, choice)` | → `str` | `"1"`(공격력) / `"2"`(체력) / `"3"`(마력) 적용 후 다음 스테이지로. 다른 값이면 `ValueError` |
+| `get_shop_options(state)` | → `list[(번호, 설명)]` | 상점 선택지. `"1"`~`"3"` 스탯 강화, `"4"`~`"7"` 아직 안 배운 주문 (번호 고정: `SHOP_SPELL_NUMBERS`) |
+| `apply_upgrade(state, choice)` | → `str` | 스탯 강화 또는 주문 설치(번호나 주문 이름) 후 다음 스테이지로. 없는 선택·이미 배운 주문이면 `ValueError` |
+| `get_upgrade_prompt()` | → `str` | 스탯 강화 선택지 문장 (예전 방식, 주문까지 보려면 `get_shop_options`) |
 | `winner(state)` | → `"player"` / `"monster"` / `None` | 승부 판정. 상태를 바꾸지 않음. 마지막 스테이지를 깨야 `"player"` |
 
 `BattleState`에 반드시 있어야 하는 필드 (UI가 읽음):
-`monster_name, player_hp, player_max_hp, monster_hp, monster_max_hp, shield, turn, stage, awaiting_upgrade, bonus_attack, bonus_heal, bonus_crit`
+`monster_name, player_hp, player_max_hp, player_mp, player_max_mp, monster_hp, monster_max_hp, shield, turn, stage, awaiting_upgrade, bonus_attack, bonus_heal, bonus_crit, known_spells, monster_frozen`
+
+마나 규칙: 주문을 쓰면 `mana_cost`만큼 줄고, 몬스터 턴마다 `MP_REGEN`(10) 회복. 모자라거나 안 배운 주문이면 `player_turn`이 `[FAIL]` 문장을 돌려주고 턴이 넘어감.
 
 규칙: battle은 **화면에 출력하지 않습니다** (`print` 금지, 단독 실행 테스트 제외).
 
@@ -79,7 +82,7 @@ winner(state)                → "player"(마지막 스테이지 처치) / "mons
 |---|---|---|
 | `title_screen(demo=False)` | → rich 렌더러블 | 타이틀(메인) 화면과 메뉴 안내. `demo=True`면 `DEMO` 표시 |
 | `spell_list_screen(SPELLS)` | → rich 렌더러블 | 주문 목록 |
-| `upgrade_screen(state, options_text, total_stages)` | → rich 렌더러블 | 스테이지를 깬 뒤 업그레이드 고르는 화면 |
+| `upgrade_screen(state, options, total_stages)` | → rich 렌더러블 | 스테이지를 깬 뒤 상점(패키지 저장소) 화면. `options`는 `get_shop_options(state)` |
 | `result_screen(won, stats)` | → rich 렌더러블 | 결과 화면. `stats`: `seconds`, `turns`, `spells`(Counter), `recognized`, `missed`, `stage`(예: `"3/4"`) |
 | `test_banner(state, input_mode)` | → rich 렌더러블 | 테스트 모드 화면 맨 위에 붙는 노란 줄 |
 
