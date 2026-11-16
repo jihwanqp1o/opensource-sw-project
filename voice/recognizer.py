@@ -23,6 +23,8 @@ class VoiceListener:
         self.phrases = _phrase_table(spells)
         # 인식할 단어를 주문 목록으로 제한하면 정확도가 크게 오른다
         self.grammar = json.dumps(list(self.phrases) + ["[unk]"])
+        self._active = self.phrases  # 지금 듣는 말 → key 표 (listen(choices)로 잠깐 바뀜)
+        self._choices_mode = False   # 방향처럼 고를 것이 적을 때는 [unk] 필터를 끈다 (아래 decide 참고)
         # device가 None이면 Windows 기본 마이크를 쓴다
         self.device = device
         self.samplerate = int(sd.query_devices(device, kind="input")["default_samplerate"])
@@ -37,10 +39,14 @@ class VoiceListener:
         self.last_source = "voice"
         self._typed = ""
 
-    def listen(self):
+    def listen(self, choices=None):
+        """주문 key를 돌려준다. choices({말: key}, 예: 갈림길 방향)를 주면 그 말만 듣고 그 key를 돌려준다."""
         from vosk import KaldiRecognizer
 
-        rec = KaldiRecognizer(self.model, self.samplerate, self.grammar)
+        self._active = choices or self.phrases
+        self._choices_mode = bool(choices)
+        grammar = json.dumps(list(choices) + ["[unk]"]) if choices else self.grammar
+        rec = KaldiRecognizer(self.model, self.samplerate, grammar)
         rec.SetWords(True)  # 단어별 신뢰도(conf)를 받기 위해
         audio = queue.Queue()
         deadline = time.monotonic() + self.timeout if self.timeout else None
@@ -99,8 +105,8 @@ class VoiceListener:
             ch = msvcrt.getwch()
             if ch in ("\r", "\n"):
                 text, self._typed = self._typed.strip().lower(), ""
-                if text in self.phrases:
-                    return self.phrases[text]
+                if text in self._active:
+                    return self._active[text]
             elif ch == "\b":
                 self._typed = self._typed[:-1]
             elif ch in ("\x00", "\xe0"):
@@ -115,8 +121,9 @@ class VoiceListener:
         words = result.get("result", [])
         if key is None or not words:
             return key
-        # "hello there" → "heal [unk]"처럼 주문 옆에 모르는 말이 붙으면 오인식일 가능성이 크다
-        if self.reject_unknown and any(w["word"] == "[unk]" for w in words):
+        # "hello there" → "heal [unk]"처럼 주문 옆에 모르는 말이 붙으면 오인식일 가능성이 크다.
+        # 방향(choices)은 고를 것이 2~3개뿐이고, 한국식 발음 "레프트"가 "left [unk]"로 들려서 이 필터를 쓰지 않는다
+        if self.reject_unknown and not self._choices_mode and any(w["word"] == "[unk]" for w in words):
             return None
         if min(w["conf"] for w in words) < self.min_confidence:
             return None
@@ -124,9 +131,9 @@ class VoiceListener:
 
     def _match(self, text):
         # 긴 말부터 확인해서 "fire ball"이 "fire"보다 먼저 잡히게 한다
-        for phrase in sorted(self.phrases, key=len, reverse=True):
+        for phrase in sorted(self._active, key=len, reverse=True):
             if phrase in text:
-                return self.phrases[phrase]
+                return self._active[phrase]
         return None
 
 
@@ -136,9 +143,9 @@ class KeyboardListener:
     def __init__(self, spells):
         self.phrases = _phrase_table(spells)
 
-    def listen(self):
-        text = input("주문 입력> ").strip().lower()
-        return self.phrases.get(text)
+    def listen(self, choices=None):
+        text = input("방향 입력> " if choices else "주문 입력> ").strip().lower()
+        return (choices or self.phrases).get(text)
 
 
 def print_input_devices():

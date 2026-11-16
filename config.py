@@ -24,6 +24,11 @@ MONSTER_IMAGE = os.environ.get(
 MONSTER_IMAGE_DIR = Path(os.environ.get("MONSTER_IMAGE_DIR", str(ROOT / "assets" / "monsters")))
 STAGE_MONSTER_IMAGES = {1: "slime.png", 2: "goblin.png", 3: "zombie.png", 4: "dragon.png"}
 
+# 던전 방 그림 (assets/rooms 아래 파일 이름, #41). 파일이 없으면 그림 없이 글자만 보여 준다
+ROOM_IMAGE_DIR = Path(os.environ.get("ROOM_IMAGE_DIR", str(ROOT / "assets" / "rooms")))
+ROOM_IMAGES = {"fork": "fork.png", "spring": "spring.png", "treasure": "treasure.png"}
+ROOM_ART_WIDTH = int(os.environ.get("ROOM_ART_WIDTH", "30"))
+
 # 몬스터 아스키 아트 가로 글자 수
 MONSTER_ART_WIDTH = int(os.environ.get("MONSTER_ART_WIDTH", "40"))
 

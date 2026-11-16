@@ -212,6 +212,23 @@ def monster_turn(state: BattleState) -> str:
     return f"[WARN] {state.monster_name}의 {attack_name}: {damage} 데미지"
 
 
+def room_event(state: BattleState, kind: str) -> str:
+    """던전에서 전투가 아닌 방에 들어갔을 때의 효과. 상태를 바꾸고 기록 문장을 돌려준다.
+    kind: "spring"(회복 샘 = 백업 파일) / "treasure"(보물 = 패치 파일)
+    지금 수치와 보상은 뼈대용 임시 값이다. 회복량과 보물 종류는 #39에서 정한다."""
+    if kind == "spring":
+        hp = min(state.player_max_hp - state.player_hp, 20)
+        mp = min(state.player_max_mp - state.player_mp, 20)
+        state.player_hp += hp
+        state.player_mp += mp
+        return f"[ OK ] 백업 파일 복원: 체력 +{hp}, 마나 +{mp}"
+    if kind == "treasure":
+        state.player_max_mp += 10
+        state.player_mp += 10
+        return "[ OK ] 패치 파일 적용: 최대 마나 +10"
+    raise ValueError(f"효과가 없는 방 종류: {kind}")
+
+
 def winner(state: BattleState):
     """승자를 돌려준다: "player"(마지막 스테이지 처치) / "monster" / 아직 진행 중이면 None.
     상태를 바꾸지 않는다. 중간 스테이지 처치는 state.awaiting_upgrade로 알 수 있다 (player_turn이 설정)."""
@@ -370,3 +387,12 @@ if __name__ == "__main__":
     print("[meteor]", meteor_log)
     assert "45 데미지" in meteor_log and shop.player_mp == 0
     print("[주문 상점 확인] ice, meteor, focus, drain 설치와 효과 정상")
+
+    # 던전 방 효과 (임시 값, #39에서 정함)
+    room = new_battle()
+    room.player_hp, room.player_mp = 90, 45
+    print("[회복 샘]", room_event(room, "spring"))
+    assert room.player_hp == 100 and room.player_mp == 50  # 최대치를 넘지 않음
+    print("[보물]", room_event(room, "treasure"))
+    assert room.player_max_mp == 60 and room.player_mp == 60
+    print("[던전 방 확인] 회복 샘과 보물 효과 정상")

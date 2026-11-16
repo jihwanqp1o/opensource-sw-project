@@ -24,7 +24,7 @@ MODEL_DIR = ROOT / "models" / MODEL_NAME
 # python.org는 3.12.10까지만 휴대용(embeddable) Python을 배포한다
 EMBED_VERSION = "3.12.10"
 EMBED_URL = f"https://www.python.org/ftp/python/{EMBED_VERSION}/python-{EMBED_VERSION}-embed-amd64.zip"
-GAME_FILES = ["main.py", "config.py", "battle", "voice", "ascii_art", "ui", "assets"]
+GAME_FILES = ["main.py", "config.py", "battle", "voice", "ascii_art", "ui", "world", "assets"]
 DIST = ROOT / "dist"
 WORK = ROOT / "build"
 GUIDE = Path(__file__).resolve().parent / "READ_ME.txt"
