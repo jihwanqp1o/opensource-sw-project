@@ -9,7 +9,7 @@
 ```
 listener.listen()            → 주문 key (예: "fireball") 또는 None
    ↓
-player_turn(state, key)      → 전투 기록 문장 (state가 바뀜)
+player_turn(state, key)      → 전투 기록 문장 (state가 바뀜, key가 None이면 턴 넘김)
    ↓
 screen.show(... banner=spell_banner(SPELLS[key].display), hit=True)
    ↓
@@ -18,7 +18,7 @@ monster_turn(state)          → 전투 기록 문장
 winner(state)                → "player" / "monster" / None  (None이면 처음으로)
 ```
 
-모듈끼리 주고받는 주문 값은 항상 **주문 key 문자열**(`"fireball"`, `"shield"`, `"heal"`)입니다.
+모듈끼리 주고받는 주문 값은 항상 **주문 key 문자열**(`"fireball"`, `"lightning"`, `"shield"`, `"heal"`)입니다. 주문 목록은 `battle/spells.py`의 `SPELLS`가 기준이며, 다른 모듈은 key를 직접 나열하지 말고 `SPELLS`에서 읽습니다.
 
 ## battle — 전투 로직 (담당: 석현)
 
@@ -32,7 +32,7 @@ winner(state)                → "player" / "monster" / None  (None이면 처음
 | 함수 | 인자 → 반환 | 설명 |
 |---|---|---|
 | `new_battle()` | → `BattleState` | 새 전투 상태 |
-| `player_turn(state, spell_key)` | → `str` | 주문 효과 적용, 기록 문장 반환 |
+| `player_turn(state, spell_key)` | → `str` | 주문 효과 적용, 기록 문장 반환. `spell_key`가 `None`이거나 없는 주문이면 턴을 넘기는 문장 반환 |
 | `monster_turn(state)` | → `str` | 몬스터 반격, 기록 문장 반환 |
 | `winner(state)` | → `"player"` / `"monster"` / `None` | 승부 판정 |
 
@@ -46,7 +46,9 @@ winner(state)                → "player" / "monster" / None  (None이면 처음
 `voice/recognizer.py`
 | 클래스 | 만들기 | `listen()` 반환 |
 |---|---|---|
-| `VoiceListener` | `VoiceListener(model_path, SPELLS)` | 주문 key 또는 `None`(못 알아들음) |
+| `VoiceListener` | `VoiceListener(model_path, SPELLS, min_confidence=0.0, reject_unknown=False, device=None, timeout=None, on_status=None)` | 주문 key, 또는 `timeout`초 안에 주문이 인식되지 않으면 `None` |
+
+`on_status(heard, remaining)`: 듣는 동안 약 0.2초마다 불립니다. `heard`는 지금까지 들린 말, `remaining`은 남은 초(시간 제한이 없으면 `None`)입니다. 화면에 듣는 중 상태를 보여 줄 때 씁니다.
 | `KeyboardListener` | `KeyboardListener(SPELLS)` | 주문 key 또는 `None` |
 
 두 클래스는 `listen()` 모양이 같아서 `main.py`는 어느 쪽인지 신경 쓰지 않습니다.
@@ -66,6 +68,16 @@ winner(state)                → "player" / "monster" / None  (None이면 처음
 | `render(state, monster_art, banner=None, logs=(), hit=False, prompt="")` | → rich 렌더러블 | 화면 한 장 만들기 |
 | `show(...)` | 인자는 `render`와 같음 | 화면 지우고 그리기 |
 
+`ui/menu.py` (전투 밖 화면, 플레이 모드용)
+| 함수 | 인자 → 반환 | 설명 |
+|---|---|---|
+| `title_screen()` | → rich 렌더러블 | 타이틀(메인) 화면과 메뉴 안내 |
+| `spell_list_screen(SPELLS)` | → rich 렌더러블 | 주문 목록 |
+| `result_screen(won, stats)` | → rich 렌더러블 | 결과 화면. `stats`: `seconds`, `turns`, `spells`(Counter), `recognized`, `missed` |
+| `test_banner(state, input_mode)` | → rich 렌더러블 | 테스트 모드 화면 맨 위에 붙는 노란 줄 |
+
+플레이 모드와 테스트 모드 흐름은 `main.py`가 정하고, ui는 화면만 만듭니다.
+
 규칙: ui는 **게임 로직을 계산하지 않습니다**. 받은 `state` 값을 보여 주기만 합니다.
 
 ## 설정 (`config.py`, 담당: 지환)
@@ -79,6 +91,10 @@ winner(state)                → "player" / "monster" / None  (None이면 처음
 | `MONSTER_IMAGE` | `MONSTER_IMAGE` | `assets/monsters/slime.png` |
 | `MONSTER_ART_WIDTH` | `MONSTER_ART_WIDTH` | `40` |
 | `EFFECT_DELAY` | `EFFECT_DELAY` | `1.2` (초) |
+| `VOICE_MIN_CONFIDENCE` | `VOICE_MIN_CONFIDENCE` | `0.4` (이보다 낮은 신뢰도는 버림, 0이면 끔) |
+| `VOICE_REJECT_UNKNOWN` | `VOICE_REJECT_UNKNOWN` | `1` (주문 옆에 모르는 말이 섞이면 버림, `0`이면 끔) |
+| `VOICE_TIMEOUT` | `VOICE_TIMEOUT` | `10` (초, 이 안에 주문이 인식되지 않으면 턴 넘김, 0이면 제한 없음) |
+| `MIC_DEVICE` | `MIC_DEVICE` | 비어 있음 (Windows 기본 마이크). 번호는 `python -m voice.recognizer --devices`로 확인 |
 
 ## 모듈별 단독 실행 (내 모듈만 확인하기)
 
@@ -90,4 +106,6 @@ winner(state)                → "player" / "monster" / None  (None이면 처음
 | `python -m ascii_art.monster` | 슬라임 모양 아스키 아트 |
 | `python -m ascii_art.spell_text` | 큰 글씨 `FIREBALL` |
 | `python -m ui.screen` | 가짜 값으로 그린 전투 화면 (체력바, 주문 칸, 기록 칸) |
+| `python -m ui.menu` | 타이틀, 주문 목록, 결과 화면, TEST MODE 줄 |
 | `python -m voice.recognizer` | 마이크에 "fireball"이라고 말하면 `인식 결과: fireball` |
+| `python -m voice.recognizer --devices` | 마이크 번호와 이름 목록 (`*`가 기본 마이크) |

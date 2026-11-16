@@ -14,19 +14,20 @@
 5. 경로나 설정 숫자를 코드에 직접 쓰지 않는다. `config.py`의 값을 쓰거나 거기에 추가하도록 안내한다.
 6. Vosk 모델(`models/`), `venv/`, `.env`, API 키는 저장소에 넣지 않는다.
 7. 코드를 줄 때는 **실행 명령**과 **정상이면 화면에 무엇이 보이는지**를 함께 알려 준다.
-   - 모듈 단독 확인: `python -m battle.engine`, `python -m ascii_art.monster`, `python -m ascii_art.spell_text`, `python -m ui.screen`, `python -m voice.recognizer`
-   - 게임 전체: `python main.py --keyboard` (마이크 없이), `python main.py` (마이크)
+   - 모듈 단독 확인: `python -m battle.engine`, `python -m ascii_art.monster`, `python -m ascii_art.spell_text`, `python -m ui.screen`, `python -m ui.menu`, `python -m voice.recognizer`
+   - 게임 전체: `python main.py --test` (테스트 모드: 키보드, 바로 전투), `python main.py` (플레이 모드: 타이틀 → 전투 → 결과, 마이크)
 8. 커밋 메시지는 접두사를 붙인다: `feat:` 새 기능, `fix:` 버그 수정, `docs:` 문서, `refactor:` 구조 변경. 예: `fix: 주문 이름 대소문자 인식 오류 수정`
 9. `main`에 직접 push하지 않는다. `feature/기능이름` 브랜치에서 작업하고 PR을 올린다.
+10. PR을 올릴 때는 `.github/pull_request_template.md` 양식을 채우고, 관련 이슈가 있으면 `Closes #이슈번호`를 적는다.
 
 ## 연결 규칙 요약
 
-- 모듈끼리 주고받는 주문 값은 주문 key 문자열 (`"fireball"`, `"shield"`, `"heal"`)
+- 모듈끼리 주고받는 주문 값은 주문 key 문자열 (`"fireball"`, `"lightning"`, `"shield"`, `"heal"`). 주문 목록은 `SPELLS`에서 읽고 직접 나열하지 않는다
 - `battle.spells.SPELLS: dict[str, Spell]` / `Spell(key, display, kind, power, phrases)`
-- `battle.engine`: `new_battle() -> BattleState`, `player_turn(state, spell_key) -> str`, `monster_turn(state) -> str`, `winner(state) -> "player" | "monster" | None`
+- `battle.engine`: `new_battle() -> BattleState`, `player_turn(state, spell_key | None) -> str` (None이면 턴 넘김), `monster_turn(state) -> str`, `winner(state) -> "player" | "monster" | None`
   - `BattleState` 필수 필드: `monster_name, player_hp, player_max_hp, monster_hp, monster_max_hp, shield, turn`
   - battle은 print하지 않는다
-- `voice.recognizer`: `VoiceListener(model_path, SPELLS).listen()`, `KeyboardListener(SPELLS).listen()` → 주문 key 또는 None
+- `voice.recognizer`: `VoiceListener(model_path, SPELLS, min_confidence=..., reject_unknown=..., device=..., timeout=..., on_status=...).listen()`, `KeyboardListener(SPELLS).listen()` → 주문 key 또는 None
 - `ascii_art.monster.image_to_ascii(path, width=40) -> str`, `ascii_art.spell_text.spell_banner(text) -> str` (영어만)
 - `ui.screen.render(state, monster_art, banner=None, logs=(), hit=False, prompt="")`, `ui.screen.show(...)` 같은 인자
   - ui는 게임 로직을 계산하지 않는다
