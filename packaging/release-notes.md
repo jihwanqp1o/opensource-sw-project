@@ -2,7 +2,7 @@
 
 | 파일 | 실행 방법 | 추천 |
 |---|---|---|
-| **VoiceShell.zip** | 압축 풀기 → `VoiceShell.bat` 더블클릭 | 기본. 어느 Windows PC에서나 실행돼요 |
+| **VoiceShell.zip** | 압축 풀기 → `VoiceShell.bat` 더블클릭 | 기본. 어느 Windows PC에서나 실행돼요. 발표 시연은 `VoiceShell-demo.bat`(몬스터 체력을 줄인 빠른 모드) |
 | VoiceShell.exe | 받아서 바로 더블클릭 | 빠른 실행용. 스마트 앱 컨트롤이 켜진 PC에서는 막힐 수 있어요 |
 
 - Windows 10/11 64비트용이에요. Python을 따로 설치할 필요가 없어요.

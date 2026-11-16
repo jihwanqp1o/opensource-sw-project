@@ -24,10 +24,10 @@
 
 - 모듈끼리 주고받는 주문 값은 주문 key 문자열 (`"fireball"`, `"lightning"`, `"shield"`, `"heal"`). 주문 목록은 `SPELLS`에서 읽고 직접 나열하지 않는다
 - `battle.spells.SPELLS: dict[str, Spell]` / `Spell(key, display, kind, power, phrases)`
-- `battle.engine`: `STAGES`(4연전), `new_battle() -> BattleState`, `player_turn(state, spell_key | None) -> str` (None이면 턴 넘김), `monster_turn(state) -> str`, `get_upgrade_prompt() -> str`, `apply_upgrade(state, "1"|"2"|"3") -> str`, `winner(state) -> "player" | "monster" | None` (상태를 바꾸지 않음)
+- `battle.engine`: `STAGES`(4연전), `new_battle(monster_hp_rate=1.0) -> BattleState`, `player_turn(state, spell_key | None) -> str` (None이면 턴 넘김), `monster_turn(state) -> str`, `get_upgrade_prompt() -> str`, `apply_upgrade(state, "1"|"2"|"3") -> str`, `winner(state) -> "player" | "monster" | None` (상태를 바꾸지 않음)
   - `BattleState` 필수 필드: `monster_name, player_hp, player_max_hp, monster_hp, monster_max_hp, shield, turn, stage, awaiting_upgrade, bonus_attack, bonus_heal, bonus_crit`
   - battle은 print하지 않는다
 - `voice.recognizer`: `VoiceListener(model_path, SPELLS, min_confidence=..., reject_unknown=..., device=..., timeout=..., on_status=...).listen()`, `KeyboardListener(SPELLS).listen()` → 주문 key 또는 None
-- `ascii_art.monster.image_to_ascii(path, width=40) -> str`, `ascii_art.spell_text.spell_banner(text) -> str` (영어만)
+- `ascii_art.monster.image_to_ascii(path, width=40) -> str`, `ascii_art.spell_text.spell_banner(text) -> str` (영어만), `ascii_art.intro.boot_lines() -> list[(str, float)]`
 - `ui.screen.render(state, monster_art, banner=None, logs=(), hit=False, prompt="")`, `ui.screen.show(...)` 같은 인자
   - ui는 게임 로직을 계산하지 않는다

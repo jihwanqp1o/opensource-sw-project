@@ -36,11 +36,20 @@ class BattleState:
     bonus_crit: float = 0.0
     stage: int = 1
     awaiting_upgrade: bool = False
+    monster_hp_rate: float = 1.0  # 몬스터 체력 배율 (시연용 빠른 모드에서 낮춘다)
 
 
-def new_battle() -> BattleState:
+def _scaled_hp(state: BattleState, hp: int) -> int:
+    return max(1, round(hp * state.monster_hp_rate))
+
+
+def new_battle(monster_hp_rate: float = 1.0) -> BattleState:
+    """1스테이지부터 시작하는 새 전투. monster_hp_rate로 모든 몬스터 체력을 줄이거나 늘린다."""
+    state = BattleState(monster_hp_rate=monster_hp_rate)
     name, hp, _, _ = STAGES[1]
-    return BattleState(monster_name=name, monster_hp=hp, monster_max_hp=hp)
+    state.monster_name = name
+    state.monster_hp = state.monster_max_hp = _scaled_hp(state, hp)
+    return state
 
 
 def get_upgrade_prompt() -> str:
@@ -59,8 +68,7 @@ def advance_stage(state: BattleState) -> None:
     state.stage += 1
     name, hp, _, _ = STAGES[state.stage]
     state.monster_name = name
-    state.monster_hp = hp
-    state.monster_max_hp = hp
+    state.monster_hp = state.monster_max_hp = _scaled_hp(state, hp)
     state.monster_is_empowered = False
     state.shield = False
     state.awaiting_upgrade = False

@@ -88,7 +88,8 @@ pip install -r requirements.txt
 
 | 모드 | 명령 | 용도 | 화면 |
 |---|---|---|---|
-| 플레이 모드 | `python main.py` | 시연, 실제 플레이 (마이크) | 타이틀 → 전투 → 결과 화면 |
+| 플레이 모드 | `python main.py` | 실제 플레이 (마이크) | 창 최대화 → 오프닝(아무 키나 누르면 건너뜀) → 타이틀 → 전투 → 결과 화면 |
+| 시연 모드 | `python main.py --demo` | **발표 시연** (마이크) | 플레이 모드와 같고, 몬스터 체력이 40%로 줄어 2분 안팎에 끝남. 타이틀 오른쪽 아래에 `DEMO` |
 | 테스트 모드 | `python main.py --test` | 개발 중 확인 (키보드) | 메뉴 없이 바로 전투, 맨 위에 노란 `TEST MODE` 줄 |
 
 `--keyboard`는 `--test`와 같은 뜻입니다. 마이크 없이 플레이 모드 흐름을 보고 싶으면 `$env:INPUT_MODE = "keyboard"`를 먼저 실행하세요.
@@ -121,6 +122,7 @@ pip install -r requirements.txt
 | `python -m battle.engine` | 턴별 전투 기록, 마지막에 `승자: player` |
 | `python -m ascii_art.monster` | 슬라임 아스키 아트 |
 | `python -m ascii_art.spell_text` | 큰 글씨 `FIREBALL` |
+| `python -m ascii_art.intro` | 부팅 오프닝이 한 줄씩 찍힘 (약 9초) |
 | `python -m ui.screen` | 가짜 값으로 그린 전투 화면 |
 | `python -m ui.menu` | 타이틀, 주문 목록, 결과 화면, TEST MODE 줄 |
 | `python -m voice.recognizer` | "fireball"이라고 말하면 `인식 결과: fireball` |
