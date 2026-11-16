@@ -13,7 +13,10 @@ player_turn(state, key)      → 전투 기록 문장 (state가 바뀜, key가 N
    ↓
 screen.show(... banner=spell_banner(SPELLS[key].display), hit=True)
    ↓
-(state.awaiting_upgrade가 True면) 업그레이드 화면 → apply_upgrade(state, "1"|"2"|"3") → 다음 스테이지로, 처음으로
+(state.awaiting_upgrade가 True면) 상점 화면 → apply_upgrade(state, "1"~"7") → 다음 스테이지로
+   ↓
+던전 이동: 갈림길 화면 → listener.listen(방향 choices) → dungeon.move(방, 방향)
+          회복 샘·보물 방이면 room_event(state, kind) → 방 화면, 다음 몬스터 방에 닿으면 처음으로
    ↓
 monster_turn(state)          → 전투 기록 문장
    ↓
@@ -41,6 +44,7 @@ winner(state)                → "player"(마지막 스테이지 처치) / "mons
 | `apply_upgrade(state, choice)` | → `str` | 스탯 강화 또는 주문 설치(번호나 주문 이름) 후 다음 스테이지로. 없는 선택·이미 배운 주문이면 `ValueError` |
 | `get_upgrade_prompt()` | → `str` | 스탯 강화 선택지 문장 (예전 방식, 주문까지 보려면 `get_shop_options`) |
 | `winner(state)` | → `"player"` / `"monster"` / `None` | 승부 판정. 상태를 바꾸지 않음. 마지막 스테이지를 깨야 `"player"` |
+| `room_event(state, kind)` | → `str` | 던전의 전투가 아닌 방 효과. `kind`는 `"spring"`(회복 샘) / `"treasure"`(보물). 상태를 바꾸고 기록 문장 반환. 지금 수치는 임시 값 (#39) |
 
 `BattleState`에 반드시 있어야 하는 필드 (UI가 읽음):
 `monster_name, player_hp, player_max_hp, player_mp, player_max_mp, monster_hp, monster_max_hp, shield, turn, stage, awaiting_upgrade, bonus_attack, bonus_heal, bonus_crit, known_spells, monster_frozen`
@@ -48,6 +52,21 @@ winner(state)                → "player"(마지막 스테이지 처치) / "mons
 마나 규칙: 주문을 쓰면 `mana_cost`만큼 줄고, 몬스터 턴마다 `MP_REGEN`(10) 회복. 모자라거나 안 배운 주문이면 `player_turn`이 `[FAIL]` 문장을 돌려주고 턴이 넘어감.
 
 규칙: battle은 **화면에 출력하지 않습니다** (`print` 금지, 단독 실행 테스트 제외).
+
+## world — 던전 지도 (담당: 지환)
+
+`world/dungeon.py`. 방과 갈림길 연결만 정하고, 화면 출력과 전투 계산은 하지 않습니다.
+
+| 이름 | 모양 | 설명 |
+|---|---|---|
+| `Room` | `key, kind, name, exits, stage` | `kind`는 `"monster"` / `"spring"` / `"treasure"` / `"boss"`, `name`은 화면에 보이는 경로(예: `"/home"`), `exits`는 `{방향: 다음 방 key}`, 몬스터 방이면 `stage` 번호 |
+| `ROOMS`, `START` | `dict[str, Room]`, `"home"` | 전체 지도와 첫 방 (1스테이지 몬스터 방) |
+| `KIND_LABELS` | `dict[str, str]` | 방 종류 → 한글 이름 (예: `"spring"` → `"백업 파일 (회복 샘)"`) |
+| `DIRECTION_PHRASES` | `dict[str, str]` | 인식할 말 → 방향 (`left`, `right`, `forward`, `straight`→`forward`) |
+| `get_room(key)` | → `Room` | |
+| `exits(key)` | → `list[(방향, Room)]` | 그 방에서 갈 수 있는 길 |
+| `move(key, direction)` | → 방 key 또는 `None` | 그 방향으로 길이 없으면 `None` |
+| `check_map()` | → 길 목록 | 모든 길에서 몬스터가 1→2→3→4스테이지 순서로 나오는지 확인. 방을 바꾸면 `python -m world.dungeon`으로 확인 |
 
 ## voice — 음성 주문 인식 (담당: 지환)
 
@@ -58,6 +77,8 @@ winner(state)                → "player"(마지막 스테이지 처치) / "mons
 
 `on_status(heard, remaining)`: 듣는 동안 약 0.2초마다 불립니다. `heard`는 지금까지 들린 말, `remaining`은 남은 초(시간 제한이 없으면 `None`)입니다. 화면에 듣는 중 상태를 보여 줄 때 씁니다.
 | `KeyboardListener` | `KeyboardListener(SPELLS)` | 주문 key 또는 `None` |
+
+`listen(choices)`: `choices`(`{말: key}`, 예: `DIRECTION_PHRASES` 중 갈 수 있는 방향만)를 주면 그 말만 듣고 그 key를 돌려줍니다. 고를 것이 적어서 `[unk]` 필터는 쓰지 않습니다.
 
 두 클래스는 `listen()` 모양이 같아서 `main.py`는 어느 쪽인지 신경 쓰지 않습니다.
 
@@ -84,6 +105,8 @@ winner(state)                → "player"(마지막 스테이지 처치) / "mons
 | `spell_list_screen(SPELLS)` | → rich 렌더러블 | 주문 목록 |
 | `upgrade_screen(state, options, total_stages)` | → rich 렌더러블 | 스테이지를 깬 뒤 상점(패키지 저장소) 화면. `options`는 `get_shop_options(state)` |
 | `result_screen(won, stats)` | → rich 렌더러블 | 결과 화면. `stats`: `seconds`, `turns`, `spells`(Counter), `recognized`, `missed`, `stage`(예: `"3/4"`) |
+| `fork_screen(room, exits, path, art="")` | → rich 렌더러블 | 던전 갈림길. `exits`는 `dungeon.exits()`, `path`는 지나온 `Room` 목록, `art`는 방 그림 (#40에서 다듬음) |
+| `room_screen(room, log, art="")` | → rich 렌더러블 | 회복 샘·보물 방. `log`는 `room_event`가 돌려준 문장 |
 | `test_banner(state, input_mode)` | → rich 렌더러블 | 테스트 모드 화면 맨 위에 붙는 노란 줄 |
 
 플레이 모드와 테스트 모드 흐름은 `main.py`가 정하고, ui는 화면만 만듭니다.
@@ -104,6 +127,7 @@ winner(state)                → "player"(마지막 스테이지 처치) / "mons
 | `MONSTER_ART_WIDTH` | `MONSTER_ART_WIDTH` | `40` |
 | `EFFECT_DELAY` | `EFFECT_DELAY` | `1.2` (초) |
 | `DEMO_HP_RATE` | `DEMO_HP_RATE` | `0.4` (`--demo`일 때 몬스터 체력 배율) |
+| `ROOM_IMAGE_DIR`, `ROOM_IMAGES` | `ROOM_IMAGE_DIR` | `assets/rooms`, `{fork: fork.png, spring: spring.png, treasure: treasure.png}`. 파일이 없으면 그림 없이 글자만 (#41) |
 | `VOICE_MIN_CONFIDENCE` | `VOICE_MIN_CONFIDENCE` | `0.4` (이보다 낮은 신뢰도는 버림, 0이면 끔) |
 | `VOICE_REJECT_UNKNOWN` | `VOICE_REJECT_UNKNOWN` | `1` (주문 옆에 모르는 말이 섞이면 버림, `0`이면 끔) |
 | `VOICE_TIMEOUT` | `VOICE_TIMEOUT` | `10` (초, 이 안에 주문이 인식되지 않으면 턴 넘김, 0이면 제한 없음) |
@@ -121,5 +145,6 @@ winner(state)                → "player"(마지막 스테이지 처치) / "mons
 | `python -m ascii_art.intro` | 부팅 오프닝이 한 줄씩 찍힘 |
 | `python -m ui.screen` | 가짜 값으로 그린 전투 화면 (체력바, 주문 칸, 기록 칸) |
 | `python -m ui.menu` | 타이틀, 주문 목록, 결과 화면, TEST MODE 줄 |
+| `python -m world.dungeon` | 방 목록과 길 8가지, `모두 4스테이지 순서대로 보스 방에서 끝남` |
 | `python -m voice.recognizer` | 마이크에 "fireball"이라고 말하면 `인식 결과: fireball` |
 | `python -m voice.recognizer --devices` | 마이크 번호와 이름 목록 (`*`가 기본 마이크) |

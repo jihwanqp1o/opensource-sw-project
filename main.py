@@ -19,10 +19,11 @@ from ascii_art.intro import boot_lines
 from ascii_art.monster import image_to_ascii
 from ascii_art.spell_text import spell_banner
 from battle.engine import (STAGES, apply_upgrade, get_shop_options, monster_turn, new_battle,
-                           player_turn, winner)
+                           player_turn, room_event, winner)
 from battle.spells import SPELLS
 from ui import menu, screen
 from voice.recognizer import KeyboardListener, VoiceListener
+from world import dungeon
 
 
 def show_listening(heard, remaining):
@@ -95,6 +96,42 @@ def load_monster_arts():
     return arts
 
 
+def load_room_arts():
+    """던전 방 그림 (갈림길, 회복 샘, 보물). 그림 파일이 없으면 빈 글자."""
+    arts = {}
+    for kind, name in config.ROOM_IMAGES.items():
+        path = config.ROOM_IMAGE_DIR / name
+        arts[kind] = image_to_ascii(str(path), config.ROOM_ART_WIDTH) if path.is_file() else ""
+    return arts
+
+
+def explore(listener, state, path, draw_page, room_arts):
+    """몬스터를 쓰러뜨린 뒤 다음 몬스터 방까지 던전을 이동한다. 지나간 방은 path에 쌓고 기록 문장들을 돌려준다.
+    갈림길에서는 방향을 듣고, 길이 하나뿐이면 바로 지나간다."""
+    logs = []
+    while True:
+        here = path[-1]
+        ways = dungeon.exits(here.key)
+        if len(ways) == 1:
+            direction = ways[0][0]
+        else:
+            # 갈 수 있는 방향만 듣게 해서 다른 말과 헷갈리지 않게 한다
+            choices = {p: d for p, d in dungeon.DIRECTION_PHRASES.items() if d in here.exits}
+            direction = None
+            while direction not in here.exits:
+                draw_page(menu.fork_screen(here, ways, path, room_arts["fork"]))
+                direction = listener.listen(choices)
+        room = dungeon.get_room(dungeon.move(here.key, direction))
+        path.append(room)
+        if room.kind in ("monster", "boss"):
+            logs.append(f"[ OK ] cd {room.name}")
+            return logs
+        log = room_event(state, room.kind)
+        logs.append(log)
+        draw_page(menu.room_screen(room, log, room_arts[room.kind]))
+        time.sleep(config.EFFECT_DELAY)
+
+
 def run_battle(listener, arts, input_mode, test_mode, monster_hp_rate=1.0):
     """4연전 한 판을 진행하고 (이겼는지, 결과 통계)를 돌려준다."""
     state = new_battle(monster_hp_rate)
@@ -111,6 +148,16 @@ def run_battle(listener, arts, input_mode, test_mode, monster_hp_rate=1.0):
             screen.console.print(screen.render(state, arts[state.stage], **kwargs))
         else:
             screen.show(state, arts[state.stage], **kwargs)
+
+    def draw_page(renderable):
+        # 던전 화면 (테스트 모드면 TEST MODE 줄을 위에 붙인다)
+        screen.console.clear()
+        if test_mode:
+            screen.console.print(menu.test_banner(state, input_mode))
+        screen.console.print(renderable)
+
+    path = [dungeon.get_room(dungeon.START)]  # 지나온 방 (첫 방은 1스테이지 몬스터 방)
+    room_arts = load_room_arts()
 
     while winner(state) is None:
         # 1. 영창
@@ -139,6 +186,8 @@ def run_battle(listener, arts, input_mode, test_mode, monster_hp_rate=1.0):
         if state.awaiting_upgrade:
             # 중간 스테이지를 깨면 몬스터 반격 없이 업그레이드를 고르고 다음 몬스터로 넘어간다
             logs.append(choose_upgrade(state))
+            # 다음 몬스터 방까지 던전 이동 (갈림길에서 방향을 외친다)
+            logs.extend(explore(listener, state, path, draw_page, room_arts))
             continue
 
         # 3. 몬스터 반격

@@ -1,4 +1,4 @@
-"""전투 밖 화면: 타이틀(메인), 주문 목록, 결과, 테스트 모드 표시줄. 받은 값만 보여 준다."""
+"""전투 밖 화면: 타이틀(메인), 주문 목록, 결과, 상점, 던전 갈림길·방, 테스트 모드 표시줄. 받은 값만 보여 준다."""
 from rich.align import Align
 from rich.console import Group
 from rich.panel import Panel
@@ -6,6 +6,7 @@ from rich.table import Table
 from rich.text import Text
 
 from ascii_art.spell_text import spell_banner
+from world.dungeon import KIND_LABELS
 
 TITLE = "VOICE SHELL"
 SUBTITLE = "터미널 속 마법사"
@@ -110,6 +111,39 @@ def upgrade_screen(state, options, total_stages):
     ), title="[bold] PACKAGE STORE · 패키지 저장소 [/]", border_style=GREEN)
 
 
+def fork_screen(room, exits, path, art=""):
+    """던전 갈림길. room: 지금 방, exits: [(방향, 다음 방)], path: 지나온 방 목록 (world.dungeon에서 받음).
+    뼈대용 기본 화면이다. 지도 모양과 꾸미기는 #40에서 정한다."""
+    trail = Text(" > ".join(r.name for r in path), style="dim")
+    choices = Table.grid(padding=(0, 2))
+    for direction, target in exits:
+        choices.add_row(Text(f"[{direction}]", style=f"bold {GREEN}"),
+                        Text(target.name, style="bold white"), Text(KIND_LABELS[target.kind], style="dim"))
+
+    return Panel(Group(
+        Text(""),
+        Align.center(Text(art)) if art else Text(""),
+        Align.center(trail),
+        Text(""),
+        Align.center(Text("갈림길입니다. cd 할 폴더를 고르세요", style="bold white")),
+        Align.center(choices),
+        Text(""),
+        Align.center(Text("방향을 외치세요 (인식이 안 되면 키보드로 치고 Enter)", style="dim")),
+    ), title=f"[bold] admin@voice-shell:{room.name}$ [/]", border_style=GREEN)
+
+
+def room_screen(room, log, art=""):
+    """회복 샘·보물 방에 들어갔을 때. log: battle.engine.room_event가 돌려준 문장. 꾸미기는 #40에서 정한다."""
+    return Panel(Group(
+        Text(""),
+        Align.center(Text(art)) if art else Text(""),
+        Align.center(Text(KIND_LABELS[room.kind], style=f"bold {GREEN}")),
+        Text(""),
+        Align.center(Text(log, style="bold white")),
+        Text(""),
+    ), title=f"[bold] admin@voice-shell:{room.name}$ [/]", border_style=GREEN)
+
+
 def test_banner(state, input_mode):
     """테스트 모드에서 화면 맨 위에 붙는 한 줄. 시연 화면과 한눈에 구분된다."""
     stage = f" | 스테이지 {state.stage}" if hasattr(state, "stage") else ""
@@ -141,3 +175,7 @@ if __name__ == "__main__":
     console.print(upgrade_screen(fake, [("1", "공격력 +10"), ("2", "체력 +20"), ("3", "마력"),
                                         ("4", "ice 설치 (MP 15) - 프로세스 일시정지")], 4))
     console.print(test_banner(fake, "키보드"))
+
+    from world import dungeon
+    console.print(fork_screen(dungeon.get_room("home"), dungeon.exits("home"), [dungeon.get_room("home")]))
+    console.print(room_screen(dungeon.get_room("home_backup"), "[ OK ] 백업 파일 복원: 체력 +20, 마나 +20"))

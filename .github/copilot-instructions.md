@@ -8,7 +8,7 @@
 1. **요청받은 기능 하나만** 고친다. 요청하지 않은 파일을 새로 만들거나, 옮기거나, 이름을 바꾸지 않는다.
    - 폴더·파일 구조 변경은 지환(@jihwanqp1o) 담당이다. 구조 변경이 필요해 보이면 직접 바꾸지 말고 "지환과 상의하세요"라고 안내한다.
 2. **담당 모듈 밖의 파일은 고치지 않는다.** 다른 모듈 수정이 필요하면 그 담당자에게 요청하라고 안내한다.
-   - `voice/`, `main.py`, `config.py`: 지환 / `battle/`: 석현 / `ascii_art/`: 태웅 / `ui/`: 수빈
+   - `voice/`, `world/`, `main.py`, `config.py`: 지환 / `battle/`: 석현 / `ascii_art/`: 태웅 / `ui/`: 수빈
 3. **연결 규칙(아래 함수 이름·인자·반환값)을 바꾸지 않는다.** 함수 안쪽만 고친다. 자세한 내용은 `docs/INTERFACES.md`.
 4. 기존 코드의 이름 규칙, 주석 밀도(짧은 한국어 주석), 들여쓰기(공백 4칸)를 따른다.
 5. 경로나 설정 숫자를 코드에 직접 쓰지 않는다. `config.py`의 값을 쓰거나 거기에 추가하도록 안내한다.
@@ -24,11 +24,13 @@
 
 - 모듈끼리 주고받는 주문 값은 주문 key 문자열 (`"fireball"`, `"lightning"`, `"shield"`, `"heal"`). 주문 목록은 `SPELLS`에서 읽고 직접 나열하지 않는다
 - `battle.spells.SPELLS: dict[str, Spell]` / `Spell(key, display, kind, power, phrases, mana_cost, starter, desc)` (starter=False면 상점에서 배움)
-- `battle.engine`: `STAGES`(4연전), `new_battle(monster_hp_rate=1.0) -> BattleState`, `player_turn(state, spell_key | None) -> str` (None이면 턴 넘김), `monster_turn(state) -> str`, `get_shop_options(state) -> list[(번호, 설명)]`, `apply_upgrade(state, "1"~"7" 또는 주문 이름) -> str`, `winner(state) -> "player" | "monster" | None` (상태를 바꾸지 않음)
+- `battle.engine`: `STAGES`(4연전), `new_battle(monster_hp_rate=1.0) -> BattleState`, `player_turn(state, spell_key | None) -> str` (None이면 턴 넘김), `monster_turn(state) -> str`, `get_shop_options(state) -> list[(번호, 설명)]`, `apply_upgrade(state, "1"~"7" 또는 주문 이름) -> str`, `winner(state) -> "player" | "monster" | None` (상태를 바꾸지 않음), `room_event(state, "spring" | "treasure") -> str` (던전 방 효과)
   - `BattleState` 필수 필드: `monster_name, player_hp, player_max_hp, player_mp, player_max_mp, monster_hp, monster_max_hp, shield, turn, stage, awaiting_upgrade, bonus_attack, bonus_heal, bonus_crit, known_spells, monster_frozen`
   - battle은 print하지 않는다
-- `voice.recognizer`: `VoiceListener(model_path, SPELLS, min_confidence=..., reject_unknown=..., device=..., timeout=..., on_status=...).listen()`, `KeyboardListener(SPELLS).listen()` → 주문 key 또는 None
+- `voice.recognizer`: `VoiceListener(model_path, SPELLS, min_confidence=..., reject_unknown=..., device=..., timeout=..., on_status=...).listen(choices=None)`, `KeyboardListener(SPELLS).listen(choices=None)` → 주문 key 또는 None (`choices={말: key}`를 주면 그 말만 들음, 던전 방향용)
+- `world.dungeon`: `Room(key, kind, name, exits, stage)`, `ROOMS`, `START`, `KIND_LABELS`, `DIRECTION_PHRASES`, `get_room(key)`, `exits(key) -> [(방향, Room)]`, `move(key, 방향) -> key | None`. 화면 출력·전투 계산 없음
 - 몬스터 그림: 스테이지별 파일 이름은 `config.STAGE_MONSTER_IMAGES` (`assets/monsters/slime.png`, `goblin.png`, `zombie.png`, `dragon.png`). 파일만 넣으면 `main.py`가 연결하고, 없으면 슬라임 그림으로 대신 보여 준다
 - `ascii_art.monster.image_to_ascii(path, width=40) -> str`, `ascii_art.spell_text.spell_banner(text) -> str` (영어만), `ascii_art.intro.boot_lines() -> list[(str, float)]`
 - `ui.screen.render(state, monster_art, banner=None, logs=(), hit=False, prompt="")`, `ui.screen.show(...)` 같은 인자
+- `ui.menu.fork_screen(room, exits, path, art="")`, `ui.menu.room_screen(room, log, art="")`: 던전 갈림길과 회복 샘·보물 방 화면
   - ui는 게임 로직을 계산하지 않는다
