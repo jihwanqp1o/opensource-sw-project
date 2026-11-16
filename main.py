@@ -15,7 +15,8 @@ for _stream in (sys.stdout, sys.stderr):
 import config
 from ascii_art.monster import image_to_ascii
 from ascii_art.spell_text import spell_banner
-from battle.engine import monster_turn, new_battle, player_turn, winner
+from battle.engine import (STAGES, apply_upgrade, get_upgrade_prompt, monster_turn, new_battle,
+                           player_turn, winner)
 from battle.spells import SPELLS
 from ui import menu, screen
 from voice.recognizer import KeyboardListener, VoiceListener
@@ -38,14 +39,23 @@ def make_listener(input_mode):
                          on_status=show_listening)
 
 
+def choose_upgrade(state):
+    """스테이지를 깨면 업그레이드 화면을 보여 주고 1/2/3 중 하나를 받아 적용한다."""
+    while True:
+        key = show_page(menu.upgrade_screen(state, get_upgrade_prompt(), len(STAGES)))
+        try:
+            return apply_upgrade(state, key)
+        except ValueError:
+            continue  # 1/2/3이 아니면 다시 묻는다
+
+
 def run_battle(listener, art, input_mode, test_mode):
-    """전투 한 판을 진행하고 (이겼는지, 결과 통계)를 돌려준다."""
+    """4연전 한 판을 진행하고 (이겼는지, 결과 통계)를 돌려준다."""
     state = new_battle()
     logs = []
     stats = {"spells": Counter(), "recognized": 0, "missed": 0}
     start = time.monotonic()
     action = "입력하세요" if input_mode == "keyboard" else "외치세요"
-    prompt = f"주문을 {action}: " + " / ".join(SPELLS)
 
     def draw(**kwargs):
         if test_mode:
@@ -58,6 +68,7 @@ def run_battle(listener, art, input_mode, test_mode):
 
     while winner(state) is None:
         # 1. 영창
+        prompt = f"STAGE {state.stage}/{len(STAGES)} | 주문을 {action}: " + " / ".join(SPELLS)
         draw(logs=logs, prompt=prompt)
         spell_key = listener.listen()
 
@@ -74,6 +85,10 @@ def run_battle(listener, art, input_mode, test_mode):
         time.sleep(config.EFFECT_DELAY)
         if winner(state):
             break
+        if state.awaiting_upgrade:
+            # 중간 스테이지를 깨면 몬스터 반격 없이 업그레이드를 고르고 다음 몬스터로 넘어간다
+            logs.append(choose_upgrade(state))
+            continue
 
         # 3. 몬스터 반격
         logs.append(monster_turn(state))
@@ -82,6 +97,7 @@ def run_battle(listener, art, input_mode, test_mode):
 
     stats["seconds"] = time.monotonic() - start
     stats["turns"] = state.turn
+    stats["stage"] = f"{state.stage}/{len(STAGES)}"
     return winner(state) == "player", stats
 
 

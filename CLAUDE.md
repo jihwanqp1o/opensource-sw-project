@@ -20,7 +20,8 @@
 6. **정해지지 않은 것은 임의로 정하지 않고 작업자에게 먼저 묻는다.** 지금까지 결정된 것:
    - 마이크 입력 라이브러리: sounddevice
    - 음성 인식 언어: 영어 (`vosk-model-small-en-us-0.15`, 인식 단어를 주문 목록으로 제한)
-   - 전투 로직 범위: 주문 4종(fireball, lightning, shield, heal), 번개 확률 크리티컬, 몬스터 1마리의 기본/강화 공격 교대, 인식 실패 시 턴 넘김 (PR #3). 그 이상의 확장(몬스터 추가, 마나 등)은 미정
+   - 전투 로직 범위: 주문 4종, 번개 확률 크리티컬, 4연전 스테이지와 처치 후 스탯 업그레이드(PR #55), 인식 실패 시 턴 넘김. 앞으로 마나(#31~#33), 던전 탐험(#38~#41)을 마일스톤 순서대로 추가
+   - 게임 콘셉트: "터미널 속 마법사" (docs/CONCEPT.md). 새 이름과 문구는 이 문서의 이름 규칙을 따른다
 7. **연결 규칙을 지킨다.** 모듈 간 함수 이름·인자·반환값은 [docs/INTERFACES.md](docs/INTERFACES.md)를 따른다. 바꿀 때는 이 문서와 [.github/copilot-instructions.md](.github/copilot-instructions.md)의 요약을 함께 고친다. 팀원은 VS Code Copilot을 쓰므로 팀원용 규칙은 copilot-instructions.md에 있다.
 8. **커밋 메시지는 접두사 규칙을 따른다.**
    - `feat`: 새 기능 / `fix`: 버그 수정 / `docs`: 문서 / `refactor`: 구조 변경

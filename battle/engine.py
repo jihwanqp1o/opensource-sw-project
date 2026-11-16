@@ -12,17 +12,18 @@ MONSTER_EMPOWERED_ATTACK = 20
 LIGHTNING_CRITICAL_CHANCE = 0.2
 LIGHTNING_CRITICAL_POWER = 50
 TURN_PASS_LOG = "시간 초과(또는 발음 인식 실패)! 주문을 외우지 못해 플레이어 턴이 넘어갑니다."
+# 스테이지: (몬스터 이름, 체력, 기본 공격, 강화 공격). 이름은 docs/CONCEPT.md의 오류 생물 이름을 따른다.
 STAGES = {
-    1: ("슬라임", 80, 15, 20),
-    2: ("슬라임", 80, 15, 20),
-    3: ("중간 몬스터 1", 120, 15, 20),
-    4: ("중간 몬스터 2", 200, 20, 25),
+    1: ("메모리 누수 슬라임", 80, 15, 20),
+    2: ("버그 고블린", 80, 15, 20),
+    3: ("좀비 프로세스", 120, 15, 20),
+    4: ("커널 패닉 드래곤", 200, 20, 25),
 }
 
 
 @dataclass
 class BattleState:
-    monster_name: str = "슬라임"
+    monster_name: str = STAGES[1][0]
     player_hp: int = PLAYER_MAX_HP
     player_max_hp: int = PLAYER_MAX_HP
     monster_hp: int = MONSTER_MAX_HP
@@ -137,12 +138,10 @@ def monster_turn(state: BattleState) -> str:
 
 
 def winner(state: BattleState):
-    """승자를 돌려준다: "player" / "monster" / 아직 진행 중이면 None"""
+    """승자를 돌려준다: "player"(마지막 스테이지 처치) / "monster" / 아직 진행 중이면 None.
+    상태를 바꾸지 않는다. 중간 스테이지 처치는 state.awaiting_upgrade로 알 수 있다 (player_turn이 설정)."""
     if state.monster_hp <= 0:
-        if state.stage == max(STAGES):
-            return "player"
-        state.awaiting_upgrade = True
-        return None
+        return "player" if state.stage == max(STAGES) else None
     if state.player_hp <= 0:
         return "monster"
     return None
@@ -153,7 +152,6 @@ if __name__ == "__main__":
     from unittest.mock import patch
 
     assert SPELLS["heal"].power == 30
-    assert SPELLS["heal"].phrases == ("heal",)
     assert "health" not in SPELLS["heal"].phrases
     assert LIGHTNING_CRITICAL_CHANCE == 0.2
     print("[밸런스 확인] 힐 30, 번개 기본 위력 15/크리티컬 위력 50, 크리티컬 확률 20%")

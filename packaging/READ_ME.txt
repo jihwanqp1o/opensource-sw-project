@@ -18,7 +18,9 @@ VoiceShell.bat을 더블클릭하면 됩니다. Python을 따로 설치할 필�
   fireball  (fire ball, fire)     공격
   lightning (thunder)             공격, 가끔 크리티컬
   shield    (protect, defend)     다음 공격 막기
-  heal      (cure, health)        체력 회복
+  heal      (cure)                체력 회복
+
+몬스터 4마리를 차례로 쓰러뜨리면 시스템이 복구됩니다. 몬스터를 쓰러뜨릴 때마다 1 / 2 / 3을 눌러 공격력, 체력, 마력 중 하나를 강화하세요.
 
 [마이크가 안 잡힐 때]
 1. Windows 설정 > 개인 정보 및 보안 > 마이크 > "데스크톱 앱에서 마이크에 액세스하도록 허용"을 켭니다.

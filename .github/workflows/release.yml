@@ -45,8 +45,8 @@ jobs:
 
       - name: 만든 파일로 게임 실행 확인 (테스트 모드)
         run: |
-          printf 'fireball\n%.0s' {1..8} | cmd //c "dist\\portable\\VoiceShell\\VoiceShell.bat --test" > zip.log
-          printf 'fireball\n%.0s' {1..8} | dist/release/VoiceShell.exe --test > exe.log
+          cmd //c "dist\\portable\\VoiceShell\\VoiceShell.bat --test" < .github/ci-input.txt > zip.log
+          dist/release/VoiceShell.exe --test < .github/ci-input.txt > exe.log
           grep -q "데미지" zip.log
           grep -q "데미지" exe.log
 

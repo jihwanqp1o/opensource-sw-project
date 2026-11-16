@@ -13,9 +13,11 @@ player_turn(state, key)      → 전투 기록 문장 (state가 바뀜, key가 N
    ↓
 screen.show(... banner=spell_banner(SPELLS[key].display), hit=True)
    ↓
+(state.awaiting_upgrade가 True면) 업그레이드 화면 → apply_upgrade(state, "1"|"2"|"3") → 다음 스테이지로, 처음으로
+   ↓
 monster_turn(state)          → 전투 기록 문장
    ↓
-winner(state)                → "player" / "monster" / None  (None이면 처음으로)
+winner(state)                → "player"(마지막 스테이지 처치) / "monster" / None  (None이면 처음으로)
 ```
 
 모듈끼리 주고받는 주문 값은 항상 **주문 key 문자열**(`"fireball"`, `"lightning"`, `"shield"`, `"heal"`)입니다. 주문 목록은 `battle/spells.py`의 `SPELLS`가 기준이며, 다른 모듈은 key를 직접 나열하지 말고 `SPELLS`에서 읽습니다.
@@ -31,13 +33,16 @@ winner(state)                → "player" / "monster" / None  (None이면 처음
 `battle/engine.py`
 | 함수 | 인자 → 반환 | 설명 |
 |---|---|---|
-| `new_battle()` | → `BattleState` | 새 전투 상태 |
-| `player_turn(state, spell_key)` | → `str` | 주문 효과 적용, 기록 문장 반환. `spell_key`가 `None`이거나 없는 주문이면 턴을 넘기는 문장 반환 |
+| `STAGES` | `dict[int, (이름, 체력, 기본 공격, 강화 공격)]` | 4연전 몬스터 표. 이름은 docs/CONCEPT.md를 따름 |
+| `new_battle()` | → `BattleState` | 1스테이지부터 시작하는 새 전투 상태 |
+| `player_turn(state, spell_key)` | → `str` | 주문 효과 적용, 기록 문장 반환. `spell_key`가 `None`이거나 없는 주문이면 턴을 넘기는 문장 반환. 중간 스테이지 몬스터를 쓰러뜨리면 `state.awaiting_upgrade = True` |
 | `monster_turn(state)` | → `str` | 몬스터 반격, 기록 문장 반환 |
-| `winner(state)` | → `"player"` / `"monster"` / `None` | 승부 판정 |
+| `get_upgrade_prompt()` | → `str` | 업그레이드 선택지 문장 |
+| `apply_upgrade(state, choice)` | → `str` | `"1"`(공격력) / `"2"`(체력) / `"3"`(마력) 적용 후 다음 스테이지로. 다른 값이면 `ValueError` |
+| `winner(state)` | → `"player"` / `"monster"` / `None` | 승부 판정. 상태를 바꾸지 않음. 마지막 스테이지를 깨야 `"player"` |
 
 `BattleState`에 반드시 있어야 하는 필드 (UI가 읽음):
-`monster_name, player_hp, player_max_hp, monster_hp, monster_max_hp, shield, turn`
+`monster_name, player_hp, player_max_hp, monster_hp, monster_max_hp, shield, turn, stage, awaiting_upgrade, bonus_attack, bonus_heal, bonus_crit`
 
 규칙: battle은 **화면에 출력하지 않습니다** (`print` 금지, 단독 실행 테스트 제외).
 
@@ -73,7 +78,8 @@ winner(state)                → "player" / "monster" / None  (None이면 처음
 |---|---|---|
 | `title_screen()` | → rich 렌더러블 | 타이틀(메인) 화면과 메뉴 안내 |
 | `spell_list_screen(SPELLS)` | → rich 렌더러블 | 주문 목록 |
-| `result_screen(won, stats)` | → rich 렌더러블 | 결과 화면. `stats`: `seconds`, `turns`, `spells`(Counter), `recognized`, `missed` |
+| `upgrade_screen(state, options_text, total_stages)` | → rich 렌더러블 | 스테이지를 깬 뒤 업그레이드 고르는 화면 |
+| `result_screen(won, stats)` | → rich 렌더러블 | 결과 화면. `stats`: `seconds`, `turns`, `spells`(Counter), `recognized`, `missed`, `stage`(예: `"3/4"`) |
 | `test_banner(state, input_mode)` | → rich 렌더러블 | 테스트 모드 화면 맨 위에 붙는 노란 줄 |
 
 플레이 모드와 테스트 모드 흐름은 `main.py`가 정하고, ui는 화면만 만듭니다.

@@ -55,6 +55,8 @@ def result_screen(won, stats):
     color = GREEN if won else "bright_red"
 
     table = Table.grid(padding=(0, 3))
+    if "stage" in stats:
+        table.add_row("도달 스테이지", stats["stage"])
     table.add_row("걸린 시간", f"{stats['seconds']:.0f}초")
     table.add_row("턴 수", str(stats["turns"]))
     used = ", ".join(f"{key} {n}회" for key, n in stats["spells"].most_common()) or "-"
@@ -72,10 +74,32 @@ def result_screen(won, stats):
     ), border_style=color)
 
 
+def upgrade_screen(state, options_text, total_stages):
+    """스테이지를 깬 뒤 업그레이드를 고르는 화면. 선택지 문장은 battle.engine에서 받는다."""
+    bonus = Table.grid(padding=(0, 3))
+    bonus.add_row("공격력", f"+{state.bonus_attack}")
+    bonus.add_row("체력", f"{state.player_hp}/{state.player_max_hp}")
+    bonus.add_row("힐량 / 크리티컬", f"+{state.bonus_heal} / +{state.bonus_crit:.0%}")
+
+    return Panel(Group(
+        Text(""),
+        Align.center(Text(spell_banner(f"STAGE {state.stage} CLEAR"), style=f"bold {GREEN}")),
+        Align.center(Text(f"[ OK ] {state.monster_name} 정리 완료 ({state.stage}/{total_stages})",
+                          style="bold white")),
+        Text(""),
+        Align.center(bonus),
+        Text(""),
+        Align.center(Text(options_text, style="bold white")),
+        Text(""),
+        Align.center(Text("1 / 2 / 3 중 하나를 입력하고 Enter", style="dim")),
+    ), title="[bold] PERMISSION UPGRADE [/]", border_style=GREEN)
+
+
 def test_banner(state, input_mode):
     """테스트 모드에서 화면 맨 위에 붙는 한 줄. 시연 화면과 한눈에 구분된다."""
+    stage = f" | 스테이지 {state.stage}" if hasattr(state, "stage") else ""
     return Text(
-        f" TEST MODE | 입력: {input_mode} | 플레이어 {state.player_hp}/{state.player_max_hp}"
+        f" TEST MODE{stage} | 입력: {input_mode} | 플레이어 {state.player_hp}/{state.player_max_hp}"
         f" | 몬스터 {state.monster_hp}/{state.monster_max_hp} | 턴 {state.turn}"
         f" | 실드 {'ON' if state.shield else 'OFF'} ",
         style="bold black on yellow",
@@ -83,7 +107,7 @@ def test_banner(state, input_mode):
 
 
 if __name__ == "__main__":
-    # 단독 실행: python -m ui.menu  (화면 네 개를 차례로 출력)
+    # 단독 실행: python -m ui.menu  (화면 다섯 개를 차례로 출력)
     from collections import Counter
     from types import SimpleNamespace
 
@@ -93,7 +117,10 @@ if __name__ == "__main__":
     console.print(title_screen())
     console.print(spell_list_screen(SPELLS))
     console.print(result_screen(True, {"seconds": 83, "turns": 5, "recognized": 5, "missed": 1,
-                                       "spells": Counter(fireball=3, shield=1, heal=1)}))
+                                       "spells": Counter(fireball=3, shield=1, heal=1),
+                                       "stage": "4/4"}))
     fake = SimpleNamespace(player_hp=70, player_max_hp=100, monster_hp=40, monster_max_hp=80,
-                           turn=3, shield=False)
+                           turn=3, shield=False, stage=2, monster_name="버그 고블린",
+                           bonus_attack=10, bonus_heal=0, bonus_crit=0.0)
+    console.print(upgrade_screen(fake, "[1] 공격력 (+10)  [2] 체력 (+20)  [3] 마력", 4))
     console.print(test_banner(fake, "키보드"))
