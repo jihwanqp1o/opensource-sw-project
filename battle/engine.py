@@ -11,7 +11,8 @@ MONSTER_ATTACK = 15
 MONSTER_EMPOWERED_ATTACK = 20
 LIGHTNING_CRITICAL_CHANCE = 0.2
 LIGHTNING_CRITICAL_POWER = 50
-TURN_PASS_LOG = "시간 초과(또는 발음 인식 실패)! 주문을 외우지 못해 플레이어 턴이 넘어갑니다."
+# 전투 기록은 시스템 로그 형식: [ OK ] 성공 / [WARN] 피해 / [FAIL] 실패 (docs/CONCEPT.md "화면 톤")
+TURN_PASS_LOG = "[FAIL] 명령을 인식하지 못했습니다 (시간 초과 또는 발음 인식 실패). 턴이 넘어갑니다."
 # 스테이지: (몬스터 이름, 체력, 기본 공격, 강화 공격). 이름은 docs/CONCEPT.md의 오류 생물 이름을 따른다.
 STAGES = {
     1: ("메모리 누수 슬라임", 80, 15, 20),
@@ -97,7 +98,7 @@ def apply_upgrade(state: BattleState, choice: str) -> str:
         raise ValueError(f"알 수 없는 업그레이드 선택: {choice}")
 
     advance_stage(state)
-    return f"[업그레이드 완료] {result} 다음 스테이지({state.stage})로 이동합니다."
+    return f"[ OK ] 업그레이드 완료: {result} 다음 스테이지({state.stage})로 이동합니다."
 
 
 def player_turn(state: BattleState, spell_key: Optional[str]) -> str:
@@ -111,9 +112,9 @@ def player_turn(state: BattleState, spell_key: Optional[str]) -> str:
         critical_chance = min(1.0, LIGHTNING_CRITICAL_CHANCE + state.bonus_crit)
         if spell_key == "lightning" and random.random() < critical_chance:
             power = LIGHTNING_CRITICAL_POWER + state.bonus_attack
-            result = f"크리티컬 발동! {spell.display} 번개가 작렬해"
+            result = f"[ OK ] {spell.key} 크리티컬! 과전압으로"
         else:
-            result = f"{spell.display}!"
+            result = f"[ OK ] {spell.key} 실행:"
         state.monster_hp = max(0, state.monster_hp - power)
         if state.monster_hp == 0 and state.stage < max(STAGES):
             state.awaiting_upgrade = True
@@ -123,10 +124,10 @@ def player_turn(state: BattleState, spell_key: Optional[str]) -> str:
         state.player_hp = min(
             state.player_max_hp, state.player_hp + spell.power + state.bonus_heal
         )
-        return f"{spell.display}! 체력 {state.player_hp - before} 회복"
+        return f"[ OK ] {spell.key} 실행: 시스템 복구, 체력 {state.player_hp - before} 회복"
     if spell.kind == "shield":
         state.shield = True
-        return f"{spell.display}! 다음 공격을 막을 준비를 했다"
+        return f"[ OK ] {spell.key} 실행: 방화벽 가동, 다음 공격을 막는다"
     raise ValueError(f"알 수 없는 주문 종류: {spell.kind}")
 
 
@@ -140,9 +141,9 @@ def monster_turn(state: BattleState) -> str:
 
     if state.shield:
         state.shield = False
-        return f"{state.monster_name}의 {attack_name}! 실드가 공격을 완벽히 막아냈다 (0 데미지)"
+        return f"[ OK ] 방화벽이 {state.monster_name}의 {attack_name}을 막았다 (0 데미지)"
     state.player_hp = max(0, state.player_hp - damage)
-    return f"{state.monster_name}의 {attack_name}! {damage} 데미지를 입었다"
+    return f"[WARN] {state.monster_name}의 {attack_name}: {damage} 데미지"
 
 
 def winner(state: BattleState):
