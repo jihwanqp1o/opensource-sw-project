@@ -51,7 +51,7 @@ winner(state)                → "player"(마지막 스테이지 처치) / "mons
 `voice/recognizer.py`
 | 클래스 | 만들기 | `listen()` 반환 |
 |---|---|---|
-| `VoiceListener` | `VoiceListener(model_path, SPELLS, min_confidence=0.0, reject_unknown=False, device=None, timeout=None, on_status=None)` | 주문 key, 또는 `timeout`초 안에 주문이 인식되지 않으면 `None` |
+| `VoiceListener` | `VoiceListener(model_path, SPELLS, min_confidence=0.0, reject_unknown=False, device=None, timeout=None, on_status=None)` | 주문 key, 또는 `timeout`초 안에 주문이 인식되지 않으면 `None`. 듣는 중에 키보드로 주문을 치고 Enter를 눌러도 발동(비상 입력, Windows). 어떻게 입력됐는지는 `listener.last_source`(`"voice"` / `"keyboard"`) |
 
 `on_status(heard, remaining)`: 듣는 동안 약 0.2초마다 불립니다. `heard`는 지금까지 들린 말, `remaining`은 남은 초(시간 제한이 없으면 `None`)입니다. 화면에 듣는 중 상태를 보여 줄 때 씁니다.
 | `KeyboardListener` | `KeyboardListener(SPELLS)` | 주문 key 또는 `None` |

@@ -105,10 +105,14 @@ def run_battle(listener, art, input_mode, test_mode, monster_hp_rate=1.0):
     while winner(state) is None:
         # 1. 영창
         prompt = f"STAGE {state.stage}/{len(STAGES)} | 주문을 {action}: " + " / ".join(SPELLS)
+        if input_mode != "keyboard":
+            prompt += "\n(인식이 안 되면 키보드로 주문을 치고 Enter)"
         draw(logs=logs, prompt=prompt)
         spell_key = listener.listen()
 
         # 2. 주문 발동과 피격 연출 (못 알아들으면 None → player_turn이 턴을 넘긴다)
+        if spell_key and getattr(listener, "last_source", None) == "keyboard":
+            logs.append("[WARN] 비상 키보드 입력")  # 세계관상 키보드는 고장 난 상태라 경고로 남긴다
         logs.append(player_turn(state, spell_key))
         if spell_key is None:
             stats["missed"] += 1

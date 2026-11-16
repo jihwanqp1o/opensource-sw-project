@@ -33,6 +33,9 @@ class VoiceListener:
         self.timeout = timeout
         # 듣는 동안 on_status(지금까지 들린 말, 남은 초)를 계속 불러 준다 (화면 표시용)
         self.on_status = on_status
+        # 마지막 listen()이 어떻게 입력받았는지: "voice" 또는 "keyboard"(비상 키보드 입력)
+        self.last_source = "voice"
+        self._typed = ""
 
     def listen(self):
         from vosk import KaldiRecognizer
@@ -42,6 +45,8 @@ class VoiceListener:
         audio = queue.Queue()
         deadline = time.monotonic() + self.timeout if self.timeout else None
         heard = ""  # 화면에 보여 줄 "지금까지 들린 말"
+        self.last_source = "voice"
+        self._typed = ""  # 비상 키보드 입력 중인 글자
 
         def callback(indata, frames, time_info, status):
             audio.put(bytes(indata))
@@ -54,13 +59,22 @@ class VoiceListener:
                     # 시간이 다 되면 말하던 중인 것까지 확인하고 끝낸다
                     result = json.loads(rec.FinalResult())
                     return self.decide(result) if result["text"] else None
+
+                # 발표장 소음 등으로 음성이 안 될 때를 대비해, 듣는 중에도 키보드 입력을 받는다
+                typed_key = self._poll_keyboard()
+                if typed_key:
+                    self.last_source = "keyboard"
+                    return typed_key
+
                 try:
                     data = audio.get(timeout=0.2)
                 except queue.Empty:
-                    continue
+                    data = None
 
                 # 말이 한 번 끝날 때마다(AcceptWaveform이 True) 결과를 확인한다
-                if rec.AcceptWaveform(data):
+                if data is None:
+                    pass
+                elif rec.AcceptWaveform(data):
                     result = json.loads(rec.Result())
                     key = self.decide(result) if result["text"] else None
                     if key:
@@ -73,7 +87,27 @@ class VoiceListener:
                     if partial:
                         heard = partial.replace("[unk]", "...")  # 모르는 말은 ...로 보여 준다
                 if self.on_status:
-                    self.on_status(heard, remaining)
+                    self.on_status(f"키보드: {self._typed}" if self._typed else heard, remaining)
+
+    def _poll_keyboard(self):
+        """눌린 키를 모아 두었다가 Enter를 누르면 주문 key를 돌려준다. 키 입력이 없으면 None. (Windows 전용)"""
+        try:
+            import msvcrt
+        except ImportError:
+            return None
+        while msvcrt.kbhit():
+            ch = msvcrt.getwch()
+            if ch in ("\r", "\n"):
+                text, self._typed = self._typed.strip().lower(), ""
+                if text in self.phrases:
+                    return self.phrases[text]
+            elif ch == "\b":
+                self._typed = self._typed[:-1]
+            elif ch in ("\x00", "\xe0"):
+                msvcrt.getwch()  # 방향키 같은 특수 키는 두 글자로 들어와서 함께 버린다
+            elif ch.isprintable():
+                self._typed += ch
+        return None
 
     def decide(self, result):
         """Vosk 결과에서 주문 key를 고른다. 오인식으로 의심되면 None."""

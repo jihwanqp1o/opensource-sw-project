@@ -15,6 +15,7 @@ VoiceShell.bat을 더블클릭하면 됩니다. Python을 따로 설치할 필�
 [조작]
 타이틀 화면: Enter 시작 / H 주문 목록 / Q 종료
 주문을 말하고 잠깐 멈추면 인식됩니다. 10초 안에 주문이 인식되지 않으면 턴이 넘어갑니다.
+음성이 안 먹히면 키보드로 주문 이름을 치고 Enter를 눌러도 됩니다. (비상 입력)
 
   fireball  (fire ball, fire)     공격
   lightning (thunder)             공격, 가끔 크리티컬
