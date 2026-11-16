@@ -17,5 +17,6 @@ SPELLS = {
         "lightning", "LIGHTNING", "attack", 15, ("lightning", "lightening", "thunder")
     ),
     "shield": Spell("shield", "SHIELD", "shield", 0, ("shield", "protect", "defend")),
-    "heal": Spell("heal", "HEAL", "heal", 20, ("heal", "cure", "health")),
+    # health는 일상 단어라 오인식이 잦아 뺐다. cure는 문서와 안내문에 있어 유지
+    "heal": Spell("heal", "HEAL", "heal", 30, ("heal", "cure")),
 }
