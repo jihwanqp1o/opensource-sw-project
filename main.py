@@ -85,7 +85,17 @@ def play_intro():
             time.sleep(0.05)
 
 
-def run_battle(listener, art, input_mode, test_mode, monster_hp_rate=1.0):
+def load_monster_arts():
+    """스테이지별 몬스터 아스키 그림을 미리 만들어 둔다. 그림 파일이 없는 스테이지는 기본 그림을 쓴다."""
+    default = image_to_ascii(config.MONSTER_IMAGE, config.MONSTER_ART_WIDTH)
+    arts = {}
+    for stage in STAGES:
+        path = config.MONSTER_IMAGE_DIR / config.STAGE_MONSTER_IMAGES.get(stage, "")
+        arts[stage] = image_to_ascii(str(path), config.MONSTER_ART_WIDTH) if path.is_file() else default
+    return arts
+
+
+def run_battle(listener, arts, input_mode, test_mode, monster_hp_rate=1.0):
     """4연전 한 판을 진행하고 (이겼는지, 결과 통계)를 돌려준다."""
     state = new_battle(monster_hp_rate)
     logs = []
@@ -98,9 +108,9 @@ def run_battle(listener, art, input_mode, test_mode, monster_hp_rate=1.0):
             # 테스트 모드는 맨 위에 TEST MODE 줄을 붙여 시연 화면과 구분한다
             screen.console.clear()
             screen.console.print(menu.test_banner(state, input_mode))
-            screen.console.print(screen.render(state, art, **kwargs))
+            screen.console.print(screen.render(state, arts[state.stage], **kwargs))
         else:
-            screen.show(state, art, **kwargs)
+            screen.show(state, arts[state.stage], **kwargs)
 
     while winner(state) is None:
         # 1. 영창
@@ -149,7 +159,7 @@ def show_page(renderable):
     return input("> ").strip().lower()
 
 
-def play_mode(listener, art, input_mode, monster_hp_rate):
+def play_mode(listener, arts, input_mode, monster_hp_rate):
     """시연용 흐름: 오프닝 → 타이틀 → 전투 → 결과 → 타이틀"""
     play_intro()
     while True:
@@ -160,7 +170,7 @@ def play_mode(listener, art, input_mode, monster_hp_rate):
             show_page(menu.spell_list_screen(SPELLS))
         elif key == "":
             # 시연 중 실수로 다른 키를 눌러도 시작되지 않게 Enter만 받는다
-            won, stats = run_battle(listener, art, input_mode, test_mode=False,
+            won, stats = run_battle(listener, arts, input_mode, test_mode=False,
                                     monster_hp_rate=monster_hp_rate)
             show_page(menu.result_screen(won, stats))
 
@@ -177,15 +187,15 @@ def main():
     input_mode = "keyboard" if args.test else config.INPUT_MODE
     monster_hp_rate = config.DEMO_HP_RATE if args.demo else 1.0
     listener = make_listener(input_mode)
-    art = image_to_ascii(config.MONSTER_IMAGE, config.MONSTER_ART_WIDTH)
+    arts = load_monster_arts()
 
     try:
         if args.test:
-            won, _ = run_battle(listener, art, input_mode, test_mode=True,
+            won, _ = run_battle(listener, arts, input_mode, test_mode=True,
                                 monster_hp_rate=monster_hp_rate)
             screen.console.print(spell_banner("VICTORY" if won else "GAME OVER"))
         else:
-            play_mode(listener, art, input_mode, monster_hp_rate)
+            play_mode(listener, arts, input_mode, monster_hp_rate)
     except KeyboardInterrupt:
         pass  # Ctrl+C로 끄면 오류 메시지 없이 끝낸다
 

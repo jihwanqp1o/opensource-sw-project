@@ -15,10 +15,14 @@ VOSK_MODEL_PATH = os.environ.get(
 # 입력 방식: "voice"(마이크) 또는 "keyboard"(마이크·모델 없이 테스트할 때)
 INPUT_MODE = os.environ.get("INPUT_MODE", "voice")
 
-# 몬스터 이미지 경로
+# 몬스터 이미지 경로 (스테이지 그림 파일이 아직 없을 때 대신 쓰는 기본 그림)
 MONSTER_IMAGE = os.environ.get(
     "MONSTER_IMAGE", str(ROOT / "assets" / "monsters" / "slime.png")
 )
+
+# 스테이지별 몬스터 그림 (assets/monsters 아래 파일 이름). 파일이 없으면 MONSTER_IMAGE로 대신 보여 준다
+MONSTER_IMAGE_DIR = Path(os.environ.get("MONSTER_IMAGE_DIR", str(ROOT / "assets" / "monsters")))
+STAGE_MONSTER_IMAGES = {1: "slime.png", 2: "goblin.png", 3: "zombie.png", 4: "dragon.png"}
 
 # 몬스터 아스키 아트 가로 글자 수
 MONSTER_ART_WIDTH = int(os.environ.get("MONSTER_ART_WIDTH", "40"))

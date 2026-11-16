@@ -98,7 +98,9 @@ winner(state)                → "player"(마지막 스테이지 처치) / "mons
 |---|---|---|
 | `VOSK_MODEL_PATH` | `VOSK_MODEL_PATH` | `models/vosk-model-small-en-us-0.15` |
 | `INPUT_MODE` | `INPUT_MODE` | `voice` (또는 `keyboard`) |
-| `MONSTER_IMAGE` | `MONSTER_IMAGE` | `assets/monsters/slime.png` |
+| `MONSTER_IMAGE` | `MONSTER_IMAGE` | `assets/monsters/slime.png` (스테이지 그림이 없을 때 대신 쓰는 기본 그림) |
+| `MONSTER_IMAGE_DIR` | `MONSTER_IMAGE_DIR` | `assets/monsters` |
+| `STAGE_MONSTER_IMAGES` | - | `{1: slime.png, 2: goblin.png, 3: zombie.png, 4: dragon.png}`. 이 이름으로 그림 파일을 `assets/monsters/`에 넣으면 그 스테이지에 바로 나옵니다 |
 | `MONSTER_ART_WIDTH` | `MONSTER_ART_WIDTH` | `40` |
 | `EFFECT_DELAY` | `EFFECT_DELAY` | `1.2` (초) |
 | `DEMO_HP_RATE` | `DEMO_HP_RATE` | `0.4` (`--demo`일 때 몬스터 체력 배율) |
