@@ -47,21 +47,22 @@ def _hp_bar(label, hp, max_hp, color=None, width=14):
     return row
 
 
-def _mana_cost_text():
-    """주문별 마나 비용을 표시하며 아직 없는 데이터는 명시한다."""
-    costs = []
-    for key, spell in SPELLS.items():
-        mana_cost = getattr(spell, "mana_cost", None)
-        cost_text = str(mana_cost) if mana_cost is not None else "N/A"
-        costs.append(f"{key}({cost_text})")
-    if not costs:
-        return ("주문 마나 비용 데이터가 없습니다.",)
+# 주문 큰 글씨(pyfiglet standard 글꼴)는 최대 6줄이다. 칸 높이를 고정해 화면이 들썩이지 않게 한다.
+SPELL_LINES = 6
+LOG_LINES = 3
 
-    midpoint = (len(costs) + 1) // 2
-    return (
-        "MP: " + " / ".join(costs[:midpoint]),
-        "     " + " / ".join(costs[midpoint:]) if costs[midpoint:] else "",
-    )
+
+def _mana_cost_text():
+    """주문별 마나 비용 한 줄. 마나 데이터가 아직 없으면 None (시연 화면에 빈 값을 보이지 않는다)."""
+    costs = [f"{key}({spell.mana_cost})" for key, spell in SPELLS.items()
+             if getattr(spell, "mana_cost", None) is not None]
+    return "MP: " + " / ".join(costs) if costs else None
+
+
+def _art_line_budget():
+    """창 높이에서 다른 칸을 빼고 몬스터 그림에 쓸 수 있는 줄 수 (최대화한 49줄 창에서는 잘리지 않음)."""
+    fixed = 4 + (SPELL_LINES + 2) + (LOG_LINES + 2) + 2 + 2  # 상태, 주문, 기록, 몬스터 테두리, 입력 줄
+    return max(4, console.height - fixed)
 
 
 def _compact_monster_art(monster_art, max_lines):
@@ -76,8 +77,7 @@ def _compact_monster_art(monster_art, max_lines):
 
 def render(state, monster_art, banner=None, logs=(), hit=False, prompt=""):
     """전투 상태를 Rich 렌더러블로 만든다."""
-    max_art_lines = 6 if console.height < 32 else 10
-    monster_art = _compact_monster_art(monster_art, max_art_lines)
+    monster_art = _compact_monster_art(monster_art, _art_line_budget())
     monster = Panel(
         Text(monster_art, style="bold red" if hit else "white",
              justify="center"),
@@ -95,18 +95,14 @@ def render(state, monster_art, banner=None, logs=(), hit=False, prompt=""):
     )
     player_mp = getattr(state, "player_mp", None)
     player_max_mp = getattr(state, "player_max_mp", None)
-    mp_bar = (
-        _hp_bar("MP", player_mp, player_max_mp, color="bright_blue", width=8)
-        if player_mp is not None and player_max_mp is not None
-        else Text("MP DATA UNAVAILABLE", style="bold yellow")
-    )
+    # 마나 바는 마나 데이터가 있을 때만 보여 준다 (1단계 #31 이후)
+    resources = [_hp_bar("PLAYER", state.player_hp, state.player_max_hp)]
+    if player_mp is not None and player_max_mp is not None:
+        resources.append(_hp_bar("MP", player_mp, player_max_mp, color="bright_blue", width=8))
     player_resources = Table.grid(padding=(0, 1))
-    player_resources.add_column(ratio=1)
-    player_resources.add_column(ratio=1)
-    player_resources.add_row(
-        _hp_bar("PLAYER", state.player_hp, state.player_max_hp),
-        mp_bar,
-    )
+    for _ in resources:
+        player_resources.add_column(ratio=1)
+    player_resources.add_row(*resources)
     hp_row = Table.grid(expand=True, padding=(0, 2))
     hp_row.add_column(ratio=2)
     hp_row.add_column(ratio=1)
@@ -133,9 +129,9 @@ def render(state, monster_art, banner=None, logs=(), hit=False, prompt=""):
         padding=(0, 1),
     )
 
-    spell_banner = (banner or "주문을 기다리는 중...").replace("\n", " | ")
-    spell_text = Text(spell_banner, justify="center", no_wrap=True)
-    spell_text.truncate(max(console.width - 8, 1), overflow="ellipsis")
+    # 큰 글씨는 여러 줄 그대로 보여 주고, 창이 좁으면 줄마다 오른쪽만 자른다
+    spell_text = Text(banner or "주문을 기다리는 중...", justify="center",
+                      no_wrap=True, overflow="crop")
     if banner:
         spell_text.stylize("bold red" if hit else "bold white")
     else:
@@ -145,10 +141,11 @@ def render(state, monster_art, banner=None, logs=(), hit=False, prompt=""):
         title="[bold white] SPELL | 주문 발동 [/]",
         box=box.ROUNDED,
         border_style="bright_black",
+        height=SPELL_LINES + 2,
         padding=(0, 1),
     )
 
-    recent_logs = list(logs)[-2:]
+    recent_logs = list(logs)[-LOG_LINES:]
     log_content = Text()
     if recent_logs:
         for index, log_line in enumerate(recent_logs):
@@ -167,22 +164,20 @@ def render(state, monster_art, banner=None, logs=(), hit=False, prompt=""):
         title="[bold white] BATTLE LOG · 최근 기록 [/]",
         box=box.ROUNDED,
         border_style="bright_black",
-        height=4,
+        height=LOG_LINES + 2,
         padding=(0, 1),
     )
-    prompt_title = Text(" ACTION | ", style="bold white")
-    prompt_title.append(prompt or "입력 대기 중...", style="white")
-    prompt_title.truncate(max(console.width // 2 - 4, 1), overflow="ellipsis")
-    prompt_content = Group(
-        *(Text(line, style="cyan", justify="center", no_wrap=True)
-          for line in _mana_cost_text())
-    )
+    # 입력 안내는 잘리지 않게 칸 안에 보여 주고, 마나 비용은 데이터가 있을 때만 덧붙인다
+    prompt_lines = [Text(prompt or "입력 대기 중...", style="bold white", justify="center")]
+    mana_text = _mana_cost_text()
+    if mana_text:
+        prompt_lines.append(Text(mana_text, style="cyan", justify="center", no_wrap=True))
     prompt_panel = Panel(
-        prompt_content,
-        title=prompt_title,
+        Group(*prompt_lines),
+        title="[bold white] ACTION [/]",
         box=box.ROUNDED,
         border_style="bright_black",
-        height=4,
+        height=LOG_LINES + 2,
         padding=(0, 1),
     )
 
