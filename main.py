@@ -18,7 +18,7 @@ import config
 from ascii_art.intro import boot_lines
 from ascii_art.monster import image_to_ascii
 from ascii_art.spell_text import spell_banner
-from battle.engine import (STAGES, apply_upgrade, get_upgrade_prompt, monster_turn, new_battle,
+from battle.engine import (STAGES, apply_upgrade, get_shop_options, monster_turn, new_battle,
                            player_turn, winner)
 from battle.spells import SPELLS
 from ui import menu, screen
@@ -43,9 +43,9 @@ def make_listener(input_mode):
 
 
 def choose_upgrade(state):
-    """스테이지를 깨면 업그레이드 화면을 보여 주고 1/2/3 중 하나를 받아 적용한다."""
+    """스테이지를 깨면 상점(스탯 강화 또는 주문 설치) 화면을 보여 주고 번호 하나를 받아 적용한다."""
     while True:
-        key = show_page(menu.upgrade_screen(state, get_upgrade_prompt(), len(STAGES)))
+        key = show_page(menu.upgrade_screen(state, get_shop_options(state), len(STAGES)))
         try:
             return apply_upgrade(state, key)
         except ValueError:
@@ -104,7 +104,8 @@ def run_battle(listener, art, input_mode, test_mode, monster_hp_rate=1.0):
 
     while winner(state) is None:
         # 1. 영창
-        prompt = f"STAGE {state.stage}/{len(STAGES)} | 주문을 {action}: " + " / ".join(SPELLS)
+        # 배운 주문만 안내한다 (나머지는 상점에서 배운다)
+        prompt = f"STAGE {state.stage}/{len(STAGES)} | 주문을 {action}: " + " / ".join(state.known_spells)
         if input_mode != "keyboard":
             prompt += "\n(인식이 안 되면 키보드로 주문을 치고 Enter)"
         draw(logs=logs, prompt=prompt)

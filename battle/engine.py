@@ -1,11 +1,13 @@
 """턴제 전투 로직. 화면 출력은 하지 않고 상태만 바꾸고 기록 문장을 돌려준다."""
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import random
 from typing import Optional
 
 from battle.spells import SPELLS
 
 PLAYER_MAX_HP = 100
+PLAYER_MAX_MP = 50
+MP_REGEN = 10  # 몬스터 턴마다 회복하는 마나
 MONSTER_MAX_HP = 80
 MONSTER_ATTACK = 15
 MONSTER_EMPOWERED_ATTACK = 20
@@ -38,6 +40,11 @@ class BattleState:
     stage: int = 1
     awaiting_upgrade: bool = False
     monster_hp_rate: float = 1.0  # 몬스터 체력 배율 (시연용 빠른 모드에서 낮춘다)
+    player_mp: int = PLAYER_MAX_MP
+    player_max_mp: int = PLAYER_MAX_MP
+    # 지금 쓸 수 있는 주문. 처음에는 starter 주문만, 나머지는 상점에서 배운다
+    known_spells: list = field(default_factory=lambda: [k for k, s in SPELLS.items() if s.starter])
+    monster_frozen: bool = False  # True면 몬스터의 다음 공격 1번을 건너뛴다 (ice)
 
 
 def _scaled_hp(state: BattleState, hp: int) -> int:
@@ -53,13 +60,31 @@ def new_battle(monster_hp_rate: float = 1.0) -> BattleState:
     return state
 
 
+STAT_UPGRADES = {
+    "1": "공격력 +10",
+    "2": "최대·현재 체력 +20",
+    "3": "마력: 힐량 +15, 크리티컬 확률 +15%, 최대 마나 +10",
+}
+# 상점에서 배우는 주문의 고정 번호 (starter가 아닌 주문 순서대로 4부터)
+SHOP_SPELL_NUMBERS = {str(4 + i): key for i, key in
+                      enumerate(k for k, s in SPELLS.items() if not s.starter)}
+
+
+def get_shop_options(state: BattleState) -> list[tuple[str, str]]:
+    """상점(패키지 저장소) 선택지: [(입력할 번호, 설명)]. 1~3은 스탯 강화, 4부터는 아직 안 배운 주문.
+    주문 번호는 배워도 바뀌지 않는다 (ice=4, meteor=5, focus=6, drain=7)."""
+    options = list(STAT_UPGRADES.items())
+    for number, key in SHOP_SPELL_NUMBERS.items():
+        if key not in state.known_spells:
+            spell = SPELLS[key]
+            options.append((number, f"{key} 설치 (MP {spell.mana_cost}) - {spell.desc}"))
+    return options
+
+
 def get_upgrade_prompt() -> str:
-    """업그레이드 선택지를 한국어로 돌려준다."""
-    return (
-        "몬스터 처치! 강화할 스탯을 선택하세요: "
-        "[1] 공격력 (+10)  [2] 체력 (+20)  "
-        "[3] 마력 (힐량 +15, 크리티컬 확률 +15%)"
-    )
+    """업그레이드 선택지를 한국어로 돌려준다. (스탯만, 주문까지 보려면 get_shop_options)"""
+    return "몬스터 처치! 강화할 것을 선택하세요: " + "  ".join(
+        f"[{key}] {label}" for key, label in STAT_UPGRADES.items())
 
 
 def advance_stage(state: BattleState) -> None:
@@ -71,6 +96,7 @@ def advance_stage(state: BattleState) -> None:
     state.monster_name = name
     state.monster_hp = state.monster_max_hp = _scaled_hp(state, hp)
     state.monster_is_empowered = False
+    state.monster_frozen = False
     state.shield = False
     state.awaiting_upgrade = False
 
@@ -93,12 +119,26 @@ def apply_upgrade(state: BattleState, choice: str) -> str:
         previous_crit = state.bonus_crit
         state.bonus_crit = min(1.0, state.bonus_crit + 0.15)
         crit_gain = round((state.bonus_crit - previous_crit) * 100)
-        result = f"힐량이 +15, 크리티컬 확률이 +{crit_gain}% 상승했습니다."
+        state.player_max_mp += 10
+        state.player_mp += 10
+        result = f"힐량이 +15, 크리티컬 확률이 +{crit_gain}%, 최대 마나가 +10 상승했습니다."
     else:
-        raise ValueError(f"알 수 없는 업그레이드 선택: {choice}")
+        # 4번부터는 상점에서 주문 배우기. 번호 대신 주문 이름을 넣어도 된다
+        key = SHOP_SPELL_NUMBERS.get(normalized, normalized)
+        if key not in SPELLS or key in state.known_spells:
+            raise ValueError(f"알 수 없는 업그레이드 선택: {choice}")
+        state.known_spells.append(key)
+        result = f"{key} 명령을 설치했습니다 (MP {SPELLS[key].mana_cost})."
 
     advance_stage(state)
     return f"[ OK ] 업그레이드 완료: {result} 다음 스테이지({state.stage})로 이동합니다."
+
+
+def _hit_monster(state: BattleState, power: int) -> None:
+    """몬스터 체력을 깎는다. 중간 스테이지 몬스터를 쓰러뜨리면 상점(업그레이드)을 기다리는 상태가 된다."""
+    state.monster_hp = max(0, state.monster_hp - power)
+    if state.monster_hp == 0 and state.stage < max(STAGES):
+        state.awaiting_upgrade = True
 
 
 def player_turn(state: BattleState, spell_key: Optional[str]) -> str:
@@ -107,6 +147,13 @@ def player_turn(state: BattleState, spell_key: Optional[str]) -> str:
         return TURN_PASS_LOG
 
     spell = SPELLS[spell_key]
+    if spell_key not in state.known_spells:
+        return f"[FAIL] {spell_key} 명령이 설치되어 있지 않습니다. 상점에서 배울 수 있어요. 턴이 넘어갑니다."
+    if state.player_mp < spell.mana_cost:
+        return (f"[FAIL] 마나가 부족하다: {spell_key}에 MP {spell.mana_cost} 필요 "
+                f"(현재 {state.player_mp}). 턴이 넘어갑니다.")
+    state.player_mp -= spell.mana_cost
+
     if spell.kind == "attack":
         power = spell.power + state.bonus_attack
         critical_chance = min(1.0, LIGHTNING_CRITICAL_CHANCE + state.bonus_crit)
@@ -115,10 +162,25 @@ def player_turn(state: BattleState, spell_key: Optional[str]) -> str:
             result = f"[ OK ] {spell.key} 크리티컬! 과전압으로"
         else:
             result = f"[ OK ] {spell.key} 실행:"
-        state.monster_hp = max(0, state.monster_hp - power)
-        if state.monster_hp == 0 and state.stage < max(STAGES):
-            state.awaiting_upgrade = True
+        _hit_monster(state, power)
         return f"{result} {state.monster_name}에게 {power} 데미지"
+    if spell.kind == "freeze":
+        power = spell.power + state.bonus_attack
+        _hit_monster(state, power)
+        state.monster_frozen = True
+        return f"[ OK ] {spell.key} 실행: 프로세스 일시정지, {state.monster_name}에게 {power} 데미지"
+    if spell.kind == "drain":
+        power = spell.power + state.bonus_attack
+        dealt = min(power, state.monster_hp)
+        _hit_monster(state, power)
+        before = state.player_hp
+        state.player_hp = min(state.player_max_hp, state.player_hp + dealt)
+        return (f"[ OK ] {spell.key} 실행: 리소스 훔치기, {state.monster_name}에게 {power} 데미지, "
+                f"체력 {state.player_hp - before} 회복")
+    if spell.kind == "mana":
+        before = state.player_mp
+        state.player_mp = min(state.player_max_mp, state.player_mp + spell.power)
+        return f"[ OK ] {spell.key} 실행: 캐시 비우기, 마나 {state.player_mp - before} 회복"
     if spell.kind == "heal":
         before = state.player_hp
         state.player_hp = min(
@@ -134,6 +196,10 @@ def player_turn(state: BattleState, spell_key: Optional[str]) -> str:
 def monster_turn(state: BattleState) -> str:
     """몬스터가 반격한다. 전투 기록에 남길 문장을 돌려준다."""
     state.turn += 1
+    state.player_mp = min(state.player_max_mp, state.player_mp + MP_REGEN)
+    if state.monster_frozen:
+        state.monster_frozen = False
+        return f"[ OK ] 프로세스 일시정지: {state.monster_name}의 공격이 멈췄다 (0 데미지)"
     _, _, base_attack, empowered_attack = STAGES[state.stage]
     damage = empowered_attack if state.monster_is_empowered else base_attack
     attack_name = "강화 공격" if state.monster_is_empowered else "기본 공격"
@@ -185,6 +251,7 @@ if __name__ == "__main__":
     def defeat_current_stage():
         print(f"\n[스테이지 {state.stage}] {state.monster_name} 등장 (HP {state.monster_hp})")
         while state.monster_hp > 0:
+            state.player_mp = state.player_max_mp  # 이 검증은 공격력·스테이지 확인용이라 마나는 매번 채운다
             print(" ", player_turn(state, "fireball"))
         result = winner(state)
         if state.stage < max(STAGES):
@@ -259,3 +326,47 @@ if __name__ == "__main__":
         f"공격력 +{state.bonus_attack}, 힐량 +{state.bonus_heal}, "
         f"크리티컬 확률 +{state.bonus_crit:.0%}"
     )
+
+    # 마나와 상점(패키지 저장소) 확인
+    shop = new_battle()
+    assert shop.player_mp == PLAYER_MAX_MP and "ice" not in shop.known_spells
+    assert "설치되어 있지 않습니다" in player_turn(shop, "ice")
+    shop.player_mp = 5
+    assert "마나가 부족하다" in player_turn(shop, "fireball") and shop.player_mp == 5
+    print("[마나 확인] 안 배운 주문과 마나 부족은 실패하고 턴만 넘어감")
+
+    shop.player_mp = 0
+    monster_turn(shop)
+    assert shop.player_mp == MP_REGEN
+    print(f"[마나 회복 확인] 몬스터 턴마다 마나 +{MP_REGEN}")
+
+    shop.awaiting_upgrade = True
+    options = get_shop_options(shop)
+    print("[상점 선택지]", options)
+    assert [key for key, _ in options] == ["1", "2", "3", "4", "5", "6", "7"]
+    print(apply_upgrade(shop, "4"))
+    assert shop.known_spells[-1] == "ice" and shop.stage == 2
+
+    shop.player_mp, shop.monster_hp = 50, 80
+    print("[ice]", player_turn(shop, "ice"))
+    assert shop.monster_frozen and shop.player_mp == 35
+    hp_before = shop.player_hp
+    print("[ice 다음 몬스터 턴]", monster_turn(shop))
+    assert shop.player_hp == hp_before and not shop.monster_frozen
+
+    for key in ("meteor", "focus"):
+        shop.awaiting_upgrade = True
+        print(apply_upgrade(shop, key))
+    assert shop.stage == 4 and "meteor" in shop.known_spells and "focus" in shop.known_spells
+    shop.known_spells.append("drain")  # 마지막 스테이지 뒤에는 상점이 없어서 검증용으로 직접 추가
+
+    shop.player_mp, shop.player_hp = 10, 50
+    print("[focus]", player_turn(shop, "focus"))
+    assert shop.player_mp == 30
+    print("[drain]", player_turn(shop, "drain"))
+    assert shop.player_hp == 65 and shop.player_mp == 10
+    shop.player_mp = 30
+    meteor_log = player_turn(shop, "meteor")
+    print("[meteor]", meteor_log)
+    assert "45 데미지" in meteor_log and shop.player_mp == 0
+    print("[주문 상점 확인] ice, meteor, focus, drain 설치와 효과 정상")

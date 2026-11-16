@@ -52,10 +52,11 @@ SPELL_LINES = 6
 LOG_LINES = 3
 
 
-def _mana_cost_text():
-    """주문별 마나 비용 한 줄. 마나 데이터가 아직 없으면 None (시연 화면에 빈 값을 보이지 않는다)."""
-    costs = [f"{key}({spell.mana_cost})" for key, spell in SPELLS.items()
-             if getattr(spell, "mana_cost", None) is not None]
+def _mana_cost_text(state):
+    """배운 주문별 마나 비용 한 줄. 마나 데이터가 아직 없으면 None (시연 화면에 빈 값을 보이지 않는다)."""
+    known = getattr(state, "known_spells", SPELLS)
+    costs = [f"{key}({SPELLS[key].mana_cost})" for key in known
+             if getattr(SPELLS[key], "mana_cost", None) is not None]
     return "MP: " + " / ".join(costs) if costs else None
 
 
@@ -169,7 +170,7 @@ def render(state, monster_art, banner=None, logs=(), hit=False, prompt=""):
     )
     # 입력 안내는 잘리지 않게 칸 안에 보여 주고, 마나 비용은 데이터가 있을 때만 덧붙인다
     prompt_lines = [Text(prompt or "입력 대기 중...", style="bold white", justify="center")]
-    mana_text = _mana_cost_text()
+    mana_text = _mana_cost_text(state)
     if mana_text:
         prompt_lines.append(Text(mana_text, style="cyan", justify="center", no_wrap=True))
     prompt_panel = Panel(

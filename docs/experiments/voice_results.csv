@@ -98,3 +98,1482 @@ time,speaker,condition,expected,mode,text,result,correct,seconds
 2026-11-11T09:40:38,tts-Heami,tts-korean-accent,shield,grammar,protect heal,shield,True,0.091
 2026-11-11T09:40:38,tts-Heami,tts-korean-accent,shield,filtered,protect heal,shield,True,0.099
 2026-11-11T09:40:40,tts-Heami,tts-korean-accent,shield,free,predicted to,none,False,1.222
+2026-11-16T16:09:08,tts-David-8spells,tts-english,drain,grammar,drain,drain,True,0.095
+2026-11-16T16:09:08,tts-David-8spells,tts-english,drain,filtered,drain,drain,True,0.121
+2026-11-16T16:09:10,tts-David-8spells,tts-english,drain,free,drain,drain,True,2.433
+2026-11-16T16:09:11,tts-David-8spells,tts-english,fireball,grammar,fireball,fireball,True,0.17
+2026-11-16T16:09:11,tts-David-8spells,tts-english,fireball,filtered,fireball,fireball,True,0.167
+2026-11-16T16:09:13,tts-David-8spells,tts-english,fireball,free,fireball,fireball,True,2.527
+2026-11-16T16:09:13,tts-David-8spells,tts-english,fireball,grammar,fireball,fireball,True,0.142
+2026-11-16T16:09:14,tts-David-8spells,tts-english,fireball,filtered,fireball,fireball,True,0.164
+2026-11-16T16:09:16,tts-David-8spells,tts-english,fireball,free,fireball,fireball,True,2.477
+2026-11-16T16:09:16,tts-David-8spells,tts-english,focus,grammar,focus,focus,True,0.143
+2026-11-16T16:09:16,tts-David-8spells,tts-english,focus,filtered,focus,focus,True,0.147
+2026-11-16T16:09:19,tts-David-8spells,tts-english,focus,free,focus,focus,True,2.467
+2026-11-16T16:09:19,tts-David-8spells,tts-english,focus,grammar,meditate,focus,True,0.107
+2026-11-16T16:09:19,tts-David-8spells,tts-english,focus,filtered,meditate,focus,True,0.14
+2026-11-16T16:09:21,tts-David-8spells,tts-english,focus,free,meditate,focus,True,2.198
+2026-11-16T16:09:21,tts-David-8spells,tts-english,heal,grammar,heal,heal,True,0.131
+2026-11-16T16:09:22,tts-David-8spells,tts-english,heal,filtered,heal,heal,True,0.125
+2026-11-16T16:09:23,tts-David-8spells,tts-english,heal,free,he'll,none,False,1.829
+2026-11-16T16:09:24,tts-David-8spells,tts-english,heal,grammar,cure,heal,True,0.116
+2026-11-16T16:09:24,tts-David-8spells,tts-english,heal,filtered,cure,heal,True,0.117
+2026-11-16T16:09:25,tts-David-8spells,tts-english,heal,free,cure,heal,True,1.736
+2026-11-16T16:09:26,tts-David-8spells,tts-english,ice,grammar,ice,ice,True,0.16
+2026-11-16T16:09:26,tts-David-8spells,tts-english,ice,filtered,ice,ice,True,0.165
+2026-11-16T16:09:28,tts-David-8spells,tts-english,ice,free,ice,ice,True,2.26
+2026-11-16T16:09:28,tts-David-8spells,tts-english,ice,grammar,freeze,ice,True,0.167
+2026-11-16T16:09:28,tts-David-8spells,tts-english,ice,filtered,freeze,ice,True,0.163
+2026-11-16T16:09:31,tts-David-8spells,tts-english,ice,free,freeze,ice,True,2.517
+2026-11-16T16:09:31,tts-David-8spells,tts-english,lightning,grammar,lightning,lightning,True,0.127
+2026-11-16T16:09:31,tts-David-8spells,tts-english,lightning,filtered,lightning,lightning,True,0.107
+2026-11-16T16:09:33,tts-David-8spells,tts-english,lightning,free,lightning,lightning,True,1.925
+2026-11-16T16:09:33,tts-David-8spells,tts-english,lightning,grammar,thunder,lightning,True,0.162
+2026-11-16T16:09:33,tts-David-8spells,tts-english,lightning,filtered,thunder,lightning,True,0.146
+2026-11-16T16:09:36,tts-David-8spells,tts-english,lightning,free,thunder,lightning,True,2.374
+2026-11-16T16:09:36,tts-David-8spells,tts-english,meteor,grammar,meteor,meteor,True,0.114
+2026-11-16T16:09:36,tts-David-8spells,tts-english,meteor,filtered,meteor,meteor,True,0.124
+2026-11-16T16:09:39,tts-David-8spells,tts-english,meteor,free,meteor,meteor,True,2.709
+2026-11-16T16:09:39,tts-David-8spells,tts-english,none,grammar,[unk],none,True,0.243
+2026-11-16T16:09:39,tts-David-8spells,tts-english,none,filtered,[unk],none,True,0.245
+2026-11-16T16:09:42,tts-David-8spells,tts-english,none,free,hello there,none,True,2.923
+2026-11-16T16:09:42,tts-David-8spells,tts-english,none,grammar,[unk],none,True,0.174
+2026-11-16T16:09:43,tts-David-8spells,tts-english,none,filtered,[unk],none,True,0.237
+2026-11-16T16:09:46,tts-David-8spells,tts-english,none,free,what time is it,none,True,3.221
+2026-11-16T16:09:46,tts-David-8spells,tts-english,none,grammar,[unk],none,True,0.218
+2026-11-16T16:09:46,tts-David-8spells,tts-english,none,filtered,[unk],none,True,0.213
+2026-11-16T16:09:49,tts-David-8spells,tts-english,none,free,i like pizza,none,True,2.351
+2026-11-16T16:09:49,tts-David-8spells,tts-english,shield,grammar,shield,shield,True,0.133
+2026-11-16T16:09:49,tts-David-8spells,tts-english,shield,filtered,shield,shield,True,0.126
+2026-11-16T16:09:51,tts-David-8spells,tts-english,shield,free,shield,shield,True,2.205
+2026-11-16T16:09:51,tts-David-8spells,tts-english,shield,grammar,protect,shield,True,0.111
+2026-11-16T16:09:51,tts-David-8spells,tts-english,shield,filtered,protect,shield,True,0.114
+2026-11-16T16:09:53,tts-David-8spells,tts-english,shield,free,protect,shield,True,1.789
+2026-11-16T16:09:57,tts-Zira-8spells,tts-english,drain,grammar,drain,drain,True,0.152
+2026-11-16T16:09:57,tts-Zira-8spells,tts-english,drain,filtered,drain,drain,True,0.146
+2026-11-16T16:09:59,tts-Zira-8spells,tts-english,drain,free,drain,drain,True,2.224
+2026-11-16T16:09:59,tts-Zira-8spells,tts-english,fireball,grammar,fireball,fireball,True,0.146
+2026-11-16T16:10:00,tts-Zira-8spells,tts-english,fireball,filtered,fireball,fireball,True,0.137
+2026-11-16T16:10:02,tts-Zira-8spells,tts-english,fireball,free,fireball,fireball,True,2.292
+2026-11-16T16:10:02,tts-Zira-8spells,tts-english,fireball,grammar,fireball,fireball,True,0.146
+2026-11-16T16:10:02,tts-Zira-8spells,tts-english,fireball,filtered,fireball,fireball,True,0.116
+2026-11-16T16:10:04,tts-Zira-8spells,tts-english,fireball,free,fireball,fireball,True,2.053
+2026-11-16T16:10:04,tts-Zira-8spells,tts-english,focus,grammar,focus,focus,True,0.121
+2026-11-16T16:10:04,tts-Zira-8spells,tts-english,focus,filtered,focus,focus,True,0.119
+2026-11-16T16:10:07,tts-Zira-8spells,tts-english,focus,free,focus,focus,True,2.085
+2026-11-16T16:10:07,tts-Zira-8spells,tts-english,focus,grammar,meditate,focus,True,0.133
+2026-11-16T16:10:07,tts-Zira-8spells,tts-english,focus,filtered,meditate,focus,True,0.127
+2026-11-16T16:10:09,tts-Zira-8spells,tts-english,focus,free,meditate,focus,True,2.154
+2026-11-16T16:10:09,tts-Zira-8spells,tts-english,heal,grammar,heal,heal,True,0.109
+2026-11-16T16:10:09,tts-Zira-8spells,tts-english,heal,filtered,heal,heal,True,0.089
+2026-11-16T16:10:11,tts-Zira-8spells,tts-english,heal,free,he'll,none,False,1.379
+2026-11-16T16:10:11,tts-Zira-8spells,tts-english,heal,grammar,cure,heal,True,0.106
+2026-11-16T16:10:11,tts-Zira-8spells,tts-english,heal,filtered,cure,heal,True,0.115
+2026-11-16T16:10:12,tts-Zira-8spells,tts-english,heal,free,pure,none,False,1.674
+2026-11-16T16:10:13,tts-Zira-8spells,tts-english,ice,grammar,ice,ice,True,0.12
+2026-11-16T16:10:13,tts-Zira-8spells,tts-english,ice,filtered,ice,ice,True,0.111
+2026-11-16T16:10:14,tts-Zira-8spells,tts-english,ice,free,ice,ice,True,1.608
+2026-11-16T16:10:14,tts-Zira-8spells,tts-english,ice,grammar,freeze,ice,True,0.102
+2026-11-16T16:10:15,tts-Zira-8spells,tts-english,ice,filtered,freeze,ice,True,0.116
+2026-11-16T16:10:17,tts-Zira-8spells,tts-english,ice,free,freeze,ice,True,1.993
+2026-11-16T16:10:17,tts-Zira-8spells,tts-english,lightning,grammar,lightening,lightning,True,0.142
+2026-11-16T16:10:17,tts-Zira-8spells,tts-english,lightning,filtered,lightening,lightning,True,0.14
+2026-11-16T16:10:19,tts-Zira-8spells,tts-english,lightning,free,lightning,lightning,True,1.996
+2026-11-16T16:10:19,tts-Zira-8spells,tts-english,lightning,grammar,thunder,lightning,True,0.133
+2026-11-16T16:10:19,tts-Zira-8spells,tts-english,lightning,filtered,thunder,lightning,True,0.129
+2026-11-16T16:10:21,tts-Zira-8spells,tts-english,lightning,free,thunder,lightning,True,1.979
+2026-11-16T16:10:21,tts-Zira-8spells,tts-english,meteor,grammar,meteor,meteor,True,0.13
+2026-11-16T16:10:21,tts-Zira-8spells,tts-english,meteor,filtered,meteor,meteor,True,0.128
+2026-11-16T16:10:23,tts-Zira-8spells,tts-english,meteor,free,meteor,meteor,True,1.685
+2026-11-16T16:10:23,tts-Zira-8spells,tts-english,none,grammar,heal [unk],heal,False,0.106
+2026-11-16T16:10:23,tts-Zira-8spells,tts-english,none,filtered,[unk],none,True,0.119
+2026-11-16T16:10:25,tts-Zira-8spells,tts-english,none,free,hello there,none,True,1.916
+2026-11-16T16:10:25,tts-Zira-8spells,tts-english,none,grammar,[unk],none,True,0.157
+2026-11-16T16:10:26,tts-Zira-8spells,tts-english,none,filtered,[unk],none,True,0.121
+2026-11-16T16:10:28,tts-Zira-8spells,tts-english,none,free,what time is it,none,True,2.458
+2026-11-16T16:10:28,tts-Zira-8spells,tts-english,none,grammar,[unk],none,True,0.156
+2026-11-16T16:10:28,tts-Zira-8spells,tts-english,none,filtered,[unk],none,True,0.162
+2026-11-16T16:10:31,tts-Zira-8spells,tts-english,none,free,i like pizza,none,True,2.527
+2026-11-16T16:10:31,tts-Zira-8spells,tts-english,shield,grammar,shield,shield,True,0.1
+2026-11-16T16:10:31,tts-Zira-8spells,tts-english,shield,filtered,shield,shield,True,0.1
+2026-11-16T16:10:33,tts-Zira-8spells,tts-english,shield,free,shield,shield,True,1.927
+2026-11-16T16:10:33,tts-Zira-8spells,tts-english,shield,grammar,protect,shield,True,0.093
+2026-11-16T16:10:33,tts-Zira-8spells,tts-english,shield,filtered,protect,shield,True,0.089
+2026-11-16T16:10:35,tts-Zira-8spells,tts-english,shield,free,protect,shield,True,1.417
+2026-11-16T16:10:37,tts-Heami-8spells,tts-korean-accent,drain,grammar,drain,drain,True,0.115
+2026-11-16T16:10:38,tts-Heami-8spells,tts-korean-accent,drain,filtered,drain,drain,True,0.083
+2026-11-16T16:10:39,tts-Heami-8spells,tts-korean-accent,drain,free,the rain,none,False,1.478
+2026-11-16T16:10:39,tts-Heami-8spells,tts-korean-accent,fireball,grammar,[unk],none,False,0.118
+2026-11-16T16:10:39,tts-Heami-8spells,tts-korean-accent,fireball,filtered,[unk],none,False,0.121
+2026-11-16T16:10:41,tts-Heami-8spells,tts-korean-accent,fireball,free,pay a boy,none,False,1.76
+2026-11-16T16:10:41,tts-Heami-8spells,tts-korean-accent,fireball,grammar,[unk],none,False,0.104
+2026-11-16T16:10:41,tts-Heami-8spells,tts-korean-accent,fireball,filtered,[unk],none,False,0.085
+2026-11-16T16:10:42,tts-Heami-8spells,tts-korean-accent,fireball,free,pay up early,none,False,1.212
+2026-11-16T16:10:43,tts-Heami-8spells,tts-korean-accent,focus,grammar,focus,focus,True,0.097
+2026-11-16T16:10:43,tts-Heami-8spells,tts-korean-accent,focus,filtered,focus,focus,True,0.107
+2026-11-16T16:10:44,tts-Heami-8spells,tts-korean-accent,focus,free,percocet,none,False,1.353
+2026-11-16T16:10:44,tts-Heami-8spells,tts-korean-accent,focus,grammar,meditate,focus,True,0.105
+2026-11-16T16:10:44,tts-Heami-8spells,tts-korean-accent,focus,filtered,meditate,focus,True,0.117
+2026-11-16T16:10:46,tts-Heami-8spells,tts-korean-accent,focus,free,may thirteen,none,False,1.755
+2026-11-16T16:10:46,tts-Heami-8spells,tts-korean-accent,heal,grammar,heal,heal,True,0.09
+2026-11-16T16:10:46,tts-Heami-8spells,tts-korean-accent,heal,filtered,heal,heal,True,0.087
+2026-11-16T16:10:47,tts-Heami-8spells,tts-korean-accent,heal,free,here,none,False,1.199
+2026-11-16T16:10:48,tts-Heami-8spells,tts-korean-accent,heal,grammar,cure,heal,True,0.103
+2026-11-16T16:10:48,tts-Heami-8spells,tts-korean-accent,heal,filtered,cure,heal,True,0.073
+2026-11-16T16:10:49,tts-Heami-8spells,tts-korean-accent,heal,free,cool,none,False,1.546
+2026-11-16T16:10:49,tts-Heami-8spells,tts-korean-accent,ice,grammar,ice,ice,True,0.146
+2026-11-16T16:10:49,tts-Heami-8spells,tts-korean-accent,ice,filtered,ice,ice,True,0.154
+2026-11-16T16:10:51,tts-Heami-8spells,tts-korean-accent,ice,free,i use it,none,False,1.354
+2026-11-16T16:10:51,tts-Heami-8spells,tts-korean-accent,ice,grammar,[unk],none,False,0.163
+2026-11-16T16:10:51,tts-Heami-8spells,tts-korean-accent,ice,filtered,[unk],none,False,0.146
+2026-11-16T16:10:53,tts-Heami-8spells,tts-korean-accent,ice,free,pretty to,none,False,1.697
+2026-11-16T16:10:53,tts-Heami-8spells,tts-korean-accent,lightning,grammar,lightening,lightning,True,0.145
+2026-11-16T16:10:53,tts-Heami-8spells,tts-korean-accent,lightning,filtered,lightening,lightning,True,0.128
+2026-11-16T16:10:55,tts-Heami-8spells,tts-korean-accent,lightning,free,the union,none,False,1.838
+2026-11-16T16:10:55,tts-Heami-8spells,tts-korean-accent,lightning,grammar,thunder,lightning,True,0.1
+2026-11-16T16:10:55,tts-Heami-8spells,tts-korean-accent,lightning,filtered,thunder,lightning,True,0.099
+2026-11-16T16:10:57,tts-Heami-8spells,tts-korean-accent,lightning,free,sundar,none,False,1.65
+2026-11-16T16:10:57,tts-Heami-8spells,tts-korean-accent,meteor,grammar,meteor,meteor,True,0.103
+2026-11-16T16:10:57,tts-Heami-8spells,tts-korean-accent,meteor,filtered,meteor,meteor,True,0.102
+2026-11-16T16:10:59,tts-Heami-8spells,tts-korean-accent,meteor,free,meet ya,none,False,1.656
+2026-11-16T16:10:59,tts-Heami-8spells,tts-korean-accent,none,grammar,heal [unk],heal,False,0.104
+2026-11-16T16:10:59,tts-Heami-8spells,tts-korean-accent,none,filtered,heal [unk],none,True,0.105
+2026-11-16T16:11:00,tts-Heami-8spells,tts-korean-accent,none,free,hello deal,none,True,1.504
+2026-11-16T16:11:01,tts-Heami-8spells,tts-korean-accent,none,grammar,[unk],none,True,0.202
+2026-11-16T16:11:01,tts-Heami-8spells,tts-korean-accent,none,filtered,[unk],none,True,0.201
+2026-11-16T16:11:04,tts-Heami-8spells,tts-korean-accent,none,free,what to pay pain easy to,none,True,2.669
+2026-11-16T16:11:04,tts-Heami-8spells,tts-korean-accent,none,grammar,[unk],none,True,0.188
+2026-11-16T16:11:04,tts-Heami-8spells,tts-korean-accent,none,filtered,[unk],none,True,0.18
+2026-11-16T16:11:06,tts-Heami-8spells,tts-korean-accent,none,free,i like pizza so,none,True,2.196
+2026-11-16T16:11:06,tts-Heami-8spells,tts-korean-accent,shield,grammar,[unk],none,False,0.142
+2026-11-16T16:11:06,tts-Heami-8spells,tts-korean-accent,shield,filtered,[unk],none,False,0.138
+2026-11-16T16:11:09,tts-Heami-8spells,tts-korean-accent,shield,free,she did,none,False,2.208
+2026-11-16T16:11:09,tts-Heami-8spells,tts-korean-accent,shield,grammar,protect heal,shield,True,0.162
+2026-11-16T16:11:09,tts-Heami-8spells,tts-korean-accent,shield,filtered,protect heal,shield,True,0.157
+2026-11-16T16:11:11,tts-Heami-8spells,tts-korean-accent,shield,free,predicted too,none,False,2.36
+2026-11-16T16:14:02,tts-David-degrade,tts-english,drain,grammar,drain,drain,True,0.096
+2026-11-16T16:14:02,tts-David-degrade,tts-english,drain,filtered,drain,drain,True,0.1
+2026-11-16T16:14:04,tts-David-degrade,tts-english,drain,free,drain,drain,True,1.813
+2026-11-16T16:14:04,tts-David-degrade,tts-english+noise10,drain,grammar,drain,drain,True,0.064
+2026-11-16T16:14:04,tts-David-degrade,tts-english+noise10,drain,filtered,drain,drain,True,0.085
+2026-11-16T16:14:05,tts-David-degrade,tts-english+noise10,drain,free,drink,none,False,0.975
+2026-11-16T16:14:06,tts-David-degrade,tts-english+noise5,drain,grammar,drain,drain,True,0.066
+2026-11-16T16:14:06,tts-David-degrade,tts-english+noise5,drain,filtered,drain,drain,True,0.068
+2026-11-16T16:14:07,tts-David-degrade,tts-english+noise5,drain,free,great,none,False,0.993
+2026-11-16T16:14:07,tts-David-degrade,tts-english+muffled,drain,grammar,drain,drain,True,0.069
+2026-11-16T16:14:07,tts-David-degrade,tts-english+muffled,drain,filtered,drain,drain,True,0.073
+2026-11-16T16:14:08,tts-David-degrade,tts-english+muffled,drain,free,jerome,none,False,1.038
+2026-11-16T16:14:08,tts-David-degrade,tts-english+quiet,drain,grammar,drain,drain,True,0.09
+2026-11-16T16:14:08,tts-David-degrade,tts-english+quiet,drain,filtered,drain,drain,True,0.094
+2026-11-16T16:14:10,tts-David-degrade,tts-english+quiet,drain,free,drain,drain,True,2.014
+2026-11-16T16:14:10,tts-David-degrade,tts-english+fast,drain,grammar,drain,drain,True,0.075
+2026-11-16T16:14:10,tts-David-degrade,tts-english+fast,drain,filtered,drain,drain,True,0.075
+2026-11-16T16:14:12,tts-David-degrade,tts-english+fast,drain,free,dream,none,False,1.761
+2026-11-16T16:14:12,tts-David-degrade,tts-english+cut,drain,grammar,drain,drain,True,0.074
+2026-11-16T16:14:12,tts-David-degrade,tts-english+cut,drain,filtered,drain,drain,True,0.045
+2026-11-16T16:14:14,tts-David-degrade,tts-english+cut,drain,free,drain,drain,True,1.417
+2026-11-16T16:14:14,tts-David-degrade,tts-english+mixed,drain,grammar,,none,False,0.068
+2026-11-16T16:14:14,tts-David-degrade,tts-english+mixed,drain,filtered,,none,False,0.072
+2026-11-16T16:14:15,tts-David-degrade,tts-english+mixed,drain,free,well,none,False,1.412
+2026-11-16T16:14:15,tts-David-degrade,tts-english,fireball,grammar,fireball,fireball,True,0.115
+2026-11-16T16:14:16,tts-David-degrade,tts-english,fireball,filtered,fireball,fireball,True,0.118
+2026-11-16T16:14:18,tts-David-degrade,tts-english,fireball,free,fireball,fireball,True,2.018
+2026-11-16T16:14:18,tts-David-degrade,tts-english+noise10,fireball,grammar,fireball,fireball,True,0.134
+2026-11-16T16:14:18,tts-David-degrade,tts-english+noise10,fireball,filtered,fireball,fireball,True,0.144
+2026-11-16T16:14:20,tts-David-degrade,tts-english+noise10,fireball,free,fireball,fireball,True,2.325
+2026-11-16T16:14:20,tts-David-degrade,tts-english+noise5,fireball,grammar,fireball,fireball,True,0.125
+2026-11-16T16:14:21,tts-David-degrade,tts-english+noise5,fireball,filtered,fireball,fireball,True,0.122
+2026-11-16T16:14:23,tts-David-degrade,tts-english+noise5,fireball,free,fireball,fireball,True,2.009
+2026-11-16T16:14:23,tts-David-degrade,tts-english+muffled,fireball,grammar,fireball,fireball,True,0.122
+2026-11-16T16:14:23,tts-David-degrade,tts-english+muffled,fireball,filtered,fireball,fireball,True,0.121
+2026-11-16T16:14:25,tts-David-degrade,tts-english+muffled,fireball,free,fireball,fireball,True,2.322
+2026-11-16T16:14:25,tts-David-degrade,tts-english+quiet,fireball,grammar,fireball,fireball,True,0.111
+2026-11-16T16:14:25,tts-David-degrade,tts-english+quiet,fireball,filtered,fireball,fireball,True,0.094
+2026-11-16T16:14:28,tts-David-degrade,tts-english+quiet,fireball,free,fireball,fireball,True,2.142
+2026-11-16T16:14:28,tts-David-degrade,tts-english+fast,fireball,grammar,fireball,fireball,True,0.105
+2026-11-16T16:14:28,tts-David-degrade,tts-english+fast,fireball,filtered,fireball,fireball,True,0.086
+2026-11-16T16:14:30,tts-David-degrade,tts-english+fast,fireball,free,fireball,fireball,True,1.859
+2026-11-16T16:14:30,tts-David-degrade,tts-english+cut,fireball,grammar,fireball,fireball,True,0.1
+2026-11-16T16:14:30,tts-David-degrade,tts-english+cut,fireball,filtered,fireball,fireball,True,0.077
+2026-11-16T16:14:32,tts-David-degrade,tts-english+cut,fireball,free,fireball,fireball,True,1.909
+2026-11-16T16:14:32,tts-David-degrade,tts-english+mixed,fireball,grammar,fireball,fireball,True,0.081
+2026-11-16T16:14:32,tts-David-degrade,tts-english+mixed,fireball,filtered,fireball,fireball,True,0.062
+2026-11-16T16:14:34,tts-David-degrade,tts-english+mixed,fireball,free,by fireball,fireball,True,1.609
+2026-11-16T16:14:34,tts-David-degrade,tts-english,fireball,grammar,fireball,fireball,True,0.155
+2026-11-16T16:14:34,tts-David-degrade,tts-english,fireball,filtered,fireball,fireball,True,0.149
+2026-11-16T16:14:36,tts-David-degrade,tts-english,fireball,free,fireball,fireball,True,2.036
+2026-11-16T16:14:36,tts-David-degrade,tts-english+noise10,fireball,grammar,fireball,fireball,True,0.126
+2026-11-16T16:14:36,tts-David-degrade,tts-english+noise10,fireball,filtered,fireball,fireball,True,0.142
+2026-11-16T16:14:38,tts-David-degrade,tts-english+noise10,fireball,free,fireball,fireball,True,1.743
+2026-11-16T16:14:38,tts-David-degrade,tts-english+noise5,fireball,grammar,fireball,fireball,True,0.157
+2026-11-16T16:14:38,tts-David-degrade,tts-english+noise5,fireball,filtered,fireball,fireball,True,0.119
+2026-11-16T16:14:40,tts-David-degrade,tts-english+noise5,fireball,free,fireball,fireball,True,1.817
+2026-11-16T16:14:40,tts-David-degrade,tts-english+muffled,fireball,grammar,fireball,fireball,True,0.125
+2026-11-16T16:14:41,tts-David-degrade,tts-english+muffled,fireball,filtered,fireball,fireball,True,0.124
+2026-11-16T16:14:42,tts-David-degrade,tts-english+muffled,fireball,free,fireball,fireball,True,1.841
+2026-11-16T16:14:43,tts-David-degrade,tts-english+quiet,fireball,grammar,fireball,fireball,True,0.152
+2026-11-16T16:14:43,tts-David-degrade,tts-english+quiet,fireball,filtered,fireball,fireball,True,0.12
+2026-11-16T16:14:45,tts-David-degrade,tts-english+quiet,fireball,free,fireball,fireball,True,2.301
+2026-11-16T16:14:45,tts-David-degrade,tts-english+fast,fireball,grammar,fireball,fireball,True,0.101
+2026-11-16T16:14:45,tts-David-degrade,tts-english+fast,fireball,filtered,fireball,fireball,True,0.078
+2026-11-16T16:14:47,tts-David-degrade,tts-english+fast,fireball,free,fireball,fireball,True,1.527
+2026-11-16T16:14:47,tts-David-degrade,tts-english+cut,fireball,grammar,fireball,fireball,True,0.057
+2026-11-16T16:14:47,tts-David-degrade,tts-english+cut,fireball,filtered,fireball,fireball,True,0.046
+2026-11-16T16:14:49,tts-David-degrade,tts-english+cut,fireball,free,fireball,fireball,True,1.589
+2026-11-16T16:14:49,tts-David-degrade,tts-english+mixed,fireball,grammar,fireball,fireball,True,0.065
+2026-11-16T16:14:49,tts-David-degrade,tts-english+mixed,fireball,filtered,fireball,fireball,True,0.083
+2026-11-16T16:14:51,tts-David-degrade,tts-english+mixed,fireball,free,fireball,fireball,True,1.745
+2026-11-16T16:14:51,tts-David-degrade,tts-english,focus,grammar,focus,focus,True,0.123
+2026-11-16T16:14:51,tts-David-degrade,tts-english,focus,filtered,focus,focus,True,0.108
+2026-11-16T16:14:53,tts-David-degrade,tts-english,focus,free,focus,focus,True,1.759
+2026-11-16T16:14:53,tts-David-degrade,tts-english+noise10,focus,grammar,focus,focus,True,0.114
+2026-11-16T16:14:53,tts-David-degrade,tts-english+noise10,focus,filtered,focus,focus,True,0.116
+2026-11-16T16:14:55,tts-David-degrade,tts-english+noise10,focus,free,focus,focus,True,1.762
+2026-11-16T16:14:55,tts-David-degrade,tts-english+noise5,focus,grammar,focus,focus,True,0.122
+2026-11-16T16:14:55,tts-David-degrade,tts-english+noise5,focus,filtered,focus,focus,True,0.106
+2026-11-16T16:14:56,tts-David-degrade,tts-english+noise5,focus,free,focus,focus,True,1.461
+2026-11-16T16:14:57,tts-David-degrade,tts-english+muffled,focus,grammar,focus,focus,True,0.081
+2026-11-16T16:14:57,tts-David-degrade,tts-english+muffled,focus,filtered,focus,focus,True,0.086
+2026-11-16T16:14:59,tts-David-degrade,tts-english+muffled,focus,free,focus,focus,True,2.168
+2026-11-16T16:14:59,tts-David-degrade,tts-english+quiet,focus,grammar,focus,focus,True,0.127
+2026-11-16T16:14:59,tts-David-degrade,tts-english+quiet,focus,filtered,focus,focus,True,0.138
+2026-11-16T16:15:01,tts-David-degrade,tts-english+quiet,focus,free,focus,focus,True,1.912
+2026-11-16T16:15:01,tts-David-degrade,tts-english+fast,focus,grammar,focus,focus,True,0.082
+2026-11-16T16:15:01,tts-David-degrade,tts-english+fast,focus,filtered,focus,focus,True,0.119
+2026-11-16T16:15:03,tts-David-degrade,tts-english+fast,focus,free,focus,focus,True,2.037
+2026-11-16T16:15:03,tts-David-degrade,tts-english+cut,focus,grammar,focus,focus,True,0.103
+2026-11-16T16:15:04,tts-David-degrade,tts-english+cut,focus,filtered,focus,focus,True,0.105
+2026-11-16T16:15:06,tts-David-degrade,tts-english+cut,focus,free,focus,focus,True,2.077
+2026-11-16T16:15:06,tts-David-degrade,tts-english+mixed,focus,grammar,[unk],none,False,0.081
+2026-11-16T16:15:06,tts-David-degrade,tts-english+mixed,focus,filtered,[unk],none,False,0.09
+2026-11-16T16:15:08,tts-David-degrade,tts-english+mixed,focus,free,that,none,False,1.832
+2026-11-16T16:15:08,tts-David-degrade,tts-english,focus,grammar,meditate,focus,True,0.135
+2026-11-16T16:15:08,tts-David-degrade,tts-english,focus,filtered,meditate,focus,True,0.131
+2026-11-16T16:15:10,tts-David-degrade,tts-english,focus,free,meditate,focus,True,2.249
+2026-11-16T16:15:11,tts-David-degrade,tts-english+noise10,focus,grammar,meditate,focus,True,0.121
+2026-11-16T16:15:11,tts-David-degrade,tts-english+noise10,focus,filtered,meditate,focus,True,0.114
+2026-11-16T16:15:13,tts-David-degrade,tts-english+noise10,focus,free,meditate,focus,True,2.208
+2026-11-16T16:15:13,tts-David-degrade,tts-english+noise5,focus,grammar,meditate,focus,True,0.128
+2026-11-16T16:15:13,tts-David-degrade,tts-english+noise5,focus,filtered,meditate,focus,True,0.135
+2026-11-16T16:15:15,tts-David-degrade,tts-english+noise5,focus,free,medicaid,none,False,1.869
+2026-11-16T16:15:15,tts-David-degrade,tts-english+muffled,focus,grammar,meditate,focus,True,0.125
+2026-11-16T16:15:15,tts-David-degrade,tts-english+muffled,focus,filtered,meditate,focus,True,0.107
+2026-11-16T16:15:18,tts-David-degrade,tts-english+muffled,focus,free,meditate,focus,True,2.512
+2026-11-16T16:15:18,tts-David-degrade,tts-english+quiet,focus,grammar,meditate,focus,True,0.113
+2026-11-16T16:15:18,tts-David-degrade,tts-english+quiet,focus,filtered,meditate,focus,True,0.114
+2026-11-16T16:15:21,tts-David-degrade,tts-english+quiet,focus,free,meditate,focus,True,2.459
+2026-11-16T16:15:21,tts-David-degrade,tts-english+fast,focus,grammar,meditate,focus,True,0.121
+2026-11-16T16:15:21,tts-David-degrade,tts-english+fast,focus,filtered,meditate,focus,True,0.087
+2026-11-16T16:15:23,tts-David-degrade,tts-english+fast,focus,free,meditate,focus,True,2.39
+2026-11-16T16:15:23,tts-David-degrade,tts-english+cut,focus,grammar,meditate,focus,True,0.113
+2026-11-16T16:15:24,tts-David-degrade,tts-english+cut,focus,filtered,meditate,focus,True,0.135
+2026-11-16T16:15:26,tts-David-degrade,tts-english+cut,focus,free,meditate,focus,True,2.667
+2026-11-16T16:15:27,tts-David-degrade,tts-english+mixed,focus,grammar,[unk],none,False,0.149
+2026-11-16T16:15:27,tts-David-degrade,tts-english+mixed,focus,filtered,[unk],none,False,0.15
+2026-11-16T16:15:29,tts-David-degrade,tts-english+mixed,focus,free,monica,none,False,2.78
+2026-11-16T16:15:30,tts-David-degrade,tts-english,heal,grammar,heal,heal,True,0.109
+2026-11-16T16:15:30,tts-David-degrade,tts-english,heal,filtered,heal,heal,True,0.081
+2026-11-16T16:15:32,tts-David-degrade,tts-english,heal,free,he'll,none,False,2.343
+2026-11-16T16:15:32,tts-David-degrade,tts-english+noise10,heal,grammar,heal,heal,True,0.122
+2026-11-16T16:15:32,tts-David-degrade,tts-english+noise10,heal,filtered,heal,heal,True,0.131
+2026-11-16T16:15:34,tts-David-degrade,tts-english+noise10,heal,free,the of,none,False,1.667
+2026-11-16T16:15:34,tts-David-degrade,tts-english+noise5,heal,grammar,heal,heal,True,0.147
+2026-11-16T16:15:34,tts-David-degrade,tts-english+noise5,heal,filtered,heal,heal,True,0.087
+2026-11-16T16:15:36,tts-David-degrade,tts-english+noise5,heal,free,the of,none,False,1.865
+2026-11-16T16:15:37,tts-David-degrade,tts-english+muffled,heal,grammar,heal,heal,True,0.284
+2026-11-16T16:15:37,tts-David-degrade,tts-english+muffled,heal,filtered,heal,heal,True,0.109
+2026-11-16T16:15:39,tts-David-degrade,tts-english+muffled,heal,free,he'll,none,False,2.158
+2026-11-16T16:15:39,tts-David-degrade,tts-english+quiet,heal,grammar,heal,heal,True,0.137
+2026-11-16T16:15:39,tts-David-degrade,tts-english+quiet,heal,filtered,heal,heal,True,0.137
+2026-11-16T16:15:40,tts-David-degrade,tts-english+quiet,heal,free,you,none,False,1.132
+2026-11-16T16:15:40,tts-David-degrade,tts-english+fast,heal,grammar,heal,heal,True,0.093
+2026-11-16T16:15:40,tts-David-degrade,tts-english+fast,heal,filtered,heal,heal,True,0.092
+2026-11-16T16:15:42,tts-David-degrade,tts-english+fast,heal,free,he'll,none,False,1.86
+2026-11-16T16:15:42,tts-David-degrade,tts-english+cut,heal,grammar,heal,heal,True,0.08
+2026-11-16T16:15:43,tts-David-degrade,tts-english+cut,heal,filtered,heal,heal,True,0.08
+2026-11-16T16:15:44,tts-David-degrade,tts-english+cut,heal,free,he'll,none,False,1.785
+2026-11-16T16:15:45,tts-David-degrade,tts-english+mixed,heal,grammar,,none,False,0.08
+2026-11-16T16:15:45,tts-David-degrade,tts-english+mixed,heal,filtered,,none,False,0.084
+2026-11-16T16:15:46,tts-David-degrade,tts-english+mixed,heal,free,yeah,none,False,1.495
+2026-11-16T16:15:46,tts-David-degrade,tts-english,heal,grammar,cure,heal,True,0.096
+2026-11-16T16:15:46,tts-David-degrade,tts-english,heal,filtered,cure,heal,True,0.105
+2026-11-16T16:15:48,tts-David-degrade,tts-english,heal,free,cure,heal,True,1.434
+2026-11-16T16:15:48,tts-David-degrade,tts-english+noise10,heal,grammar,cure,heal,True,0.09
+2026-11-16T16:15:48,tts-David-degrade,tts-english+noise10,heal,filtered,cure,heal,True,0.094
+2026-11-16T16:15:49,tts-David-degrade,tts-english+noise10,heal,free,here,none,False,1.312
+2026-11-16T16:15:49,tts-David-degrade,tts-english+noise5,heal,grammar,cure,heal,True,0.105
+2026-11-16T16:15:50,tts-David-degrade,tts-english+noise5,heal,filtered,cure,heal,True,0.112
+2026-11-16T16:15:51,tts-David-degrade,tts-english+noise5,heal,free,here,none,False,1.421
+2026-11-16T16:15:51,tts-David-degrade,tts-english+muffled,heal,grammar,cure,heal,True,0.097
+2026-11-16T16:15:51,tts-David-degrade,tts-english+muffled,heal,filtered,cure,heal,True,0.093
+2026-11-16T16:15:53,tts-David-degrade,tts-english+muffled,heal,free,here,none,False,1.277
+2026-11-16T16:15:53,tts-David-degrade,tts-english+quiet,heal,grammar,cure,heal,True,0.091
+2026-11-16T16:15:53,tts-David-degrade,tts-english+quiet,heal,filtered,cure,heal,True,0.089
+2026-11-16T16:15:54,tts-David-degrade,tts-english+quiet,heal,free,cure,heal,True,1.294
+2026-11-16T16:15:54,tts-David-degrade,tts-english+fast,heal,grammar,cure,heal,True,0.093
+2026-11-16T16:15:54,tts-David-degrade,tts-english+fast,heal,filtered,cure,heal,True,0.097
+2026-11-16T16:15:55,tts-David-degrade,tts-english+fast,heal,free,here,none,False,1.108
+2026-11-16T16:15:55,tts-David-degrade,tts-english+cut,heal,grammar,cure,heal,True,0.081
+2026-11-16T16:15:56,tts-David-degrade,tts-english+cut,heal,filtered,cure,heal,True,0.074
+2026-11-16T16:15:57,tts-David-degrade,tts-english+cut,heal,free,here,none,False,1.126
+2026-11-16T16:15:57,tts-David-degrade,tts-english+mixed,heal,grammar,,none,False,0.09
+2026-11-16T16:15:57,tts-David-degrade,tts-english+mixed,heal,filtered,,none,False,0.093
+2026-11-16T16:15:58,tts-David-degrade,tts-english+mixed,heal,free,yeah,none,False,1.256
+2026-11-16T16:15:58,tts-David-degrade,tts-english,ice,grammar,ice,ice,True,0.102
+2026-11-16T16:15:58,tts-David-degrade,tts-english,ice,filtered,ice,ice,True,0.106
+2026-11-16T16:16:00,tts-David-degrade,tts-english,ice,free,ice,ice,True,1.747
+2026-11-16T16:16:00,tts-David-degrade,tts-english+noise10,ice,grammar,ice,ice,True,0.106
+2026-11-16T16:16:00,tts-David-degrade,tts-english+noise10,ice,filtered,ice,ice,True,0.111
+2026-11-16T16:16:02,tts-David-degrade,tts-english+noise10,ice,free,ice,ice,True,1.285
+2026-11-16T16:16:02,tts-David-degrade,tts-english+noise5,ice,grammar,,none,False,0.092
+2026-11-16T16:16:02,tts-David-degrade,tts-english+noise5,ice,filtered,,none,False,0.132
+2026-11-16T16:16:03,tts-David-degrade,tts-english+noise5,ice,free,hi,none,False,1.327
+2026-11-16T16:16:04,tts-David-degrade,tts-english+muffled,ice,grammar,ice,ice,True,0.121
+2026-11-16T16:16:04,tts-David-degrade,tts-english+muffled,ice,filtered,ice,ice,True,0.127
+2026-11-16T16:16:05,tts-David-degrade,tts-english+muffled,ice,free,ice,ice,True,1.58
+2026-11-16T16:16:05,tts-David-degrade,tts-english+quiet,ice,grammar,ice,ice,True,0.104
+2026-11-16T16:16:06,tts-David-degrade,tts-english+quiet,ice,filtered,ice,ice,True,0.118
+2026-11-16T16:16:07,tts-David-degrade,tts-english+quiet,ice,free,ice,ice,True,1.67
+2026-11-16T16:16:07,tts-David-degrade,tts-english+fast,ice,grammar,ice,ice,True,0.093
+2026-11-16T16:16:07,tts-David-degrade,tts-english+fast,ice,filtered,ice,ice,True,0.092
+2026-11-16T16:16:09,tts-David-degrade,tts-english+fast,ice,free,ice,ice,True,1.53
+2026-11-16T16:16:09,tts-David-degrade,tts-english+cut,ice,grammar,ice,ice,True,0.069
+2026-11-16T16:16:09,tts-David-degrade,tts-english+cut,ice,filtered,ice,ice,True,0.079
+2026-11-16T16:16:11,tts-David-degrade,tts-english+cut,ice,free,ice,ice,True,1.452
+2026-11-16T16:16:11,tts-David-degrade,tts-english+mixed,ice,grammar,,none,False,0.086
+2026-11-16T16:16:11,tts-David-degrade,tts-english+mixed,ice,filtered,,none,False,0.08
+2026-11-16T16:16:12,tts-David-degrade,tts-english+mixed,ice,free,,none,False,1.095
+2026-11-16T16:16:12,tts-David-degrade,tts-english,ice,grammar,freeze,ice,True,0.101
+2026-11-16T16:16:12,tts-David-degrade,tts-english,ice,filtered,freeze,ice,True,0.1
+2026-11-16T16:16:14,tts-David-degrade,tts-english,ice,free,freeze,ice,True,2.066
+2026-11-16T16:16:14,tts-David-degrade,tts-english+noise10,ice,grammar,freeze,ice,True,0.119
+2026-11-16T16:16:15,tts-David-degrade,tts-english+noise10,ice,filtered,freeze,ice,True,0.101
+2026-11-16T16:16:16,tts-David-degrade,tts-english+noise10,ice,free,freeze,ice,True,1.292
+2026-11-16T16:16:16,tts-David-degrade,tts-english+noise5,ice,grammar,freeze,ice,True,0.13
+2026-11-16T16:16:16,tts-David-degrade,tts-english+noise5,ice,filtered,freeze,ice,True,0.145
+2026-11-16T16:16:18,tts-David-degrade,tts-english+noise5,ice,free,free,none,False,1.513
+2026-11-16T16:16:18,tts-David-degrade,tts-english+muffled,ice,grammar,freeze,ice,True,0.118
+2026-11-16T16:16:18,tts-David-degrade,tts-english+muffled,ice,filtered,freeze,ice,True,0.115
+2026-11-16T16:16:20,tts-David-degrade,tts-english+muffled,ice,free,freeze,ice,True,1.721
+2026-11-16T16:16:20,tts-David-degrade,tts-english+quiet,ice,grammar,freeze,ice,True,0.121
+2026-11-16T16:16:20,tts-David-degrade,tts-english+quiet,ice,filtered,freeze,ice,True,0.104
+2026-11-16T16:16:22,tts-David-degrade,tts-english+quiet,ice,free,freeze,ice,True,1.952
+2026-11-16T16:16:22,tts-David-degrade,tts-english+fast,ice,grammar,freeze,ice,True,0.092
+2026-11-16T16:16:22,tts-David-degrade,tts-english+fast,ice,filtered,freeze,ice,True,0.077
+2026-11-16T16:16:24,tts-David-degrade,tts-english+fast,ice,free,freeze,ice,True,1.781
+2026-11-16T16:16:24,tts-David-degrade,tts-english+cut,ice,grammar,freeze,ice,True,0.084
+2026-11-16T16:16:24,tts-David-degrade,tts-english+cut,ice,filtered,freeze,ice,True,0.083
+2026-11-16T16:16:26,tts-David-degrade,tts-english+cut,ice,free,free,none,False,1.817
+2026-11-16T16:16:26,tts-David-degrade,tts-english+mixed,ice,grammar,freeze,ice,True,0.089
+2026-11-16T16:16:26,tts-David-degrade,tts-english+mixed,ice,filtered,freeze,ice,True,0.091
+2026-11-16T16:16:28,tts-David-degrade,tts-english+mixed,ice,free,the,none,False,1.466
+2026-11-16T16:16:28,tts-David-degrade,tts-english,lightning,grammar,lightning,lightning,True,0.106
+2026-11-16T16:16:28,tts-David-degrade,tts-english,lightning,filtered,lightning,lightning,True,0.103
+2026-11-16T16:16:30,tts-David-degrade,tts-english,lightning,free,lightning,lightning,True,2.013
+2026-11-16T16:16:30,tts-David-degrade,tts-english+noise10,lightning,grammar,lightning,lightning,True,0.108
+2026-11-16T16:16:30,tts-David-degrade,tts-english+noise10,lightning,filtered,lightning,lightning,True,0.132
+2026-11-16T16:16:32,tts-David-degrade,tts-english+noise10,lightning,free,lightning,lightning,True,1.815
+2026-11-16T16:16:32,tts-David-degrade,tts-english+noise5,lightning,grammar,lightning,lightning,True,0.127
+2026-11-16T16:16:32,tts-David-degrade,tts-english+noise5,lightning,filtered,lightning,lightning,True,0.125
+2026-11-16T16:16:34,tts-David-degrade,tts-english+noise5,lightning,free,michael,none,False,1.803
+2026-11-16T16:16:34,tts-David-degrade,tts-english+muffled,lightning,grammar,lightning,lightning,True,0.101
+2026-11-16T16:16:35,tts-David-degrade,tts-english+muffled,lightning,filtered,lightning,lightning,True,0.099
+2026-11-16T16:16:36,tts-David-degrade,tts-english+muffled,lightning,free,lightning,lightning,True,1.594
+2026-11-16T16:16:36,tts-David-degrade,tts-english+quiet,lightning,grammar,lightning,lightning,True,0.114
+2026-11-16T16:16:36,tts-David-degrade,tts-english+quiet,lightning,filtered,lightning,lightning,True,0.115
+2026-11-16T16:16:39,tts-David-degrade,tts-english+quiet,lightning,free,lightning,lightning,True,2.166
+2026-11-16T16:16:39,tts-David-degrade,tts-english+fast,lightning,grammar,lightning,lightning,True,0.096
+2026-11-16T16:16:39,tts-David-degrade,tts-english+fast,lightning,filtered,lightning,lightning,True,0.094
+2026-11-16T16:16:40,tts-David-degrade,tts-english+fast,lightning,free,lightning,lightning,True,1.68
+2026-11-16T16:16:41,tts-David-degrade,tts-english+cut,lightning,grammar,lightening,lightning,True,0.063
+2026-11-16T16:16:41,tts-David-degrade,tts-english+cut,lightning,filtered,lightening,lightning,True,0.066
+2026-11-16T16:16:42,tts-David-degrade,tts-english+cut,lightning,free,lightning,lightning,True,1.405
+2026-11-16T16:16:42,tts-David-degrade,tts-english+mixed,lightning,grammar,lightning,lightning,True,0.087
+2026-11-16T16:16:42,tts-David-degrade,tts-english+mixed,lightning,filtered,lightning,lightning,True,0.085
+2026-11-16T16:16:44,tts-David-degrade,tts-english+mixed,lightning,free,like on,none,False,1.439
+2026-11-16T16:16:44,tts-David-degrade,tts-english,lightning,grammar,thunder,lightning,True,0.091
+2026-11-16T16:16:44,tts-David-degrade,tts-english,lightning,filtered,thunder,lightning,True,0.089
+2026-11-16T16:16:46,tts-David-degrade,tts-english,lightning,free,thunder,lightning,True,1.914
+2026-11-16T16:16:46,tts-David-degrade,tts-english+noise10,lightning,grammar,thunder,lightning,True,0.077
+2026-11-16T16:16:46,tts-David-degrade,tts-english+noise10,lightning,filtered,thunder,lightning,True,0.093
+2026-11-16T16:16:48,tts-David-degrade,tts-english+noise10,lightning,free,the hundred,none,False,1.8
+2026-11-16T16:16:48,tts-David-degrade,tts-english+noise5,lightning,grammar,thunder,lightning,True,0.054
+2026-11-16T16:16:48,tts-David-degrade,tts-english+noise5,lightning,filtered,thunder,lightning,True,0.102
+2026-11-16T16:16:50,tts-David-degrade,tts-english+noise5,lightning,free,the hundred,none,False,2.133
+2026-11-16T16:16:50,tts-David-degrade,tts-english+muffled,lightning,grammar,thunder,lightning,True,0.092
+2026-11-16T16:16:50,tts-David-degrade,tts-english+muffled,lightning,filtered,thunder,lightning,True,0.114
+2026-11-16T16:16:52,tts-David-degrade,tts-english+muffled,lightning,free,thunder,lightning,True,1.92
+2026-11-16T16:16:53,tts-David-degrade,tts-english+quiet,lightning,grammar,thunder,lightning,True,0.105
+2026-11-16T16:16:53,tts-David-degrade,tts-english+quiet,lightning,filtered,thunder,lightning,True,0.102
+2026-11-16T16:16:55,tts-David-degrade,tts-english+quiet,lightning,free,thunder,lightning,True,2.213
+2026-11-16T16:16:55,tts-David-degrade,tts-english+fast,lightning,grammar,thunder,lightning,True,0.092
+2026-11-16T16:16:55,tts-David-degrade,tts-english+fast,lightning,filtered,thunder,lightning,True,0.082
+2026-11-16T16:16:57,tts-David-degrade,tts-english+fast,lightning,free,thunder,lightning,True,2.301
+2026-11-16T16:16:58,tts-David-degrade,tts-english+cut,lightning,grammar,thunder,lightning,True,0.096
+2026-11-16T16:16:58,tts-David-degrade,tts-english+cut,lightning,filtered,thunder,lightning,True,0.095
+2026-11-16T16:17:00,tts-David-degrade,tts-english+cut,lightning,free,thunder,lightning,True,1.934
+2026-11-16T16:17:00,tts-David-degrade,tts-english+mixed,lightning,grammar,thunder,lightning,True,0.085
+2026-11-16T16:17:00,tts-David-degrade,tts-english+mixed,lightning,filtered,thunder,lightning,True,0.076
+2026-11-16T16:17:02,tts-David-degrade,tts-english+mixed,lightning,free,then it,none,False,2.119
+2026-11-16T16:17:02,tts-David-degrade,tts-english,meteor,grammar,meteor,meteor,True,0.156
+2026-11-16T16:17:02,tts-David-degrade,tts-english,meteor,filtered,meteor,meteor,True,0.149
+2026-11-16T16:17:04,tts-David-degrade,tts-english,meteor,free,meteor,meteor,True,1.964
+2026-11-16T16:17:04,tts-David-degrade,tts-english+noise10,meteor,grammar,meteor,meteor,True,0.118
+2026-11-16T16:17:05,tts-David-degrade,tts-english+noise10,meteor,filtered,meteor,meteor,True,0.108
+2026-11-16T16:17:06,tts-David-degrade,tts-english+noise10,meteor,free,the beer,none,False,1.776
+2026-11-16T16:17:07,tts-David-degrade,tts-english+noise5,meteor,grammar,meteor,meteor,True,0.144
+2026-11-16T16:17:07,tts-David-degrade,tts-english+noise5,meteor,filtered,meteor,meteor,True,0.129
+2026-11-16T16:17:09,tts-David-degrade,tts-english+noise5,meteor,free,the beer,none,False,1.986
+2026-11-16T16:17:09,tts-David-degrade,tts-english+muffled,meteor,grammar,meteor,meteor,True,0.141
+2026-11-16T16:17:09,tts-David-degrade,tts-english+muffled,meteor,filtered,meteor,meteor,True,0.105
+2026-11-16T16:17:11,tts-David-degrade,tts-english+muffled,meteor,free,meteor,meteor,True,1.908
+2026-11-16T16:17:11,tts-David-degrade,tts-english+quiet,meteor,grammar,meteor,meteor,True,0.11
+2026-11-16T16:17:11,tts-David-degrade,tts-english+quiet,meteor,filtered,meteor,meteor,True,0.105
+2026-11-16T16:17:13,tts-David-degrade,tts-english+quiet,meteor,free,meteor,meteor,True,1.939
+2026-11-16T16:17:13,tts-David-degrade,tts-english+fast,meteor,grammar,meteor,meteor,True,0.107
+2026-11-16T16:17:13,tts-David-degrade,tts-english+fast,meteor,filtered,meteor,meteor,True,0.095
+2026-11-16T16:17:15,tts-David-degrade,tts-english+fast,meteor,free,meteor,meteor,True,1.214
+2026-11-16T16:17:15,tts-David-degrade,tts-english+cut,meteor,grammar,meteor,meteor,True,0.09
+2026-11-16T16:17:15,tts-David-degrade,tts-english+cut,meteor,filtered,meteor,meteor,True,0.091
+2026-11-16T16:17:16,tts-David-degrade,tts-english+cut,meteor,free,media,none,False,1.471
+2026-11-16T16:17:17,tts-David-degrade,tts-english+mixed,meteor,grammar,meteor,meteor,True,0.078
+2026-11-16T16:17:17,tts-David-degrade,tts-english+mixed,meteor,filtered,meteor,meteor,True,0.104
+2026-11-16T16:17:19,tts-David-degrade,tts-english+mixed,meteor,free,libya,none,False,2.308
+2026-11-16T16:17:19,tts-David-degrade,tts-english,none,grammar,[unk],none,True,0.142
+2026-11-16T16:17:19,tts-David-degrade,tts-english,none,filtered,[unk],none,True,0.148
+2026-11-16T16:17:21,tts-David-degrade,tts-english,none,free,hello there,none,True,1.971
+2026-11-16T16:17:22,tts-David-degrade,tts-english+noise10,none,grammar,[unk],none,True,0.156
+2026-11-16T16:17:22,tts-David-degrade,tts-english+noise10,none,filtered,[unk],none,True,0.143
+2026-11-16T16:17:24,tts-David-degrade,tts-english+noise10,none,free,hello there,none,True,2.454
+2026-11-16T16:17:25,tts-David-degrade,tts-english+noise5,none,grammar,[unk],none,True,0.238
+2026-11-16T16:17:25,tts-David-degrade,tts-english+noise5,none,filtered,[unk],none,True,0.354
+2026-11-16T16:17:27,tts-David-degrade,tts-english+noise5,none,free,hello there,none,True,2.38
+2026-11-16T16:17:27,tts-David-degrade,tts-english+muffled,none,grammar,[unk],none,True,0.135
+2026-11-16T16:17:28,tts-David-degrade,tts-english+muffled,none,filtered,[unk],none,True,0.136
+2026-11-16T16:17:30,tts-David-degrade,tts-english+muffled,none,free,hello there,none,True,2.35
+2026-11-16T16:17:30,tts-David-degrade,tts-english+quiet,none,grammar,heal [unk],heal,False,0.187
+2026-11-16T16:17:30,tts-David-degrade,tts-english+quiet,none,filtered,heal [unk],none,True,0.185
+2026-11-16T16:17:33,tts-David-degrade,tts-english+quiet,none,free,hello there,none,True,2.638
+2026-11-16T16:17:33,tts-David-degrade,tts-english+fast,none,grammar,[unk],none,True,0.165
+2026-11-16T16:17:33,tts-David-degrade,tts-english+fast,none,filtered,[unk],none,True,0.164
+2026-11-16T16:17:36,tts-David-degrade,tts-english+fast,none,free,hello there,none,True,2.519
+2026-11-16T16:17:36,tts-David-degrade,tts-english+cut,none,grammar,[unk],none,True,0.1
+2026-11-16T16:17:36,tts-David-degrade,tts-english+cut,none,filtered,[unk],none,True,0.103
+2026-11-16T16:17:38,tts-David-degrade,tts-english+cut,none,free,hello the,none,True,1.946
+2026-11-16T16:17:39,tts-David-degrade,tts-english+mixed,none,grammar,ball,none,True,0.152
+2026-11-16T16:17:39,tts-David-degrade,tts-english+mixed,none,filtered,ball,none,True,0.139
+2026-11-16T16:17:41,tts-David-degrade,tts-english+mixed,none,free,hello there,none,True,2.437
+2026-11-16T16:17:41,tts-David-degrade,tts-english,none,grammar,[unk],none,True,0.136
+2026-11-16T16:17:41,tts-David-degrade,tts-english,none,filtered,[unk],none,True,0.133
+2026-11-16T16:17:45,tts-David-degrade,tts-english,none,free,what time is it,none,True,3.227
+2026-11-16T16:17:45,tts-David-degrade,tts-english+noise10,none,grammar,[unk],none,True,0.161
+2026-11-16T16:17:45,tts-David-degrade,tts-english+noise10,none,filtered,[unk],none,True,0.228
+2026-11-16T16:17:48,tts-David-degrade,tts-english+noise10,none,free,what time is it,none,True,2.735
+2026-11-16T16:17:48,tts-David-degrade,tts-english+noise5,none,grammar,[unk],none,True,0.139
+2026-11-16T16:17:48,tts-David-degrade,tts-english+noise5,none,filtered,[unk],none,True,0.216
+2026-11-16T16:17:50,tts-David-degrade,tts-english+noise5,none,free,what time is it,none,True,1.99
+2026-11-16T16:17:51,tts-David-degrade,tts-english+muffled,none,grammar,[unk],none,True,0.219
+2026-11-16T16:17:51,tts-David-degrade,tts-english+muffled,none,filtered,[unk],none,True,0.237
+2026-11-16T16:17:54,tts-David-degrade,tts-english+muffled,none,free,what time is it,none,True,2.648
+2026-11-16T16:17:54,tts-David-degrade,tts-english+quiet,none,grammar,[unk],none,True,0.189
+2026-11-16T16:17:54,tts-David-degrade,tts-english+quiet,none,filtered,[unk],none,True,0.169
+2026-11-16T16:17:56,tts-David-degrade,tts-english+quiet,none,free,what time is it,none,True,2.266
+2026-11-16T16:17:56,tts-David-degrade,tts-english+fast,none,grammar,[unk],none,True,0.073
+2026-11-16T16:17:56,tts-David-degrade,tts-english+fast,none,filtered,[unk],none,True,0.09
+2026-11-16T16:17:59,tts-David-degrade,tts-english+fast,none,free,what time is it,none,True,2.511
+2026-11-16T16:17:59,tts-David-degrade,tts-english+cut,none,grammar,[unk],none,True,0.077
+2026-11-16T16:17:59,tts-David-degrade,tts-english+cut,none,filtered,[unk],none,True,0.058
+2026-11-16T16:18:01,tts-David-degrade,tts-english+cut,none,free,what time it,none,True,1.655
+2026-11-16T16:18:01,tts-David-degrade,tts-english+mixed,none,grammar,[unk],none,True,0.104
+2026-11-16T16:18:01,tts-David-degrade,tts-english+mixed,none,filtered,[unk],none,True,0.109
+2026-11-16T16:18:03,tts-David-degrade,tts-english+mixed,none,free,what time ago,none,True,1.907
+2026-11-16T16:18:03,tts-David-degrade,tts-english,none,grammar,[unk],none,True,0.124
+2026-11-16T16:18:03,tts-David-degrade,tts-english,none,filtered,[unk],none,True,0.146
+2026-11-16T16:18:06,tts-David-degrade,tts-english,none,free,i like pizza,none,True,2.17
+2026-11-16T16:18:06,tts-David-degrade,tts-english+noise10,none,grammar,lightning,lightning,False,0.156
+2026-11-16T16:18:06,tts-David-degrade,tts-english+noise10,none,filtered,lightning,lightning,False,0.128
+2026-11-16T16:18:08,tts-David-degrade,tts-english+noise10,none,free,i like pizza,none,True,1.867
+2026-11-16T16:18:08,tts-David-degrade,tts-english+noise5,none,grammar,lightning,lightning,False,0.153
+2026-11-16T16:18:08,tts-David-degrade,tts-english+noise5,none,filtered,lightning,lightning,False,0.16
+2026-11-16T16:18:11,tts-David-degrade,tts-english+noise5,none,free,i like pizza,none,True,2.319
+2026-11-16T16:18:11,tts-David-degrade,tts-english+muffled,none,grammar,[unk],none,True,0.144
+2026-11-16T16:18:11,tts-David-degrade,tts-english+muffled,none,filtered,[unk],none,True,0.168
+2026-11-16T16:18:13,tts-David-degrade,tts-english+muffled,none,free,i like pizza,none,True,2.396
+2026-11-16T16:18:13,tts-David-degrade,tts-english+quiet,none,grammar,[unk],none,True,0.122
+2026-11-16T16:18:14,tts-David-degrade,tts-english+quiet,none,filtered,[unk],none,True,0.125
+2026-11-16T16:18:15,tts-David-degrade,tts-english+quiet,none,free,i like pizza,none,True,1.887
+2026-11-16T16:18:16,tts-David-degrade,tts-english+fast,none,grammar,[unk],none,True,0.103
+2026-11-16T16:18:16,tts-David-degrade,tts-english+fast,none,filtered,[unk],none,True,0.102
+2026-11-16T16:18:18,tts-David-degrade,tts-english+fast,none,free,i like pizza,none,True,1.865
+2026-11-16T16:18:18,tts-David-degrade,tts-english+cut,none,grammar,[unk],none,True,0.089
+2026-11-16T16:18:18,tts-David-degrade,tts-english+cut,none,filtered,[unk],none,True,0.099
+2026-11-16T16:18:20,tts-David-degrade,tts-english+cut,none,free,i like pete,none,True,1.743
+2026-11-16T16:18:20,tts-David-degrade,tts-english+mixed,none,grammar,lightning,lightning,False,0.095
+2026-11-16T16:18:20,tts-David-degrade,tts-english+mixed,none,filtered,lightning,lightning,False,0.111
+2026-11-16T16:18:22,tts-David-degrade,tts-english+mixed,none,free,i like cooper,none,True,2.247
+2026-11-16T16:18:22,tts-David-degrade,tts-english,shield,grammar,shield,shield,True,0.127
+2026-11-16T16:18:22,tts-David-degrade,tts-english,shield,filtered,shield,shield,True,0.124
+2026-11-16T16:18:24,tts-David-degrade,tts-english,shield,free,shield,shield,True,1.816
+2026-11-16T16:18:24,tts-David-degrade,tts-english+noise10,shield,grammar,shield,shield,True,0.126
+2026-11-16T16:18:25,tts-David-degrade,tts-english+noise10,shield,filtered,shield,shield,True,0.119
+2026-11-16T16:18:26,tts-David-degrade,tts-english+noise10,shield,free,she'll,none,False,1.677
+2026-11-16T16:18:26,tts-David-degrade,tts-english+noise5,shield,grammar,shield,shield,True,0.141
+2026-11-16T16:18:27,tts-David-degrade,tts-english+noise5,shield,filtered,shield,shield,True,0.142
+2026-11-16T16:18:28,tts-David-degrade,tts-english+noise5,shield,free,feel,none,False,1.396
+2026-11-16T16:18:28,tts-David-degrade,tts-english+muffled,shield,grammar,shield,shield,True,0.125
+2026-11-16T16:18:28,tts-David-degrade,tts-english+muffled,shield,filtered,shield,shield,True,0.126
+2026-11-16T16:18:30,tts-David-degrade,tts-english+muffled,shield,free,shield,shield,True,2.027
+2026-11-16T16:18:31,tts-David-degrade,tts-english+quiet,shield,grammar,shield,shield,True,0.133
+2026-11-16T16:18:31,tts-David-degrade,tts-english+quiet,shield,filtered,shield,shield,True,0.125
+2026-11-16T16:18:33,tts-David-degrade,tts-english+quiet,shield,free,shield,shield,True,2.037
+2026-11-16T16:18:33,tts-David-degrade,tts-english+fast,shield,grammar,shield,shield,True,0.072
+2026-11-16T16:18:33,tts-David-degrade,tts-english+fast,shield,filtered,shield,shield,True,0.075
+2026-11-16T16:18:34,tts-David-degrade,tts-english+fast,shield,free,shield,shield,True,1.422
+2026-11-16T16:18:34,tts-David-degrade,tts-english+cut,shield,grammar,shield,shield,True,0.055
+2026-11-16T16:18:34,tts-David-degrade,tts-english+cut,shield,filtered,shield,shield,True,0.065
+2026-11-16T16:18:36,tts-David-degrade,tts-english+cut,shield,free,she'll,none,False,1.892
+2026-11-16T16:18:37,tts-David-degrade,tts-english+mixed,shield,grammar,heal,heal,False,0.077
+2026-11-16T16:18:37,tts-David-degrade,tts-english+mixed,shield,filtered,heal,heal,False,0.076
+2026-11-16T16:18:38,tts-David-degrade,tts-english+mixed,shield,free,the of,none,False,1.544
+2026-11-16T16:18:38,tts-David-degrade,tts-english,shield,grammar,protect,shield,True,0.105
+2026-11-16T16:18:38,tts-David-degrade,tts-english,shield,filtered,protect,shield,True,0.134
+2026-11-16T16:18:40,tts-David-degrade,tts-english,shield,free,protect,shield,True,1.817
+2026-11-16T16:18:40,tts-David-degrade,tts-english+noise10,shield,grammar,protect,shield,True,0.109
+2026-11-16T16:18:41,tts-David-degrade,tts-english+noise10,shield,filtered,protect,shield,True,0.129
+2026-11-16T16:18:42,tts-David-degrade,tts-english+noise10,shield,free,retire,none,False,1.561
+2026-11-16T16:18:42,tts-David-degrade,tts-english+noise5,shield,grammar,protect,shield,True,0.131
+2026-11-16T16:18:42,tts-David-degrade,tts-english+noise5,shield,filtered,protect,shield,True,0.134
+2026-11-16T16:18:44,tts-David-degrade,tts-english+noise5,shield,free,the head,none,False,2.001
+2026-11-16T16:18:45,tts-David-degrade,tts-english+muffled,shield,grammar,protect,shield,True,0.129
+2026-11-16T16:18:45,tts-David-degrade,tts-english+muffled,shield,filtered,protect,shield,True,0.128
+2026-11-16T16:18:47,tts-David-degrade,tts-english+muffled,shield,free,protect,shield,True,2.193
+2026-11-16T16:18:47,tts-David-degrade,tts-english+quiet,shield,grammar,protect,shield,True,0.135
+2026-11-16T16:18:47,tts-David-degrade,tts-english+quiet,shield,filtered,protect,shield,True,0.13
+2026-11-16T16:18:49,tts-David-degrade,tts-english+quiet,shield,free,protect,shield,True,1.636
+2026-11-16T16:18:49,tts-David-degrade,tts-english+fast,shield,grammar,protect,shield,True,0.041
+2026-11-16T16:18:49,tts-David-degrade,tts-english+fast,shield,filtered,protect,shield,True,0.077
+2026-11-16T16:18:51,tts-David-degrade,tts-english+fast,shield,free,protect,shield,True,1.616
+2026-11-16T16:18:51,tts-David-degrade,tts-english+cut,shield,grammar,protect,shield,True,0.083
+2026-11-16T16:18:51,tts-David-degrade,tts-english+cut,shield,filtered,protect,shield,True,0.074
+2026-11-16T16:18:52,tts-David-degrade,tts-english+cut,shield,free,protect,shield,True,1.521
+2026-11-16T16:18:53,tts-David-degrade,tts-english+mixed,shield,grammar,,none,False,0.072
+2026-11-16T16:18:53,tts-David-degrade,tts-english+mixed,shield,filtered,,none,False,0.075
+2026-11-16T16:18:55,tts-David-degrade,tts-english+mixed,shield,free,the top,none,False,1.995
+2026-11-16T16:18:58,tts-Zira-degrade,tts-english,drain,grammar,drain,drain,True,0.12
+2026-11-16T16:18:59,tts-Zira-degrade,tts-english,drain,filtered,drain,drain,True,0.133
+2026-11-16T16:19:01,tts-Zira-degrade,tts-english,drain,free,drain,drain,True,2.004
+2026-11-16T16:19:01,tts-Zira-degrade,tts-english+noise10,drain,grammar,drain,drain,True,0.129
+2026-11-16T16:19:01,tts-Zira-degrade,tts-english+noise10,drain,filtered,drain,drain,True,0.127
+2026-11-16T16:19:02,tts-Zira-degrade,tts-english+noise10,drain,free,drain,drain,True,1.547
+2026-11-16T16:19:03,tts-Zira-degrade,tts-english+noise5,drain,grammar,drain,drain,True,0.108
+2026-11-16T16:19:03,tts-Zira-degrade,tts-english+noise5,drain,filtered,drain,drain,True,0.101
+2026-11-16T16:19:04,tts-Zira-degrade,tts-english+noise5,drain,free,green,none,False,1.225
+2026-11-16T16:19:04,tts-Zira-degrade,tts-english+muffled,drain,grammar,drain,drain,True,0.1
+2026-11-16T16:19:04,tts-Zira-degrade,tts-english+muffled,drain,filtered,drain,drain,True,0.102
+2026-11-16T16:19:06,tts-Zira-degrade,tts-english+muffled,drain,free,drain,drain,True,1.442
+2026-11-16T16:19:06,tts-Zira-degrade,tts-english+quiet,drain,grammar,drain,drain,True,0.138
+2026-11-16T16:19:06,tts-Zira-degrade,tts-english+quiet,drain,filtered,drain,drain,True,0.104
+2026-11-16T16:19:09,tts-Zira-degrade,tts-english+quiet,drain,free,drain,drain,True,3.165
+2026-11-16T16:19:09,tts-Zira-degrade,tts-english+fast,drain,grammar,drain,drain,True,0.171
+2026-11-16T16:19:10,tts-Zira-degrade,tts-english+fast,drain,filtered,drain,drain,True,0.176
+2026-11-16T16:19:11,tts-Zira-degrade,tts-english+fast,drain,free,jerome,none,False,1.738
+2026-11-16T16:19:12,tts-Zira-degrade,tts-english+cut,drain,grammar,drain,drain,True,0.146
+2026-11-16T16:19:12,tts-Zira-degrade,tts-english+cut,drain,filtered,drain,drain,True,0.13
+2026-11-16T16:19:14,tts-Zira-degrade,tts-english+cut,drain,free,drain,drain,True,2.108
+2026-11-16T16:19:14,tts-Zira-degrade,tts-english+mixed,drain,grammar,,none,False,0.108
+2026-11-16T16:19:14,tts-Zira-degrade,tts-english+mixed,drain,filtered,,none,False,0.09
+2026-11-16T16:19:16,tts-Zira-degrade,tts-english+mixed,drain,free,home,none,False,1.597
+2026-11-16T16:19:16,tts-Zira-degrade,tts-english,fireball,grammar,fireball,fireball,True,0.14
+2026-11-16T16:19:16,tts-Zira-degrade,tts-english,fireball,filtered,fireball,fireball,True,0.125
+2026-11-16T16:19:18,tts-Zira-degrade,tts-english,fireball,free,fireball,fireball,True,2.409
+2026-11-16T16:19:19,tts-Zira-degrade,tts-english+noise10,fireball,grammar,fireball,fireball,True,0.132
+2026-11-16T16:19:19,tts-Zira-degrade,tts-english+noise10,fireball,filtered,fireball,fireball,True,0.132
+2026-11-16T16:19:21,tts-Zira-degrade,tts-english+noise10,fireball,free,fireball,fireball,True,2.147
+2026-11-16T16:19:21,tts-Zira-degrade,tts-english+noise5,fireball,grammar,fireball,fireball,True,0.128
+2026-11-16T16:19:21,tts-Zira-degrade,tts-english+noise5,fireball,filtered,fireball,fireball,True,0.148
+2026-11-16T16:19:23,tts-Zira-degrade,tts-english+noise5,fireball,free,fireball,fireball,True,2.003
+2026-11-16T16:19:23,tts-Zira-degrade,tts-english+muffled,fireball,grammar,fireball,fireball,True,0.109
+2026-11-16T16:19:24,tts-Zira-degrade,tts-english+muffled,fireball,filtered,fireball,fireball,True,0.114
+2026-11-16T16:19:26,tts-Zira-degrade,tts-english+muffled,fireball,free,fireball,fireball,True,2.183
+2026-11-16T16:19:26,tts-Zira-degrade,tts-english+quiet,fireball,grammar,fireball,fireball,True,0.113
+2026-11-16T16:19:26,tts-Zira-degrade,tts-english+quiet,fireball,filtered,fireball,fireball,True,0.134
+2026-11-16T16:19:28,tts-Zira-degrade,tts-english+quiet,fireball,free,fireball,fireball,True,2.377
+2026-11-16T16:19:29,tts-Zira-degrade,tts-english+fast,fireball,grammar,fireball,fireball,True,0.109
+2026-11-16T16:19:29,tts-Zira-degrade,tts-english+fast,fireball,filtered,fireball,fireball,True,0.113
+2026-11-16T16:19:30,tts-Zira-degrade,tts-english+fast,fireball,free,fireball,fireball,True,1.372
+2026-11-16T16:19:30,tts-Zira-degrade,tts-english+cut,fireball,grammar,fireball,fireball,True,0.078
+2026-11-16T16:19:30,tts-Zira-degrade,tts-english+cut,fireball,filtered,fireball,fireball,True,0.099
+2026-11-16T16:19:32,tts-Zira-degrade,tts-english+cut,fireball,free,fireball,fireball,True,1.978
+2026-11-16T16:19:32,tts-Zira-degrade,tts-english+mixed,fireball,grammar,[unk],none,False,0.089
+2026-11-16T16:19:33,tts-Zira-degrade,tts-english+mixed,fireball,filtered,[unk],none,False,0.11
+2026-11-16T16:19:34,tts-Zira-degrade,tts-english+mixed,fireball,free,how about,none,False,1.373
+2026-11-16T16:19:34,tts-Zira-degrade,tts-english,fireball,grammar,fireball,fireball,True,0.144
+2026-11-16T16:19:34,tts-Zira-degrade,tts-english,fireball,filtered,fireball,fireball,True,0.12
+2026-11-16T16:19:37,tts-Zira-degrade,tts-english,fireball,free,fireball,fireball,True,2.313
+2026-11-16T16:19:37,tts-Zira-degrade,tts-english+noise10,fireball,grammar,fireball,fireball,True,0.165
+2026-11-16T16:19:37,tts-Zira-degrade,tts-english+noise10,fireball,filtered,fireball,fireball,True,0.141
+2026-11-16T16:19:39,tts-Zira-degrade,tts-english+noise10,fireball,free,fireball,fireball,True,2.488
+2026-11-16T16:19:40,tts-Zira-degrade,tts-english+noise5,fireball,grammar,fireball,fireball,True,0.135
+2026-11-16T16:19:40,tts-Zira-degrade,tts-english+noise5,fireball,filtered,fireball,fireball,True,0.116
+2026-11-16T16:19:42,tts-Zira-degrade,tts-english+noise5,fireball,free,fireball,fireball,True,1.87
+2026-11-16T16:19:42,tts-Zira-degrade,tts-english+muffled,fireball,grammar,fireball,fireball,True,0.166
+2026-11-16T16:19:42,tts-Zira-degrade,tts-english+muffled,fireball,filtered,fireball,fireball,True,0.164
+2026-11-16T16:19:44,tts-Zira-degrade,tts-english+muffled,fireball,free,fireball,fireball,True,2.326
+2026-11-16T16:19:45,tts-Zira-degrade,tts-english+quiet,fireball,grammar,fireball,fireball,True,0.141
+2026-11-16T16:19:45,tts-Zira-degrade,tts-english+quiet,fireball,filtered,fireball,fireball,True,0.119
+2026-11-16T16:19:47,tts-Zira-degrade,tts-english+quiet,fireball,free,fireball,fireball,True,2.267
+2026-11-16T16:19:47,tts-Zira-degrade,tts-english+fast,fireball,grammar,fireball,fireball,True,0.09
+2026-11-16T16:19:47,tts-Zira-degrade,tts-english+fast,fireball,filtered,fireball,fireball,True,0.09
+2026-11-16T16:19:49,tts-Zira-degrade,tts-english+fast,fireball,free,fireball,fireball,True,1.693
+2026-11-16T16:19:49,tts-Zira-degrade,tts-english+cut,fireball,grammar,fireball,fireball,True,0.093
+2026-11-16T16:19:49,tts-Zira-degrade,tts-english+cut,fireball,filtered,fireball,fireball,True,0.091
+2026-11-16T16:19:51,tts-Zira-degrade,tts-english+cut,fireball,free,fireball,fireball,True,1.837
+2026-11-16T16:19:51,tts-Zira-degrade,tts-english+mixed,fireball,grammar,fireball,fireball,True,0.092
+2026-11-16T16:19:51,tts-Zira-degrade,tts-english+mixed,fireball,filtered,fireball,fireball,True,0.091
+2026-11-16T16:19:53,tts-Zira-degrade,tts-english+mixed,fireball,free,how long,none,False,1.809
+2026-11-16T16:19:53,tts-Zira-degrade,tts-english,focus,grammar,focus,focus,True,0.108
+2026-11-16T16:19:53,tts-Zira-degrade,tts-english,focus,filtered,focus,focus,True,0.122
+2026-11-16T16:19:56,tts-Zira-degrade,tts-english,focus,free,focus,focus,True,2.182
+2026-11-16T16:19:56,tts-Zira-degrade,tts-english+noise10,focus,grammar,focus,focus,True,0.111
+2026-11-16T16:19:56,tts-Zira-degrade,tts-english+noise10,focus,filtered,focus,focus,True,0.114
+2026-11-16T16:19:58,tts-Zira-degrade,tts-english+noise10,focus,free,how can,none,False,1.709
+2026-11-16T16:19:58,tts-Zira-degrade,tts-english+noise5,focus,grammar,focus,focus,True,0.16
+2026-11-16T16:19:58,tts-Zira-degrade,tts-english+noise5,focus,filtered,focus,focus,True,0.189
+2026-11-16T16:20:01,tts-Zira-degrade,tts-english+noise5,focus,free,okay,none,False,2.48
+2026-11-16T16:20:01,tts-Zira-degrade,tts-english+muffled,focus,grammar,focus,focus,True,0.111
+2026-11-16T16:20:01,tts-Zira-degrade,tts-english+muffled,focus,filtered,focus,focus,True,0.111
+2026-11-16T16:20:02,tts-Zira-degrade,tts-english+muffled,focus,free,focus,focus,True,1.429
+2026-11-16T16:20:02,tts-Zira-degrade,tts-english+quiet,focus,grammar,focus,focus,True,0.118
+2026-11-16T16:20:03,tts-Zira-degrade,tts-english+quiet,focus,filtered,focus,focus,True,0.114
+2026-11-16T16:20:04,tts-Zira-degrade,tts-english+quiet,focus,free,focus,focus,True,1.965
+2026-11-16T16:20:05,tts-Zira-degrade,tts-english+fast,focus,grammar,focus,focus,True,0.069
+2026-11-16T16:20:05,tts-Zira-degrade,tts-english+fast,focus,filtered,focus,focus,True,0.096
+2026-11-16T16:20:06,tts-Zira-degrade,tts-english+fast,focus,free,falcons,none,False,1.374
+2026-11-16T16:20:06,tts-Zira-degrade,tts-english+cut,focus,grammar,focus,focus,True,0.078
+2026-11-16T16:20:06,tts-Zira-degrade,tts-english+cut,focus,filtered,focus,focus,True,0.087
+2026-11-16T16:20:08,tts-Zira-degrade,tts-english+cut,focus,free,focus,focus,True,1.968
+2026-11-16T16:20:08,tts-Zira-degrade,tts-english+mixed,focus,grammar,,none,False,0.089
+2026-11-16T16:20:09,tts-Zira-degrade,tts-english+mixed,focus,filtered,,none,False,0.101
+2026-11-16T16:20:10,tts-Zira-degrade,tts-english+mixed,focus,free,happen,none,False,1.708
+2026-11-16T16:20:10,tts-Zira-degrade,tts-english,focus,grammar,meditate,focus,True,0.109
+2026-11-16T16:20:11,tts-Zira-degrade,tts-english,focus,filtered,meditate,focus,True,0.117
+2026-11-16T16:20:13,tts-Zira-degrade,tts-english,focus,free,meditate,focus,True,1.988
+2026-11-16T16:20:13,tts-Zira-degrade,tts-english+noise10,focus,grammar,meditate,focus,True,0.15
+2026-11-16T16:20:13,tts-Zira-degrade,tts-english+noise10,focus,filtered,meditate,focus,True,0.113
+2026-11-16T16:20:15,tts-Zira-degrade,tts-english+noise10,focus,free,meditate,focus,True,2.216
+2026-11-16T16:20:15,tts-Zira-degrade,tts-english+noise5,focus,grammar,meditate,focus,True,0.12
+2026-11-16T16:20:15,tts-Zira-degrade,tts-english+noise5,focus,filtered,meditate,focus,True,0.139
+2026-11-16T16:20:17,tts-Zira-degrade,tts-english+noise5,focus,free,medicaid,none,False,2.057
+2026-11-16T16:20:18,tts-Zira-degrade,tts-english+muffled,focus,grammar,meditate,focus,True,0.119
+2026-11-16T16:20:18,tts-Zira-degrade,tts-english+muffled,focus,filtered,meditate,focus,True,0.146
+2026-11-16T16:20:20,tts-Zira-degrade,tts-english+muffled,focus,free,meditate,focus,True,2.539
+2026-11-16T16:20:21,tts-Zira-degrade,tts-english+quiet,focus,grammar,meditate,focus,True,0.179
+2026-11-16T16:20:21,tts-Zira-degrade,tts-english+quiet,focus,filtered,meditate,focus,True,0.176
+2026-11-16T16:20:24,tts-Zira-degrade,tts-english+quiet,focus,free,meditate,focus,True,3.317
+2026-11-16T16:20:24,tts-Zira-degrade,tts-english+fast,focus,grammar,meditate,focus,True,0.079
+2026-11-16T16:20:24,tts-Zira-degrade,tts-english+fast,focus,filtered,meditate,focus,True,0.111
+2026-11-16T16:20:26,tts-Zira-degrade,tts-english+fast,focus,free,medicaid,none,False,1.834
+2026-11-16T16:20:26,tts-Zira-degrade,tts-english+cut,focus,grammar,meditate,focus,True,0.091
+2026-11-16T16:20:26,tts-Zira-degrade,tts-english+cut,focus,filtered,meditate,focus,True,0.095
+2026-11-16T16:20:30,tts-Zira-degrade,tts-english+cut,focus,free,meditate,focus,True,3.137
+2026-11-16T16:20:30,tts-Zira-degrade,tts-english+mixed,focus,grammar,,none,False,0.077
+2026-11-16T16:20:30,tts-Zira-degrade,tts-english+mixed,focus,filtered,,none,False,0.077
+2026-11-16T16:20:33,tts-Zira-degrade,tts-english+mixed,focus,free,,none,False,2.861
+2026-11-16T16:20:33,tts-Zira-degrade,tts-english,heal,grammar,heal,heal,True,0.177
+2026-11-16T16:20:33,tts-Zira-degrade,tts-english,heal,filtered,heal,heal,True,0.181
+2026-11-16T16:20:36,tts-Zira-degrade,tts-english,heal,free,he'll,none,False,3.122
+2026-11-16T16:20:36,tts-Zira-degrade,tts-english+noise10,heal,grammar,heal,heal,True,0.161
+2026-11-16T16:20:37,tts-Zira-degrade,tts-english+noise10,heal,filtered,heal,heal,True,0.161
+2026-11-16T16:20:39,tts-Zira-degrade,tts-english+noise10,heal,free,yeah,none,False,2.278
+2026-11-16T16:20:39,tts-Zira-degrade,tts-english+noise5,heal,grammar,heal,heal,True,0.182
+2026-11-16T16:20:39,tts-Zira-degrade,tts-english+noise5,heal,filtered,heal,heal,True,0.187
+2026-11-16T16:20:42,tts-Zira-degrade,tts-english+noise5,heal,free,yeah,none,False,2.639
+2026-11-16T16:20:42,tts-Zira-degrade,tts-english+muffled,heal,grammar,heal,heal,True,0.176
+2026-11-16T16:20:42,tts-Zira-degrade,tts-english+muffled,heal,filtered,heal,heal,True,0.182
+2026-11-16T16:20:45,tts-Zira-degrade,tts-english+muffled,heal,free,he'll,none,False,2.524
+2026-11-16T16:20:45,tts-Zira-degrade,tts-english+quiet,heal,grammar,heal,heal,True,0.114
+2026-11-16T16:20:45,tts-Zira-degrade,tts-english+quiet,heal,filtered,heal,heal,True,0.131
+2026-11-16T16:20:47,tts-Zira-degrade,tts-english+quiet,heal,free,he'll,none,False,2.188
+2026-11-16T16:20:48,tts-Zira-degrade,tts-english+fast,heal,grammar,heal,heal,True,0.128
+2026-11-16T16:20:48,tts-Zira-degrade,tts-english+fast,heal,filtered,heal,heal,True,0.126
+2026-11-16T16:20:49,tts-Zira-degrade,tts-english+fast,heal,free,here,none,False,1.561
+2026-11-16T16:20:49,tts-Zira-degrade,tts-english+cut,heal,grammar,heal,heal,True,0.073
+2026-11-16T16:20:49,tts-Zira-degrade,tts-english+cut,heal,filtered,heal,heal,True,0.071
+2026-11-16T16:20:52,tts-Zira-degrade,tts-english+cut,heal,free,he'll,none,False,2.124
+2026-11-16T16:20:52,tts-Zira-degrade,tts-english+mixed,heal,grammar,,none,False,0.125
+2026-11-16T16:20:52,tts-Zira-degrade,tts-english+mixed,heal,filtered,,none,False,0.123
+2026-11-16T16:20:54,tts-Zira-degrade,tts-english+mixed,heal,free,yeah,none,False,2.156
+2026-11-16T16:20:54,tts-Zira-degrade,tts-english,heal,grammar,cure,heal,True,0.165
+2026-11-16T16:20:55,tts-Zira-degrade,tts-english,heal,filtered,cure,heal,True,0.184
+2026-11-16T16:20:57,tts-Zira-degrade,tts-english,heal,free,pure,none,False,2.335
+2026-11-16T16:20:57,tts-Zira-degrade,tts-english+noise10,heal,grammar,cure,heal,True,0.102
+2026-11-16T16:20:57,tts-Zira-degrade,tts-english+noise10,heal,filtered,cure,heal,True,0.189
+2026-11-16T16:21:00,tts-Zira-degrade,tts-english+noise10,heal,free,humor,none,False,2.33
+2026-11-16T16:21:00,tts-Zira-degrade,tts-english+noise5,heal,grammar,cure,heal,True,0.106
+2026-11-16T16:21:00,tts-Zira-degrade,tts-english+noise5,heal,filtered,cure,heal,True,0.143
+2026-11-16T16:21:02,tts-Zira-degrade,tts-english+noise5,heal,free,are,none,False,2.061
+2026-11-16T16:21:02,tts-Zira-degrade,tts-english+muffled,heal,grammar,cure,heal,True,0.156
+2026-11-16T16:21:02,tts-Zira-degrade,tts-english+muffled,heal,filtered,cure,heal,True,0.158
+2026-11-16T16:21:04,tts-Zira-degrade,tts-english+muffled,heal,free,pure,none,False,1.435
+2026-11-16T16:21:04,tts-Zira-degrade,tts-english+quiet,heal,grammar,cure,heal,True,0.114
+2026-11-16T16:21:04,tts-Zira-degrade,tts-english+quiet,heal,filtered,cure,heal,True,0.116
+2026-11-16T16:21:06,tts-Zira-degrade,tts-english+quiet,heal,free,fewer,none,False,2.066
+2026-11-16T16:21:06,tts-Zira-degrade,tts-english+fast,heal,grammar,cure,heal,True,0.136
+2026-11-16T16:21:06,tts-Zira-degrade,tts-english+fast,heal,filtered,cure,heal,True,0.126
+2026-11-16T16:21:08,tts-Zira-degrade,tts-english+fast,heal,free,here,none,False,1.683
+2026-11-16T16:21:08,tts-Zira-degrade,tts-english+cut,heal,grammar,cure,heal,True,0.098
+2026-11-16T16:21:08,tts-Zira-degrade,tts-english+cut,heal,filtered,cure,heal,True,0.111
+2026-11-16T16:21:10,tts-Zira-degrade,tts-english+cut,heal,free,pure,none,False,2.141
+2026-11-16T16:21:11,tts-Zira-degrade,tts-english+mixed,heal,grammar,,none,False,0.075
+2026-11-16T16:21:11,tts-Zira-degrade,tts-english+mixed,heal,filtered,,none,False,0.084
+2026-11-16T16:21:13,tts-Zira-degrade,tts-english+mixed,heal,free,yeah,none,False,1.761
+2026-11-16T16:21:13,tts-Zira-degrade,tts-english,ice,grammar,ice,ice,True,0.14
+2026-11-16T16:21:13,tts-Zira-degrade,tts-english,ice,filtered,ice,ice,True,0.151
+2026-11-16T16:21:15,tts-Zira-degrade,tts-english,ice,free,ice,ice,True,2.345
+2026-11-16T16:21:15,tts-Zira-degrade,tts-english+noise10,ice,grammar,ice,ice,True,0.103
+2026-11-16T16:21:15,tts-Zira-degrade,tts-english+noise10,ice,filtered,ice,ice,True,0.123
+2026-11-16T16:21:17,tts-Zira-degrade,tts-english+noise10,ice,free,hi,none,False,1.019
+2026-11-16T16:21:17,tts-Zira-degrade,tts-english+noise5,ice,grammar,,none,False,0.106
+2026-11-16T16:21:17,tts-Zira-degrade,tts-english+noise5,ice,filtered,,none,False,0.09
+2026-11-16T16:21:18,tts-Zira-degrade,tts-english+noise5,ice,free,hi,none,False,1.512
+2026-11-16T16:21:18,tts-Zira-degrade,tts-english+muffled,ice,grammar,ice,ice,True,0.119
+2026-11-16T16:21:19,tts-Zira-degrade,tts-english+muffled,ice,filtered,ice,ice,True,0.09
+2026-11-16T16:21:20,tts-Zira-degrade,tts-english+muffled,ice,free,oh,none,False,1.406
+2026-11-16T16:21:20,tts-Zira-degrade,tts-english+quiet,ice,grammar,ice,ice,True,0.09
+2026-11-16T16:21:20,tts-Zira-degrade,tts-english+quiet,ice,filtered,ice,ice,True,0.091
+2026-11-16T16:21:22,tts-Zira-degrade,tts-english+quiet,ice,free,ice,ice,True,2.145
+2026-11-16T16:21:22,tts-Zira-degrade,tts-english+fast,ice,grammar,ice,ice,True,0.074
+2026-11-16T16:21:23,tts-Zira-degrade,tts-english+fast,ice,filtered,ice,ice,True,0.074
+2026-11-16T16:21:25,tts-Zira-degrade,tts-english+fast,ice,free,i've,none,False,1.981
+2026-11-16T16:21:25,tts-Zira-degrade,tts-english+cut,ice,grammar,ice,ice,True,0.123
+2026-11-16T16:21:25,tts-Zira-degrade,tts-english+cut,ice,filtered,ice,ice,True,0.129
+2026-11-16T16:21:27,tts-Zira-degrade,tts-english+cut,ice,free,eyes,none,False,2.283
+2026-11-16T16:21:27,tts-Zira-degrade,tts-english+mixed,ice,grammar,,none,False,0.127
+2026-11-16T16:21:28,tts-Zira-degrade,tts-english+mixed,ice,filtered,,none,False,0.126
+2026-11-16T16:21:29,tts-Zira-degrade,tts-english+mixed,ice,free,,none,False,1.333
+2026-11-16T16:21:29,tts-Zira-degrade,tts-english,ice,grammar,freeze,ice,True,0.104
+2026-11-16T16:21:29,tts-Zira-degrade,tts-english,ice,filtered,freeze,ice,True,0.104
+2026-11-16T16:21:32,tts-Zira-degrade,tts-english,ice,free,freeze,ice,True,2.917
+2026-11-16T16:21:32,tts-Zira-degrade,tts-english+noise10,ice,grammar,freeze,ice,True,0.22
+2026-11-16T16:21:33,tts-Zira-degrade,tts-english+noise10,ice,filtered,freeze,ice,True,0.214
+2026-11-16T16:21:34,tts-Zira-degrade,tts-english+noise10,ice,free,free,none,False,1.729
+2026-11-16T16:21:35,tts-Zira-degrade,tts-english+noise5,ice,grammar,freeze,ice,True,0.149
+2026-11-16T16:21:35,tts-Zira-degrade,tts-english+noise5,ice,filtered,freeze,ice,True,0.107
+2026-11-16T16:21:37,tts-Zira-degrade,tts-english+noise5,ice,free,green,none,False,1.892
+2026-11-16T16:21:37,tts-Zira-degrade,tts-english+muffled,ice,grammar,freeze,ice,True,0.134
+2026-11-16T16:21:37,tts-Zira-degrade,tts-english+muffled,ice,filtered,freeze,ice,True,0.137
+2026-11-16T16:21:39,tts-Zira-degrade,tts-english+muffled,ice,free,freeze,ice,True,2.156
+2026-11-16T16:21:39,tts-Zira-degrade,tts-english+quiet,ice,grammar,freeze,ice,True,0.11
+2026-11-16T16:21:39,tts-Zira-degrade,tts-english+quiet,ice,filtered,freeze,ice,True,0.117
+2026-11-16T16:21:42,tts-Zira-degrade,tts-english+quiet,ice,free,freeze,ice,True,2.331
+2026-11-16T16:21:42,tts-Zira-degrade,tts-english+fast,ice,grammar,freeze,ice,True,0.099
+2026-11-16T16:21:42,tts-Zira-degrade,tts-english+fast,ice,filtered,freeze,ice,True,0.099
+2026-11-16T16:21:44,tts-Zira-degrade,tts-english+fast,ice,free,freeze,ice,True,2.214
+2026-11-16T16:21:44,tts-Zira-degrade,tts-english+cut,ice,grammar,freeze,ice,True,0.086
+2026-11-16T16:21:44,tts-Zira-degrade,tts-english+cut,ice,filtered,freeze,ice,True,0.136
+2026-11-16T16:21:46,tts-Zira-degrade,tts-english+cut,ice,free,freeze,ice,True,1.861
+2026-11-16T16:21:46,tts-Zira-degrade,tts-english+mixed,ice,grammar,,none,False,0.07
+2026-11-16T16:21:47,tts-Zira-degrade,tts-english+mixed,ice,filtered,,none,False,0.078
+2026-11-16T16:21:48,tts-Zira-degrade,tts-english+mixed,ice,free,the,none,False,1.167
+2026-11-16T16:21:48,tts-Zira-degrade,tts-english,lightning,grammar,lightning,lightning,True,0.15
+2026-11-16T16:21:48,tts-Zira-degrade,tts-english,lightning,filtered,lightening,lightning,True,0.187
+2026-11-16T16:21:51,tts-Zira-degrade,tts-english,lightning,free,lightning,lightning,True,2.946
+2026-11-16T16:21:51,tts-Zira-degrade,tts-english+noise10,lightning,grammar,lightning,lightning,True,0.183
+2026-11-16T16:21:51,tts-Zira-degrade,tts-english+noise10,lightning,filtered,lightning,lightning,True,0.185
+2026-11-16T16:21:54,tts-Zira-degrade,tts-english+noise10,lightning,free,my name,none,False,2.287
+2026-11-16T16:21:54,tts-Zira-degrade,tts-english+noise5,lightning,grammar,lightning,lightning,True,0.139
+2026-11-16T16:21:54,tts-Zira-degrade,tts-english+noise5,lightning,filtered,lightning,lightning,True,0.127
+2026-11-16T16:21:56,tts-Zira-degrade,tts-english+noise5,lightning,free,my me,none,False,2.248
+2026-11-16T16:21:57,tts-Zira-degrade,tts-english+muffled,lightning,grammar,lightning,lightning,True,0.157
+2026-11-16T16:21:57,tts-Zira-degrade,tts-english+muffled,lightning,filtered,lightening,lightning,True,0.213
+2026-11-16T16:22:00,tts-Zira-degrade,tts-english+muffled,lightning,free,lightning,lightning,True,2.91
+2026-11-16T16:22:00,tts-Zira-degrade,tts-english+quiet,lightning,grammar,lightening,lightning,True,0.138
+2026-11-16T16:22:00,tts-Zira-degrade,tts-english+quiet,lightning,filtered,lightening,lightning,True,0.095
+2026-11-16T16:22:02,tts-Zira-degrade,tts-english+quiet,lightning,free,lightning,lightning,True,2.313
+2026-11-16T16:22:03,tts-Zira-degrade,tts-english+fast,lightning,grammar,lightning,lightning,True,0.152
+2026-11-16T16:22:03,tts-Zira-degrade,tts-english+fast,lightning,filtered,lightning,lightning,True,0.148
+2026-11-16T16:22:05,tts-Zira-degrade,tts-english+fast,lightning,free,lightning,lightning,True,2.561
+2026-11-16T16:22:06,tts-Zira-degrade,tts-english+cut,lightning,grammar,lightning,lightning,True,0.131
+2026-11-16T16:22:06,tts-Zira-degrade,tts-english+cut,lightning,filtered,lightning,lightning,True,0.128
+2026-11-16T16:22:09,tts-Zira-degrade,tts-english+cut,lightning,free,lightning,lightning,True,2.977
+2026-11-16T16:22:09,tts-Zira-degrade,tts-english+mixed,lightning,grammar,[unk],none,False,0.147
+2026-11-16T16:22:09,tts-Zira-degrade,tts-english+mixed,lightning,filtered,[unk],none,False,0.114
+2026-11-16T16:22:11,tts-Zira-degrade,tts-english+mixed,lightning,free,mountain,none,False,2.001
+2026-11-16T16:22:11,tts-Zira-degrade,tts-english,lightning,grammar,thunder,lightning,True,0.207
+2026-11-16T16:22:12,tts-Zira-degrade,tts-english,lightning,filtered,thunder,lightning,True,0.141
+2026-11-16T16:22:13,tts-Zira-degrade,tts-english,lightning,free,thunder,lightning,True,1.731
+2026-11-16T16:22:13,tts-Zira-degrade,tts-english+noise10,lightning,grammar,thunder,lightning,True,0.129
+2026-11-16T16:22:14,tts-Zira-degrade,tts-english+noise10,lightning,filtered,thunder,lightning,True,0.163
+2026-11-16T16:22:17,tts-Zira-degrade,tts-english+noise10,lightning,free,then there,none,False,3.384
+2026-11-16T16:22:17,tts-Zira-degrade,tts-english+noise5,lightning,grammar,thunder,lightning,True,0.199
+2026-11-16T16:22:17,tts-Zira-degrade,tts-english+noise5,lightning,filtered,thunder,lightning,True,0.202
+2026-11-16T16:22:20,tts-Zira-degrade,tts-english+noise5,lightning,free,then you,none,False,2.548
+2026-11-16T16:22:20,tts-Zira-degrade,tts-english+muffled,lightning,grammar,thunder,lightning,True,0.171
+2026-11-16T16:22:20,tts-Zira-degrade,tts-english+muffled,lightning,filtered,thunder,lightning,True,0.167
+2026-11-16T16:22:22,tts-Zira-degrade,tts-english+muffled,lightning,free,thunder,lightning,True,2.012
+2026-11-16T16:22:23,tts-Zira-degrade,tts-english+quiet,lightning,grammar,thunder,lightning,True,0.172
+2026-11-16T16:22:23,tts-Zira-degrade,tts-english+quiet,lightning,filtered,thunder,lightning,True,0.183
+2026-11-16T16:22:25,tts-Zira-degrade,tts-english+quiet,lightning,free,thunder,lightning,True,2.168
+2026-11-16T16:22:25,tts-Zira-degrade,tts-english+fast,lightning,grammar,thunder,lightning,True,0.132
+2026-11-16T16:22:25,tts-Zira-degrade,tts-english+fast,lightning,filtered,thunder,lightning,True,0.128
+2026-11-16T16:22:27,tts-Zira-degrade,tts-english+fast,lightning,free,kinda,none,False,1.672
+2026-11-16T16:22:27,tts-Zira-degrade,tts-english+cut,lightning,grammar,thunder,lightning,True,0.101
+2026-11-16T16:22:27,tts-Zira-degrade,tts-english+cut,lightning,filtered,thunder,lightning,True,0.096
+2026-11-16T16:22:29,tts-Zira-degrade,tts-english+cut,lightning,free,thunder,lightning,True,2.23
+2026-11-16T16:22:30,tts-Zira-degrade,tts-english+mixed,lightning,grammar,,none,False,0.075
+2026-11-16T16:22:30,tts-Zira-degrade,tts-english+mixed,lightning,filtered,,none,False,0.076
+2026-11-16T16:22:32,tts-Zira-degrade,tts-english+mixed,lightning,free,hello,none,False,2.275
+2026-11-16T16:22:32,tts-Zira-degrade,tts-english,meteor,grammar,meteor,meteor,True,0.194
+2026-11-16T16:22:33,tts-Zira-degrade,tts-english,meteor,filtered,meteor,meteor,True,0.2
+2026-11-16T16:22:35,tts-Zira-degrade,tts-english,meteor,free,meteor,meteor,True,2.738
+2026-11-16T16:22:35,tts-Zira-degrade,tts-english+noise10,meteor,grammar,meteor,meteor,True,0.101
+2026-11-16T16:22:36,tts-Zira-degrade,tts-english+noise10,meteor,filtered,meteor,meteor,True,0.104
+2026-11-16T16:22:37,tts-Zira-degrade,tts-english+noise10,meteor,free,media,none,False,1.847
+2026-11-16T16:22:38,tts-Zira-degrade,tts-english+noise5,meteor,grammar,meteor,meteor,True,0.093
+2026-11-16T16:22:38,tts-Zira-degrade,tts-english+noise5,meteor,filtered,meteor,meteor,True,0.097
+2026-11-16T16:22:40,tts-Zira-degrade,tts-english+noise5,meteor,free,media,none,False,1.991
+2026-11-16T16:22:40,tts-Zira-degrade,tts-english+muffled,meteor,grammar,meteor,meteor,True,0.144
+2026-11-16T16:22:40,tts-Zira-degrade,tts-english+muffled,meteor,filtered,meteor,meteor,True,0.2
+2026-11-16T16:22:42,tts-Zira-degrade,tts-english+muffled,meteor,free,media,none,False,1.845
+2026-11-16T16:22:42,tts-Zira-degrade,tts-english+quiet,meteor,grammar,meteor,meteor,True,0.128
+2026-11-16T16:22:42,tts-Zira-degrade,tts-english+quiet,meteor,filtered,meteor,meteor,True,0.128
+2026-11-16T16:22:44,tts-Zira-degrade,tts-english+quiet,meteor,free,meteor,meteor,True,2.231
+2026-11-16T16:22:45,tts-Zira-degrade,tts-english+fast,meteor,grammar,meteor,meteor,True,0.135
+2026-11-16T16:22:45,tts-Zira-degrade,tts-english+fast,meteor,filtered,meteor,meteor,True,0.131
+2026-11-16T16:22:47,tts-Zira-degrade,tts-english+fast,meteor,free,media,none,False,2.243
+2026-11-16T16:22:47,tts-Zira-degrade,tts-english+cut,meteor,grammar,meteor,meteor,True,0.093
+2026-11-16T16:22:47,tts-Zira-degrade,tts-english+cut,meteor,filtered,meteor,meteor,True,0.091
+2026-11-16T16:22:49,tts-Zira-degrade,tts-english+cut,meteor,free,media,none,False,1.955
+2026-11-16T16:22:49,tts-Zira-degrade,tts-english+mixed,meteor,grammar,,none,False,0.075
+2026-11-16T16:22:49,tts-Zira-degrade,tts-english+mixed,meteor,filtered,,none,False,0.075
+2026-11-16T16:22:51,tts-Zira-degrade,tts-english+mixed,meteor,free,,none,False,1.63
+2026-11-16T16:22:51,tts-Zira-degrade,tts-english,none,grammar,heal [unk],heal,False,0.186
+2026-11-16T16:22:51,tts-Zira-degrade,tts-english,none,filtered,[unk],none,True,0.18
+2026-11-16T16:22:53,tts-Zira-degrade,tts-english,none,free,hello there,none,True,1.905
+2026-11-16T16:22:54,tts-Zira-degrade,tts-english+noise10,none,grammar,[unk],none,True,0.204
+2026-11-16T16:22:54,tts-Zira-degrade,tts-english+noise10,none,filtered,[unk],none,True,0.204
+2026-11-16T16:22:56,tts-Zira-degrade,tts-english+noise10,none,free,hello there,none,True,2.217
+2026-11-16T16:22:56,tts-Zira-degrade,tts-english+noise5,none,grammar,[unk],none,True,0.159
+2026-11-16T16:22:56,tts-Zira-degrade,tts-english+noise5,none,filtered,[unk],none,True,0.139
+2026-11-16T16:22:59,tts-Zira-degrade,tts-english+noise5,none,free,hello there,none,True,2.761
+2026-11-16T16:22:59,tts-Zira-degrade,tts-english+muffled,none,grammar,[unk],none,True,0.122
+2026-11-16T16:23:00,tts-Zira-degrade,tts-english+muffled,none,filtered,[unk],none,True,0.187
+2026-11-16T16:23:02,tts-Zira-degrade,tts-english+muffled,none,free,hello there,none,True,2.207
+2026-11-16T16:23:02,tts-Zira-degrade,tts-english+quiet,none,grammar,[unk],none,True,0.179
+2026-11-16T16:23:02,tts-Zira-degrade,tts-english+quiet,none,filtered,[unk],none,True,0.183
+2026-11-16T16:23:05,tts-Zira-degrade,tts-english+quiet,none,free,hello there,none,True,2.337
+2026-11-16T16:23:05,tts-Zira-degrade,tts-english+fast,none,grammar,heal [unk],heal,False,0.083
+2026-11-16T16:23:05,tts-Zira-degrade,tts-english+fast,none,filtered,heal [unk],none,True,0.109
+2026-11-16T16:23:06,tts-Zira-degrade,tts-english+fast,none,free,hello there,none,True,1.267
+2026-11-16T16:23:06,tts-Zira-degrade,tts-english+cut,none,grammar,heal [unk],heal,False,0.072
+2026-11-16T16:23:06,tts-Zira-degrade,tts-english+cut,none,filtered,heal [unk],none,True,0.077
+2026-11-16T16:23:08,tts-Zira-degrade,tts-english+cut,none,free,hello there,none,True,1.683
+2026-11-16T16:23:08,tts-Zira-degrade,tts-english+mixed,none,grammar,,none,True,0.097
+2026-11-16T16:23:08,tts-Zira-degrade,tts-english+mixed,none,filtered,,none,True,0.096
+2026-11-16T16:23:11,tts-Zira-degrade,tts-english+mixed,none,free,i don't,none,True,2.247
+2026-11-16T16:23:11,tts-Zira-degrade,tts-english,none,grammar,[unk],none,True,0.206
+2026-11-16T16:23:11,tts-Zira-degrade,tts-english,none,filtered,[unk],none,True,0.207
+2026-11-16T16:23:14,tts-Zira-degrade,tts-english,none,free,what time is it,none,True,2.895
+2026-11-16T16:23:14,tts-Zira-degrade,tts-english+noise10,none,grammar,[unk],none,True,0.211
+2026-11-16T16:23:14,tts-Zira-degrade,tts-english+noise10,none,filtered,[unk],none,True,0.214
+2026-11-16T16:23:17,tts-Zira-degrade,tts-english+noise10,none,free,what time is it,none,True,2.349
+2026-11-16T16:23:17,tts-Zira-degrade,tts-english+noise5,none,grammar,[unk],none,True,0.209
+2026-11-16T16:23:17,tts-Zira-degrade,tts-english+noise5,none,filtered,[unk],none,True,0.216
+2026-11-16T16:23:20,tts-Zira-degrade,tts-english+noise5,none,free,what time,none,True,2.775
+2026-11-16T16:23:20,tts-Zira-degrade,tts-english+muffled,none,grammar,[unk],none,True,0.214
+2026-11-16T16:23:21,tts-Zira-degrade,tts-english+muffled,none,filtered,[unk],none,True,0.177
+2026-11-16T16:23:23,tts-Zira-degrade,tts-english+muffled,none,free,what time is it,none,True,2.779
+2026-11-16T16:23:24,tts-Zira-degrade,tts-english+quiet,none,grammar,[unk],none,True,0.207
+2026-11-16T16:23:24,tts-Zira-degrade,tts-english+quiet,none,filtered,[unk],none,True,0.205
+2026-11-16T16:23:27,tts-Zira-degrade,tts-english+quiet,none,free,what time is it,none,True,2.876
+2026-11-16T16:23:27,tts-Zira-degrade,tts-english+fast,none,grammar,[unk],none,True,0.105
+2026-11-16T16:23:27,tts-Zira-degrade,tts-english+fast,none,filtered,[unk],none,True,0.094
+2026-11-16T16:23:30,tts-Zira-degrade,tts-english+fast,none,free,what time is it,none,True,2.511
+2026-11-16T16:23:30,tts-Zira-degrade,tts-english+cut,none,grammar,[unk],none,True,0.087
+2026-11-16T16:23:30,tts-Zira-degrade,tts-english+cut,none,filtered,[unk],none,True,0.089
+2026-11-16T16:23:32,tts-Zira-degrade,tts-english+cut,none,free,what time is,none,True,2.605
+2026-11-16T16:23:33,tts-Zira-degrade,tts-english+mixed,none,grammar,,none,True,0.1
+2026-11-16T16:23:33,tts-Zira-degrade,tts-english+mixed,none,filtered,,none,True,0.112
+2026-11-16T16:23:36,tts-Zira-degrade,tts-english+mixed,none,free,the,none,True,2.927
+2026-11-16T16:23:36,tts-Zira-degrade,tts-english,none,grammar,[unk],none,True,0.19
+2026-11-16T16:23:36,tts-Zira-degrade,tts-english,none,filtered,[unk],none,True,0.24
+2026-11-16T16:23:39,tts-Zira-degrade,tts-english,none,free,i like pizza,none,True,2.932
+2026-11-16T16:23:39,tts-Zira-degrade,tts-english+noise10,none,grammar,[unk],none,True,0.225
+2026-11-16T16:23:40,tts-Zira-degrade,tts-english+noise10,none,filtered,[unk],none,True,0.125
+2026-11-16T16:23:42,tts-Zira-degrade,tts-english+noise10,none,free,i like pizza,none,True,2.635
+2026-11-16T16:23:42,tts-Zira-degrade,tts-english+noise5,none,grammar,lightning,lightning,False,0.131
+2026-11-16T16:23:43,tts-Zira-degrade,tts-english+noise5,none,filtered,lightning,lightning,False,0.131
+2026-11-16T16:23:45,tts-Zira-degrade,tts-english+noise5,none,free,i like pizza,none,True,2.612
+2026-11-16T16:23:45,tts-Zira-degrade,tts-english+muffled,none,grammar,[unk],none,True,0.212
+2026-11-16T16:23:46,tts-Zira-degrade,tts-english+muffled,none,filtered,[unk],none,True,0.241
+2026-11-16T16:23:50,tts-Zira-degrade,tts-english+muffled,none,free,i like pizza,none,True,3.888
+2026-11-16T16:23:50,tts-Zira-degrade,tts-english+quiet,none,grammar,[unk],none,True,0.24
+2026-11-16T16:23:50,tts-Zira-degrade,tts-english+quiet,none,filtered,[unk],none,True,0.211
+2026-11-16T16:23:54,tts-Zira-degrade,tts-english+quiet,none,free,i like pizza,none,True,3.384
+2026-11-16T16:23:54,tts-Zira-degrade,tts-english+fast,none,grammar,[unk],none,True,0.178
+2026-11-16T16:23:54,tts-Zira-degrade,tts-english+fast,none,filtered,[unk],none,True,0.18
+2026-11-16T16:23:56,tts-Zira-degrade,tts-english+fast,none,free,i like pizza,none,True,2.039
+2026-11-16T16:23:56,tts-Zira-degrade,tts-english+cut,none,grammar,[unk],none,True,0.086
+2026-11-16T16:23:56,tts-Zira-degrade,tts-english+cut,none,filtered,[unk],none,True,0.083
+2026-11-16T16:23:59,tts-Zira-degrade,tts-english+cut,none,free,i like pete,none,True,2.802
+2026-11-16T16:23:59,tts-Zira-degrade,tts-english+mixed,none,grammar,,none,True,0.097
+2026-11-16T16:23:59,tts-Zira-degrade,tts-english+mixed,none,filtered,,none,True,0.097
+2026-11-16T16:24:02,tts-Zira-degrade,tts-english+mixed,none,free,hello,none,True,2.377
+2026-11-16T16:24:02,tts-Zira-degrade,tts-english,shield,grammar,shield,shield,True,0.108
+2026-11-16T16:24:02,tts-Zira-degrade,tts-english,shield,filtered,shield,shield,True,0.102
+2026-11-16T16:24:04,tts-Zira-degrade,tts-english,shield,free,shield,shield,True,1.716
+2026-11-16T16:24:04,tts-Zira-degrade,tts-english+noise10,shield,grammar,shield,shield,True,0.071
+2026-11-16T16:24:04,tts-Zira-degrade,tts-english+noise10,shield,filtered,shield,shield,True,0.08
+2026-11-16T16:24:05,tts-Zira-degrade,tts-english+noise10,shield,free,she'll,none,False,0.867
+2026-11-16T16:24:05,tts-Zira-degrade,tts-english+noise5,shield,grammar,shield,shield,True,0.096
+2026-11-16T16:24:05,tts-Zira-degrade,tts-english+noise5,shield,filtered,shield,shield,True,0.07
+2026-11-16T16:24:06,tts-Zira-degrade,tts-english+noise5,shield,free,she on,none,False,0.964
+2026-11-16T16:24:06,tts-Zira-degrade,tts-english+muffled,shield,grammar,shield,shield,True,0.096
+2026-11-16T16:24:06,tts-Zira-degrade,tts-english+muffled,shield,filtered,shield,shield,True,0.104
+2026-11-16T16:24:08,tts-Zira-degrade,tts-english+muffled,shield,free,healed,heal,False,1.675
+2026-11-16T16:24:08,tts-Zira-degrade,tts-english+quiet,shield,grammar,shield,shield,True,0.103
+2026-11-16T16:24:08,tts-Zira-degrade,tts-english+quiet,shield,filtered,shield,shield,True,0.113
+2026-11-16T16:24:09,tts-Zira-degrade,tts-english+quiet,shield,free,shield,shield,True,1.107
+2026-11-16T16:24:09,tts-Zira-degrade,tts-english+fast,shield,grammar,shield,shield,True,0.035
+2026-11-16T16:24:09,tts-Zira-degrade,tts-english+fast,shield,filtered,shield,shield,True,0.034
+2026-11-16T16:24:10,tts-Zira-degrade,tts-english+fast,shield,free,shield,shield,True,1.179
+2026-11-16T16:24:11,tts-Zira-degrade,tts-english+cut,shield,grammar,shield,shield,True,0.073
+2026-11-16T16:24:11,tts-Zira-degrade,tts-english+cut,shield,filtered,shield,shield,True,0.053
+2026-11-16T16:24:12,tts-Zira-degrade,tts-english+cut,shield,free,she'll,none,False,1.093
+2026-11-16T16:24:12,tts-Zira-degrade,tts-english+mixed,shield,grammar,,none,False,0.083
+2026-11-16T16:24:12,tts-Zira-degrade,tts-english+mixed,shield,filtered,,none,False,0.084
+2026-11-16T16:24:13,tts-Zira-degrade,tts-english+mixed,shield,free,yeah,none,False,1.185
+2026-11-16T16:24:13,tts-Zira-degrade,tts-english,shield,grammar,protect,shield,True,0.069
+2026-11-16T16:24:13,tts-Zira-degrade,tts-english,shield,filtered,protect,shield,True,0.095
+2026-11-16T16:24:15,tts-Zira-degrade,tts-english,shield,free,protect,shield,True,1.245
+2026-11-16T16:24:15,tts-Zira-degrade,tts-english+noise10,shield,grammar,protect,shield,True,0.06
+2026-11-16T16:24:15,tts-Zira-degrade,tts-english+noise10,shield,filtered,protect,shield,True,0.099
+2026-11-16T16:24:16,tts-Zira-degrade,tts-english+noise10,shield,free,the attack,none,False,0.994
+2026-11-16T16:24:16,tts-Zira-degrade,tts-english+noise5,shield,grammar,protect,shield,True,0.049
+2026-11-16T16:24:16,tts-Zira-degrade,tts-english+noise5,shield,filtered,protect,shield,True,0.049
+2026-11-16T16:24:17,tts-Zira-degrade,tts-english+noise5,shield,free,the can,none,False,1.298
+2026-11-16T16:24:17,tts-Zira-degrade,tts-english+muffled,shield,grammar,protect,shield,True,0.077
+2026-11-16T16:24:17,tts-Zira-degrade,tts-english+muffled,shield,filtered,protect,shield,True,0.098
+2026-11-16T16:24:18,tts-Zira-degrade,tts-english+muffled,shield,free,protect,shield,True,1.022
+2026-11-16T16:24:19,tts-Zira-degrade,tts-english+quiet,shield,grammar,protect,shield,True,0.048
+2026-11-16T16:24:19,tts-Zira-degrade,tts-english+quiet,shield,filtered,protect,shield,True,0.074
+2026-11-16T16:24:20,tts-Zira-degrade,tts-english+quiet,shield,free,protect,shield,True,1.187
+2026-11-16T16:24:20,tts-Zira-degrade,tts-english+fast,shield,grammar,protect,shield,True,0.074
+2026-11-16T16:24:20,tts-Zira-degrade,tts-english+fast,shield,filtered,protect,shield,True,0.072
+2026-11-16T16:24:21,tts-Zira-degrade,tts-english+fast,shield,free,contact,none,False,0.97
+2026-11-16T16:24:21,tts-Zira-degrade,tts-english+cut,shield,grammar,protect,shield,True,0.036
+2026-11-16T16:24:21,tts-Zira-degrade,tts-english+cut,shield,filtered,protect,shield,True,0.036
+2026-11-16T16:24:22,tts-Zira-degrade,tts-english+cut,shield,free,protect,shield,True,1.343
+2026-11-16T16:24:23,tts-Zira-degrade,tts-english+mixed,shield,grammar,,none,False,0.074
+2026-11-16T16:24:23,tts-Zira-degrade,tts-english+mixed,shield,filtered,,none,False,0.041
+2026-11-16T16:24:24,tts-Zira-degrade,tts-english+mixed,shield,free,the phone,none,False,1.314
+2026-11-16T16:24:27,tts-Heami-degrade,tts-korean-accent,drain,grammar,drain,drain,True,0.091
+2026-11-16T16:24:27,tts-Heami-degrade,tts-korean-accent,drain,filtered,drain,drain,True,0.093
+2026-11-16T16:24:28,tts-Heami-degrade,tts-korean-accent,drain,free,the rain,none,False,1.408
+2026-11-16T16:24:28,tts-Heami-degrade,tts-korean-accent+noise10,drain,grammar,,none,False,0.044
+2026-11-16T16:24:28,tts-Heami-degrade,tts-korean-accent+noise10,drain,filtered,,none,False,0.048
+2026-11-16T16:24:29,tts-Heami-degrade,tts-korean-accent+noise10,drain,free,hitting,none,False,0.879
+2026-11-16T16:24:29,tts-Heami-degrade,tts-korean-accent+noise5,drain,grammar,,none,False,0.058
+2026-11-16T16:24:29,tts-Heami-degrade,tts-korean-accent+noise5,drain,filtered,,none,False,0.051
+2026-11-16T16:24:30,tts-Heami-degrade,tts-korean-accent+noise5,drain,free,the,none,False,0.878
+2026-11-16T16:24:30,tts-Heami-degrade,tts-korean-accent+muffled,drain,grammar,drain,drain,True,0.065
+2026-11-16T16:24:30,tts-Heami-degrade,tts-korean-accent+muffled,drain,filtered,drain,drain,True,0.075
+2026-11-16T16:24:32,tts-Heami-degrade,tts-korean-accent+muffled,drain,free,green,none,False,1.138
+2026-11-16T16:24:32,tts-Heami-degrade,tts-korean-accent+quiet,drain,grammar,drain,drain,True,0.064
+2026-11-16T16:24:32,tts-Heami-degrade,tts-korean-accent+quiet,drain,filtered,drain,drain,True,0.077
+2026-11-16T16:24:33,tts-Heami-degrade,tts-korean-accent+quiet,drain,free,the rain,none,False,1.155
+2026-11-16T16:24:33,tts-Heami-degrade,tts-korean-accent+fast,drain,grammar,drain,drain,True,0.082
+2026-11-16T16:24:33,tts-Heami-degrade,tts-korean-accent+fast,drain,filtered,drain,drain,True,0.081
+2026-11-16T16:24:34,tts-Heami-degrade,tts-korean-accent+fast,drain,free,getting,none,False,1.018
+2026-11-16T16:24:34,tts-Heami-degrade,tts-korean-accent+cut,drain,grammar,drain,drain,True,0.031
+2026-11-16T16:24:34,tts-Heami-degrade,tts-korean-accent+cut,drain,filtered,drain,drain,True,0.032
+2026-11-16T16:24:35,tts-Heami-degrade,tts-korean-accent+cut,drain,free,three,none,False,0.919
+2026-11-16T16:24:35,tts-Heami-degrade,tts-korean-accent+mixed,drain,grammar,,none,False,0.071
+2026-11-16T16:24:35,tts-Heami-degrade,tts-korean-accent+mixed,drain,filtered,,none,False,0.072
+2026-11-16T16:24:36,tts-Heami-degrade,tts-korean-accent+mixed,drain,free,the,none,False,0.927
+2026-11-16T16:24:36,tts-Heami-degrade,tts-korean-accent,fireball,grammar,[unk],none,False,0.136
+2026-11-16T16:24:37,tts-Heami-degrade,tts-korean-accent,fireball,filtered,[unk],none,False,0.139
+2026-11-16T16:24:38,tts-Heami-degrade,tts-korean-accent,fireball,free,pay a boy,none,False,1.906
+2026-11-16T16:24:39,tts-Heami-degrade,tts-korean-accent+noise10,fireball,grammar,[unk],none,False,0.164
+2026-11-16T16:24:39,tts-Heami-degrade,tts-korean-accent+noise10,fireball,filtered,[unk],none,False,0.116
+2026-11-16T16:24:41,tts-Heami-degrade,tts-korean-accent+noise10,fireball,free,hi your voice,ice,False,2.435
+2026-11-16T16:24:42,tts-Heami-degrade,tts-korean-accent+noise5,fireball,grammar,,none,False,0.159
+2026-11-16T16:24:42,tts-Heami-degrade,tts-korean-accent+noise5,fireball,filtered,,none,False,0.163
+2026-11-16T16:24:44,tts-Heami-degrade,tts-korean-accent+noise5,fireball,free,hi,none,False,2.055
+2026-11-16T16:24:44,tts-Heami-degrade,tts-korean-accent+muffled,fireball,grammar,fireball,fireball,True,0.117
+2026-11-16T16:24:44,tts-Heami-degrade,tts-korean-accent+muffled,fireball,filtered,[unk],none,False,0.115
+2026-11-16T16:24:45,tts-Heami-degrade,tts-korean-accent+muffled,fireball,free,how ya boy,none,False,1.17
+2026-11-16T16:24:45,tts-Heami-degrade,tts-korean-accent+quiet,fireball,grammar,[unk],none,False,0.068
+2026-11-16T16:24:45,tts-Heami-degrade,tts-korean-accent+quiet,fireball,filtered,[unk],none,False,0.106
+2026-11-16T16:24:47,tts-Heami-degrade,tts-korean-accent+quiet,fireball,free,hey a boy,none,False,1.327
+2026-11-16T16:24:47,tts-Heami-degrade,tts-korean-accent+fast,fireball,grammar,[unk],none,False,0.087
+2026-11-16T16:24:47,tts-Heami-degrade,tts-korean-accent+fast,fireball,filtered,[unk],none,False,0.092
+2026-11-16T16:24:49,tts-Heami-degrade,tts-korean-accent+fast,fireball,free,how lovely,none,False,1.734
+2026-11-16T16:24:49,tts-Heami-degrade,tts-korean-accent+cut,fireball,grammar,[unk],none,False,0.062
+2026-11-16T16:24:49,tts-Heami-degrade,tts-korean-accent+cut,fireball,filtered,[unk],none,False,0.073
+2026-11-16T16:24:50,tts-Heami-degrade,tts-korean-accent+cut,fireball,free,pay up,none,False,0.971
+2026-11-16T16:24:50,tts-Heami-degrade,tts-korean-accent+mixed,fireball,grammar,,none,False,0.073
+2026-11-16T16:24:50,tts-Heami-degrade,tts-korean-accent+mixed,fireball,filtered,,none,False,0.09
+2026-11-16T16:24:52,tts-Heami-degrade,tts-korean-accent+mixed,fireball,free,,none,False,1.414
+2026-11-16T16:24:52,tts-Heami-degrade,tts-korean-accent,fireball,grammar,[unk],none,False,0.118
+2026-11-16T16:24:52,tts-Heami-degrade,tts-korean-accent,fireball,filtered,[unk],none,False,0.1
+2026-11-16T16:24:53,tts-Heami-degrade,tts-korean-accent,fireball,free,pay up early,none,False,1.341
+2026-11-16T16:24:53,tts-Heami-degrade,tts-korean-accent+noise10,fireball,grammar,freeze,ice,False,0.085
+2026-11-16T16:24:53,tts-Heami-degrade,tts-korean-accent+noise10,fireball,filtered,freeze,ice,False,0.091
+2026-11-16T16:24:55,tts-Heami-degrade,tts-korean-accent+noise10,fireball,free,hi,none,False,1.818
+2026-11-16T16:24:55,tts-Heami-degrade,tts-korean-accent+noise5,fireball,grammar,,none,False,0.116
+2026-11-16T16:24:55,tts-Heami-degrade,tts-korean-accent+noise5,fireball,filtered,,none,False,0.15
+2026-11-16T16:24:57,tts-Heami-degrade,tts-korean-accent+noise5,fireball,free,hi,none,False,1.577
+2026-11-16T16:24:57,tts-Heami-degrade,tts-korean-accent+muffled,fireball,grammar,[unk],none,False,0.135
+2026-11-16T16:24:57,tts-Heami-degrade,tts-korean-accent+muffled,fireball,filtered,[unk],none,False,0.171
+2026-11-16T16:24:59,tts-Heami-degrade,tts-korean-accent+muffled,fireball,free,how you play,none,False,1.16
+2026-11-16T16:24:59,tts-Heami-degrade,tts-korean-accent+quiet,fireball,grammar,[unk],none,False,0.145
+2026-11-16T16:24:59,tts-Heami-degrade,tts-korean-accent+quiet,fireball,filtered,[unk],none,False,0.134
+2026-11-16T16:25:00,tts-Heami-degrade,tts-korean-accent+quiet,fireball,free,hey of way,none,False,1.561
+2026-11-16T16:25:01,tts-Heami-degrade,tts-korean-accent+fast,fireball,grammar,[unk],none,False,0.066
+2026-11-16T16:25:01,tts-Heami-degrade,tts-korean-accent+fast,fireball,filtered,[unk],none,False,0.093
+2026-11-16T16:25:02,tts-Heami-degrade,tts-korean-accent+fast,fireball,free,how likely,none,False,1.373
+2026-11-16T16:25:02,tts-Heami-degrade,tts-korean-accent+cut,fireball,grammar,[unk],none,False,0.082
+2026-11-16T16:25:02,tts-Heami-degrade,tts-korean-accent+cut,fireball,filtered,[unk],none,False,0.095
+2026-11-16T16:25:03,tts-Heami-degrade,tts-korean-accent+cut,fireball,free,pay of,none,False,1.094
+2026-11-16T16:25:04,tts-Heami-degrade,tts-korean-accent+mixed,fireball,grammar,,none,False,0.074
+2026-11-16T16:25:04,tts-Heami-degrade,tts-korean-accent+mixed,fireball,filtered,,none,False,0.086
+2026-11-16T16:25:05,tts-Heami-degrade,tts-korean-accent+mixed,fireball,free,how it,none,False,1.441
+2026-11-16T16:25:05,tts-Heami-degrade,tts-korean-accent,focus,grammar,focus,focus,True,0.104
+2026-11-16T16:25:05,tts-Heami-degrade,tts-korean-accent,focus,filtered,focus,focus,True,0.113
+2026-11-16T16:25:07,tts-Heami-degrade,tts-korean-accent,focus,free,percocet,none,False,1.74
+2026-11-16T16:25:07,tts-Heami-degrade,tts-korean-accent+noise10,focus,grammar,,none,False,0.105
+2026-11-16T16:25:07,tts-Heami-degrade,tts-korean-accent+noise10,focus,filtered,,none,False,0.086
+2026-11-16T16:25:09,tts-Heami-degrade,tts-korean-accent+noise10,focus,free,the food,none,False,1.909
+2026-11-16T16:25:09,tts-Heami-degrade,tts-korean-accent+noise5,focus,grammar,,none,False,0.107
+2026-11-16T16:25:09,tts-Heami-degrade,tts-korean-accent+noise5,focus,filtered,,none,False,0.115
+2026-11-16T16:25:11,tts-Heami-degrade,tts-korean-accent+noise5,focus,free,the,none,False,1.765
+2026-11-16T16:25:11,tts-Heami-degrade,tts-korean-accent+muffled,focus,grammar,focus,focus,True,0.076
+2026-11-16T16:25:11,tts-Heami-degrade,tts-korean-accent+muffled,focus,filtered,focus,focus,True,0.098
+2026-11-16T16:25:13,tts-Heami-degrade,tts-korean-accent+muffled,focus,free,poor it,none,False,1.497
+2026-11-16T16:25:13,tts-Heami-degrade,tts-korean-accent+quiet,focus,grammar,focus,focus,True,0.12
+2026-11-16T16:25:13,tts-Heami-degrade,tts-korean-accent+quiet,focus,filtered,focus,focus,True,0.107
+2026-11-16T16:25:15,tts-Heami-degrade,tts-korean-accent+quiet,focus,free,poor percocet it,none,False,1.437
+2026-11-16T16:25:15,tts-Heami-degrade,tts-korean-accent+fast,focus,grammar,[unk],none,False,0.043
+2026-11-16T16:25:15,tts-Heami-degrade,tts-korean-accent+fast,focus,filtered,[unk],none,False,0.065
+2026-11-16T16:25:16,tts-Heami-degrade,tts-korean-accent+fast,focus,free,for coffee,none,False,1.237
+2026-11-16T16:25:16,tts-Heami-degrade,tts-korean-accent+cut,focus,grammar,focus,focus,True,0.071
+2026-11-16T16:25:16,tts-Heami-degrade,tts-korean-accent+cut,focus,filtered,focus,focus,True,0.05
+2026-11-16T16:25:18,tts-Heami-degrade,tts-korean-accent+cut,focus,free,poor costs,none,False,1.476
+2026-11-16T16:25:18,tts-Heami-degrade,tts-korean-accent+mixed,focus,grammar,,none,False,0.076
+2026-11-16T16:25:18,tts-Heami-degrade,tts-korean-accent+mixed,focus,filtered,,none,False,0.093
+2026-11-16T16:25:19,tts-Heami-degrade,tts-korean-accent+mixed,focus,free,,none,False,1.283
+2026-11-16T16:25:19,tts-Heami-degrade,tts-korean-accent,focus,grammar,meditate,focus,True,0.099
+2026-11-16T16:25:19,tts-Heami-degrade,tts-korean-accent,focus,filtered,meditate,focus,True,0.116
+2026-11-16T16:25:21,tts-Heami-degrade,tts-korean-accent,focus,free,may thirteen,none,False,1.428
+2026-11-16T16:25:21,tts-Heami-degrade,tts-korean-accent+noise10,focus,grammar,[unk],none,False,0.088
+2026-11-16T16:25:21,tts-Heami-degrade,tts-korean-accent+noise10,focus,filtered,[unk],none,False,0.058
+2026-11-16T16:25:23,tts-Heami-degrade,tts-korean-accent+noise10,focus,free,these are,none,False,2.037
+2026-11-16T16:25:23,tts-Heami-degrade,tts-korean-accent+noise5,focus,grammar,,none,False,0.104
+2026-11-16T16:25:23,tts-Heami-degrade,tts-korean-accent+noise5,focus,filtered,,none,False,0.103
+2026-11-16T16:25:25,tts-Heami-degrade,tts-korean-accent+noise5,focus,free,,none,False,1.901
+2026-11-16T16:25:25,tts-Heami-degrade,tts-korean-accent+muffled,focus,grammar,meditate,focus,True,0.075
+2026-11-16T16:25:26,tts-Heami-degrade,tts-korean-accent+muffled,focus,filtered,meditate,focus,True,0.064
+2026-11-16T16:25:27,tts-Heami-degrade,tts-korean-accent+muffled,focus,free,may thirteen,none,False,1.434
+2026-11-16T16:25:27,tts-Heami-degrade,tts-korean-accent+quiet,focus,grammar,meditate,focus,True,0.104
+2026-11-16T16:25:27,tts-Heami-degrade,tts-korean-accent+quiet,focus,filtered,meditate,focus,True,0.105
+2026-11-16T16:25:29,tts-Heami-degrade,tts-korean-accent+quiet,focus,free,may thirteen,none,False,1.645
+2026-11-16T16:25:29,tts-Heami-degrade,tts-korean-accent+fast,focus,grammar,meditate,focus,True,0.084
+2026-11-16T16:25:29,tts-Heami-degrade,tts-korean-accent+fast,focus,filtered,meditate,focus,True,0.085
+2026-11-16T16:25:30,tts-Heami-degrade,tts-korean-accent+fast,focus,free,may the,none,False,1.113
+2026-11-16T16:25:30,tts-Heami-degrade,tts-korean-accent+cut,focus,grammar,meditate,focus,True,0.072
+2026-11-16T16:25:30,tts-Heami-degrade,tts-korean-accent+cut,focus,filtered,meditate,focus,True,0.063
+2026-11-16T16:25:32,tts-Heami-degrade,tts-korean-accent+cut,focus,free,made that,none,False,1.463
+2026-11-16T16:25:32,tts-Heami-degrade,tts-korean-accent+mixed,focus,grammar,,none,False,0.083
+2026-11-16T16:25:32,tts-Heami-degrade,tts-korean-accent+mixed,focus,filtered,,none,False,0.044
+2026-11-16T16:25:34,tts-Heami-degrade,tts-korean-accent+mixed,focus,free,the,none,False,1.561
+2026-11-16T16:25:34,tts-Heami-degrade,tts-korean-accent,heal,grammar,heal,heal,True,0.085
+2026-11-16T16:25:34,tts-Heami-degrade,tts-korean-accent,heal,filtered,heal,heal,True,0.107
+2026-11-16T16:25:35,tts-Heami-degrade,tts-korean-accent,heal,free,here,none,False,1.109
+2026-11-16T16:25:35,tts-Heami-degrade,tts-korean-accent+noise10,heal,grammar,,none,False,0.042
+2026-11-16T16:25:35,tts-Heami-degrade,tts-korean-accent+noise10,heal,filtered,,none,False,0.079
+2026-11-16T16:25:36,tts-Heami-degrade,tts-korean-accent+noise10,heal,free,the,none,False,0.949
+2026-11-16T16:25:36,tts-Heami-degrade,tts-korean-accent+noise5,heal,grammar,,none,False,0.081
+2026-11-16T16:25:36,tts-Heami-degrade,tts-korean-accent+noise5,heal,filtered,,none,False,0.097
+2026-11-16T16:25:37,tts-Heami-degrade,tts-korean-accent+noise5,heal,free,the,none,False,0.832
+2026-11-16T16:25:37,tts-Heami-degrade,tts-korean-accent+muffled,heal,grammar,heal,heal,True,0.087
+2026-11-16T16:25:37,tts-Heami-degrade,tts-korean-accent+muffled,heal,filtered,heal,heal,True,0.085
+2026-11-16T16:25:38,tts-Heami-degrade,tts-korean-accent+muffled,heal,free,who,none,False,0.94
+2026-11-16T16:25:38,tts-Heami-degrade,tts-korean-accent+quiet,heal,grammar,heal,heal,True,0.103
+2026-11-16T16:25:38,tts-Heami-degrade,tts-korean-accent+quiet,heal,filtered,heal,heal,True,0.076
+2026-11-16T16:25:39,tts-Heami-degrade,tts-korean-accent+quiet,heal,free,he,none,False,0.688
+2026-11-16T16:25:39,tts-Heami-degrade,tts-korean-accent+fast,heal,grammar,heal,heal,True,0.055
+2026-11-16T16:25:39,tts-Heami-degrade,tts-korean-accent+fast,heal,filtered,heal,heal,True,0.031
+2026-11-16T16:25:40,tts-Heami-degrade,tts-korean-accent+fast,heal,free,he,none,False,0.8
+2026-11-16T16:25:40,tts-Heami-degrade,tts-korean-accent+cut,heal,grammar,heal,heal,True,0.043
+2026-11-16T16:25:40,tts-Heami-degrade,tts-korean-accent+cut,heal,filtered,heal,heal,True,0.048
+2026-11-16T16:25:41,tts-Heami-degrade,tts-korean-accent+cut,heal,free,yeah,none,False,0.654
+2026-11-16T16:25:41,tts-Heami-degrade,tts-korean-accent+mixed,heal,grammar,,none,False,0.06
+2026-11-16T16:25:41,tts-Heami-degrade,tts-korean-accent+mixed,heal,filtered,,none,False,0.059
+2026-11-16T16:25:42,tts-Heami-degrade,tts-korean-accent+mixed,heal,free,,none,False,0.989
+2026-11-16T16:25:42,tts-Heami-degrade,tts-korean-accent,heal,grammar,cure,heal,True,0.125
+2026-11-16T16:25:42,tts-Heami-degrade,tts-korean-accent,heal,filtered,cure,heal,True,0.111
+2026-11-16T16:25:43,tts-Heami-degrade,tts-korean-accent,heal,free,cool,none,False,1.154
+2026-11-16T16:25:43,tts-Heami-degrade,tts-korean-accent+noise10,heal,grammar,,none,False,0.073
+2026-11-16T16:25:44,tts-Heami-degrade,tts-korean-accent+noise10,heal,filtered,,none,False,0.045
+2026-11-16T16:25:45,tts-Heami-degrade,tts-korean-accent+noise10,heal,free,though,none,False,1.187
+2026-11-16T16:25:45,tts-Heami-degrade,tts-korean-accent+noise5,heal,grammar,,none,False,0.086
+2026-11-16T16:25:45,tts-Heami-degrade,tts-korean-accent+noise5,heal,filtered,,none,False,0.084
+2026-11-16T16:25:46,tts-Heami-degrade,tts-korean-accent+noise5,heal,free,yeah,none,False,1.222
+2026-11-16T16:25:46,tts-Heami-degrade,tts-korean-accent+muffled,heal,grammar,cure,heal,True,0.087
+2026-11-16T16:25:46,tts-Heami-degrade,tts-korean-accent+muffled,heal,filtered,cure,heal,True,0.083
+2026-11-16T16:25:48,tts-Heami-degrade,tts-korean-accent+muffled,heal,free,cool,none,False,1.241
+2026-11-16T16:25:48,tts-Heami-degrade,tts-korean-accent+quiet,heal,grammar,cure,heal,True,0.102
+2026-11-16T16:25:48,tts-Heami-degrade,tts-korean-accent+quiet,heal,filtered,cure,heal,True,0.096
+2026-11-16T16:25:49,tts-Heami-degrade,tts-korean-accent+quiet,heal,free,hour,none,False,0.955
+2026-11-16T16:25:49,tts-Heami-degrade,tts-korean-accent+fast,heal,grammar,cure,heal,True,0.067
+2026-11-16T16:25:49,tts-Heami-degrade,tts-korean-accent+fast,heal,filtered,cure,heal,True,0.061
+2026-11-16T16:25:50,tts-Heami-degrade,tts-korean-accent+fast,heal,free,club,none,False,1.203
+2026-11-16T16:25:50,tts-Heami-degrade,tts-korean-accent+cut,heal,grammar,cure,heal,True,0.061
+2026-11-16T16:25:50,tts-Heami-degrade,tts-korean-accent+cut,heal,filtered,cure,heal,True,0.058
+2026-11-16T16:25:51,tts-Heami-degrade,tts-korean-accent+cut,heal,free,grew up,none,False,1.107
+2026-11-16T16:25:52,tts-Heami-degrade,tts-korean-accent+mixed,heal,grammar,,none,False,0.08
+2026-11-16T16:25:52,tts-Heami-degrade,tts-korean-accent+mixed,heal,filtered,,none,False,0.105
+2026-11-16T16:25:53,tts-Heami-degrade,tts-korean-accent+mixed,heal,free,yeah,none,False,1.143
+2026-11-16T16:25:53,tts-Heami-degrade,tts-korean-accent,ice,grammar,ice,ice,True,0.105
+2026-11-16T16:25:53,tts-Heami-degrade,tts-korean-accent,ice,filtered,ice,ice,True,0.082
+2026-11-16T16:25:54,tts-Heami-degrade,tts-korean-accent,ice,free,i use it,none,False,0.974
+2026-11-16T16:25:54,tts-Heami-degrade,tts-korean-accent+noise10,ice,grammar,,none,False,0.106
+2026-11-16T16:25:54,tts-Heami-degrade,tts-korean-accent+noise10,ice,filtered,,none,False,0.079
+2026-11-16T16:25:55,tts-Heami-degrade,tts-korean-accent+noise10,ice,free,hi,none,False,1.228
+2026-11-16T16:25:56,tts-Heami-degrade,tts-korean-accent+noise5,ice,grammar,,none,False,0.094
+2026-11-16T16:25:56,tts-Heami-degrade,tts-korean-accent+noise5,ice,filtered,,none,False,0.101
+2026-11-16T16:25:57,tts-Heami-degrade,tts-korean-accent+noise5,ice,free,hi,none,False,1.352
+2026-11-16T16:25:57,tts-Heami-degrade,tts-korean-accent+muffled,ice,grammar,ice,ice,True,0.095
+2026-11-16T16:25:57,tts-Heami-degrade,tts-korean-accent+muffled,ice,filtered,ice,ice,True,0.092
+2026-11-16T16:25:58,tts-Heami-degrade,tts-korean-accent+muffled,ice,free,i see,none,False,1.061
+2026-11-16T16:25:59,tts-Heami-degrade,tts-korean-accent+quiet,ice,grammar,ice,ice,True,0.096
+2026-11-16T16:25:59,tts-Heami-degrade,tts-korean-accent+quiet,ice,filtered,ice,ice,True,0.084
+2026-11-16T16:26:00,tts-Heami-degrade,tts-korean-accent+quiet,ice,free,ice it,ice,True,0.938
+2026-11-16T16:26:00,tts-Heami-degrade,tts-korean-accent+fast,ice,grammar,[unk],none,False,0.075
+2026-11-16T16:26:00,tts-Heami-degrade,tts-korean-accent+fast,ice,filtered,[unk],none,False,0.075
+2026-11-16T16:26:01,tts-Heami-degrade,tts-korean-accent+fast,ice,free,i'll flip,none,False,1.312
+2026-11-16T16:26:01,tts-Heami-degrade,tts-korean-accent+cut,ice,grammar,ice,ice,True,0.062
+2026-11-16T16:26:01,tts-Heami-degrade,tts-korean-accent+cut,ice,filtered,ice,ice,True,0.07
+2026-11-16T16:26:02,tts-Heami-degrade,tts-korean-accent+cut,ice,free,ice,ice,True,1.25
+2026-11-16T16:26:03,tts-Heami-degrade,tts-korean-accent+mixed,ice,grammar,,none,False,0.041
+2026-11-16T16:26:03,tts-Heami-degrade,tts-korean-accent+mixed,ice,filtered,,none,False,0.056
+2026-11-16T16:26:04,tts-Heami-degrade,tts-korean-accent+mixed,ice,free,,none,False,1.187
+2026-11-16T16:26:04,tts-Heami-degrade,tts-korean-accent,ice,grammar,[unk],none,False,0.112
+2026-11-16T16:26:04,tts-Heami-degrade,tts-korean-accent,ice,filtered,[unk],none,False,0.1
+2026-11-16T16:26:06,tts-Heami-degrade,tts-korean-accent,ice,free,pretty to,none,False,1.609
+2026-11-16T16:26:06,tts-Heami-degrade,tts-korean-accent+noise10,ice,grammar,[unk],none,False,0.204
+2026-11-16T16:26:06,tts-Heami-degrade,tts-korean-accent+noise10,ice,filtered,[unk],none,False,0.093
+2026-11-16T16:26:08,tts-Heami-degrade,tts-korean-accent+noise10,ice,free,the to,none,False,1.86
+2026-11-16T16:26:08,tts-Heami-degrade,tts-korean-accent+noise5,ice,grammar,,none,False,0.092
+2026-11-16T16:26:08,tts-Heami-degrade,tts-korean-accent+noise5,ice,filtered,,none,False,0.077
+2026-11-16T16:26:10,tts-Heami-degrade,tts-korean-accent+noise5,ice,free,the,none,False,1.583
+2026-11-16T16:26:10,tts-Heami-degrade,tts-korean-accent+muffled,ice,grammar,protect,shield,False,0.102
+2026-11-16T16:26:10,tts-Heami-degrade,tts-korean-accent+muffled,ice,filtered,protect,shield,False,0.12
+2026-11-16T16:26:11,tts-Heami-degrade,tts-korean-accent+muffled,ice,free,what he did,none,False,0.946
+2026-11-16T16:26:11,tts-Heami-degrade,tts-korean-accent+quiet,ice,grammar,protect,shield,False,0.099
+2026-11-16T16:26:11,tts-Heami-degrade,tts-korean-accent+quiet,ice,filtered,protect,shield,False,0.082
+2026-11-16T16:26:12,tts-Heami-degrade,tts-korean-accent+quiet,ice,free,pretty to,none,False,1.063
+2026-11-16T16:26:12,tts-Heami-degrade,tts-korean-accent+fast,ice,grammar,protect,shield,False,0.036
+2026-11-16T16:26:12,tts-Heami-degrade,tts-korean-accent+fast,ice,filtered,protect,shield,False,0.049
+2026-11-16T16:26:13,tts-Heami-degrade,tts-korean-accent+fast,ice,free,pretty cool,none,False,1.087
+2026-11-16T16:26:13,tts-Heami-degrade,tts-korean-accent+cut,ice,grammar,[unk],none,False,0.073
+2026-11-16T16:26:14,tts-Heami-degrade,tts-korean-accent+cut,ice,filtered,[unk],none,False,0.078
+2026-11-16T16:26:15,tts-Heami-degrade,tts-korean-accent+cut,ice,free,pretty to,none,False,1.026
+2026-11-16T16:26:15,tts-Heami-degrade,tts-korean-accent+mixed,ice,grammar,,none,False,0.08
+2026-11-16T16:26:15,tts-Heami-degrade,tts-korean-accent+mixed,ice,filtered,,none,False,0.07
+2026-11-16T16:26:16,tts-Heami-degrade,tts-korean-accent+mixed,ice,free,for,none,False,1.467
+2026-11-16T16:26:16,tts-Heami-degrade,tts-korean-accent,lightning,grammar,lightening,lightning,True,0.079
+2026-11-16T16:26:16,tts-Heami-degrade,tts-korean-accent,lightning,filtered,lightening,lightning,True,0.079
+2026-11-16T16:26:18,tts-Heami-degrade,tts-korean-accent,lightning,free,the union,none,False,1.401
+2026-11-16T16:26:18,tts-Heami-degrade,tts-korean-accent+noise10,lightning,grammar,,none,False,0.103
+2026-11-16T16:26:18,tts-Heami-degrade,tts-korean-accent+noise10,lightning,filtered,,none,False,0.096
+2026-11-16T16:26:19,tts-Heami-degrade,tts-korean-accent+noise10,lightning,free,then,none,False,1.157
+2026-11-16T16:26:19,tts-Heami-degrade,tts-korean-accent+noise5,lightning,grammar,,none,False,0.117
+2026-11-16T16:26:20,tts-Heami-degrade,tts-korean-accent+noise5,lightning,filtered,,none,False,0.081
+2026-11-16T16:26:21,tts-Heami-degrade,tts-korean-accent+noise5,lightning,free,that,none,False,1.08
+2026-11-16T16:26:21,tts-Heami-degrade,tts-korean-accent+muffled,lightning,grammar,lightning,lightning,True,0.099
+2026-11-16T16:26:21,tts-Heami-degrade,tts-korean-accent+muffled,lightning,filtered,lightning,lightning,True,0.101
+2026-11-16T16:26:22,tts-Heami-degrade,tts-korean-accent+muffled,lightning,free,while new,none,False,1.183
+2026-11-16T16:26:22,tts-Heami-degrade,tts-korean-accent+quiet,lightning,grammar,lightning,lightning,True,0.088
+2026-11-16T16:26:22,tts-Heami-degrade,tts-korean-accent+quiet,lightning,filtered,lightning,lightning,True,0.095
+2026-11-16T16:26:24,tts-Heami-degrade,tts-korean-accent+quiet,lightning,free,the union,none,False,1.373
+2026-11-16T16:26:24,tts-Heami-degrade,tts-korean-accent+fast,lightning,grammar,lightening,lightning,True,0.098
+2026-11-16T16:26:24,tts-Heami-degrade,tts-korean-accent+fast,lightning,filtered,,none,False,0.096
+2026-11-16T16:26:25,tts-Heami-degrade,tts-korean-accent+fast,lightning,free,one,none,False,1.491
+2026-11-16T16:26:26,tts-Heami-degrade,tts-korean-accent+cut,lightning,grammar,lightening,lightning,True,0.074
+2026-11-16T16:26:26,tts-Heami-degrade,tts-korean-accent+cut,lightning,filtered,lightening,lightning,True,0.081
+2026-11-16T16:26:27,tts-Heami-degrade,tts-korean-accent+cut,lightning,free,right now,none,False,0.968
+2026-11-16T16:26:27,tts-Heami-degrade,tts-korean-accent+mixed,lightning,grammar,,none,False,0.04
+2026-11-16T16:26:27,tts-Heami-degrade,tts-korean-accent+mixed,lightning,filtered,,none,False,0.065
+2026-11-16T16:26:28,tts-Heami-degrade,tts-korean-accent+mixed,lightning,free,mommy,none,False,1.384
+2026-11-16T16:26:28,tts-Heami-degrade,tts-korean-accent,lightning,grammar,thunder,lightning,True,0.098
+2026-11-16T16:26:28,tts-Heami-degrade,tts-korean-accent,lightning,filtered,thunder,lightning,True,0.097
+2026-11-16T16:26:30,tts-Heami-degrade,tts-korean-accent,lightning,free,sundar,none,False,1.354
+2026-11-16T16:26:30,tts-Heami-degrade,tts-korean-accent+noise10,lightning,grammar,thunder,lightning,True,0.098
+2026-11-16T16:26:30,tts-Heami-degrade,tts-korean-accent+noise10,lightning,filtered,thunder,lightning,True,0.066
+2026-11-16T16:26:31,tts-Heami-degrade,tts-korean-accent+noise10,lightning,free,hunter,none,False,1.398
+2026-11-16T16:26:31,tts-Heami-degrade,tts-korean-accent+noise5,lightning,grammar,,none,False,0.086
+2026-11-16T16:26:32,tts-Heami-degrade,tts-korean-accent+noise5,lightning,filtered,,none,False,0.097
+2026-11-16T16:26:33,tts-Heami-degrade,tts-korean-accent+noise5,lightning,free,,none,False,1.408
+2026-11-16T16:26:33,tts-Heami-degrade,tts-korean-accent+muffled,lightning,grammar,thunder,lightning,True,0.059
+2026-11-16T16:26:33,tts-Heami-degrade,tts-korean-accent+muffled,lightning,filtered,thunder,lightning,True,0.052
+2026-11-16T16:26:34,tts-Heami-degrade,tts-korean-accent+muffled,lightning,free,thunder,lightning,True,0.884
+2026-11-16T16:26:34,tts-Heami-degrade,tts-korean-accent+quiet,lightning,grammar,thunder,lightning,True,0.052
+2026-11-16T16:26:34,tts-Heami-degrade,tts-korean-accent+quiet,lightning,filtered,thunder,lightning,True,0.047
+2026-11-16T16:26:35,tts-Heami-degrade,tts-korean-accent+quiet,lightning,free,sundar,none,False,0.847
+2026-11-16T16:26:35,tts-Heami-degrade,tts-korean-accent+fast,lightning,grammar,thunder,lightning,True,0.073
+2026-11-16T16:26:35,tts-Heami-degrade,tts-korean-accent+fast,lightning,filtered,thunder,lightning,True,0.085
+2026-11-16T16:26:36,tts-Heami-degrade,tts-korean-accent+fast,lightning,free,work,none,False,1.191
+2026-11-16T16:26:36,tts-Heami-degrade,tts-korean-accent+cut,lightning,grammar,thunder,lightning,True,0.04
+2026-11-16T16:26:36,tts-Heami-degrade,tts-korean-accent+cut,lightning,filtered,thunder,lightning,True,0.037
+2026-11-16T16:26:37,tts-Heami-degrade,tts-korean-accent+cut,lightning,free,sunday,none,False,1.07
+2026-11-16T16:26:38,tts-Heami-degrade,tts-korean-accent+mixed,lightning,grammar,,none,False,0.049
+2026-11-16T16:26:38,tts-Heami-degrade,tts-korean-accent+mixed,lightning,filtered,,none,False,0.079
+2026-11-16T16:26:39,tts-Heami-degrade,tts-korean-accent+mixed,lightning,free,the one,none,False,1.35
+2026-11-16T16:26:39,tts-Heami-degrade,tts-korean-accent,meteor,grammar,meteor,meteor,True,0.118
+2026-11-16T16:26:39,tts-Heami-degrade,tts-korean-accent,meteor,filtered,meteor,meteor,True,0.09
+2026-11-16T16:26:40,tts-Heami-degrade,tts-korean-accent,meteor,free,meet ya,none,False,1.052
+2026-11-16T16:26:40,tts-Heami-degrade,tts-korean-accent+noise10,meteor,grammar,meteor,meteor,True,0.097
+2026-11-16T16:26:40,tts-Heami-degrade,tts-korean-accent+noise10,meteor,filtered,meteor,meteor,True,0.077
+2026-11-16T16:26:42,tts-Heami-degrade,tts-korean-accent+noise10,meteor,free,me feel,none,False,1.469
+2026-11-16T16:26:42,tts-Heami-degrade,tts-korean-accent+noise5,meteor,grammar,,none,False,0.049
+2026-11-16T16:26:42,tts-Heami-degrade,tts-korean-accent+noise5,meteor,filtered,,none,False,0.053
+2026-11-16T16:26:43,tts-Heami-degrade,tts-korean-accent+noise5,meteor,free,the,none,False,1.086
+2026-11-16T16:26:43,tts-Heami-degrade,tts-korean-accent+muffled,meteor,grammar,meteor,meteor,True,0.071
+2026-11-16T16:26:43,tts-Heami-degrade,tts-korean-accent+muffled,meteor,filtered,meteor,meteor,True,0.059
+2026-11-16T16:26:45,tts-Heami-degrade,tts-korean-accent+muffled,meteor,free,me appeal,none,False,1.149
+2026-11-16T16:26:45,tts-Heami-degrade,tts-korean-accent+quiet,meteor,grammar,meteor,meteor,True,0.117
+2026-11-16T16:26:45,tts-Heami-degrade,tts-korean-accent+quiet,meteor,filtered,meteor,meteor,True,0.107
+2026-11-16T16:26:46,tts-Heami-degrade,tts-korean-accent+quiet,meteor,free,meet ya,none,False,1.158
+2026-11-16T16:26:46,tts-Heami-degrade,tts-korean-accent+fast,meteor,grammar,meteor,meteor,True,0.038
+2026-11-16T16:26:46,tts-Heami-degrade,tts-korean-accent+fast,meteor,filtered,meteor,meteor,True,0.058
+2026-11-16T16:26:48,tts-Heami-degrade,tts-korean-accent+fast,meteor,free,nokia,none,False,1.463
+2026-11-16T16:26:48,tts-Heami-degrade,tts-korean-accent+cut,meteor,grammar,meteor,meteor,True,0.083
+2026-11-16T16:26:48,tts-Heami-degrade,tts-korean-accent+cut,meteor,filtered,meteor,meteor,True,0.085
+2026-11-16T16:26:49,tts-Heami-degrade,tts-korean-accent+cut,meteor,free,meet you,none,False,1.259
+2026-11-16T16:26:49,tts-Heami-degrade,tts-korean-accent+mixed,meteor,grammar,[unk],none,False,0.048
+2026-11-16T16:26:49,tts-Heami-degrade,tts-korean-accent+mixed,meteor,filtered,[unk],none,False,0.076
+2026-11-16T16:26:51,tts-Heami-degrade,tts-korean-accent+mixed,meteor,free,the more,none,False,1.729
+2026-11-16T16:26:51,tts-Heami-degrade,tts-korean-accent,none,grammar,heal [unk],heal,False,0.118
+2026-11-16T16:26:51,tts-Heami-degrade,tts-korean-accent,none,filtered,heal [unk],none,True,0.129
+2026-11-16T16:26:52,tts-Heami-degrade,tts-korean-accent,none,free,hello deal,none,True,1.188
+2026-11-16T16:26:53,tts-Heami-degrade,tts-korean-accent+noise10,none,grammar,heal,heal,False,0.122
+2026-11-16T16:26:53,tts-Heami-degrade,tts-korean-accent+noise10,none,filtered,heal,none,True,0.125
+2026-11-16T16:26:55,tts-Heami-degrade,tts-korean-accent+noise10,none,free,the mafia,none,True,1.955
+2026-11-16T16:26:55,tts-Heami-degrade,tts-korean-accent+noise5,none,grammar,,none,True,0.081
+2026-11-16T16:26:55,tts-Heami-degrade,tts-korean-accent+noise5,none,filtered,,none,True,0.061
+2026-11-16T16:26:57,tts-Heami-degrade,tts-korean-accent+noise5,none,free,yeah,none,True,1.964
+2026-11-16T16:26:57,tts-Heami-degrade,tts-korean-accent+muffled,none,grammar,heal [unk],heal,False,0.131
+2026-11-16T16:26:57,tts-Heami-degrade,tts-korean-accent+muffled,none,filtered,heal [unk],none,True,0.123
+2026-11-16T16:26:59,tts-Heami-degrade,tts-korean-accent+muffled,none,free,hello there,none,True,1.374
+2026-11-16T16:26:59,tts-Heami-degrade,tts-korean-accent+quiet,none,grammar,heal [unk],heal,False,0.101
+2026-11-16T16:26:59,tts-Heami-degrade,tts-korean-accent+quiet,none,filtered,heal [unk],none,True,0.081
+2026-11-16T16:27:01,tts-Heami-degrade,tts-korean-accent+quiet,none,free,hello deal,none,True,1.841
+2026-11-16T16:27:01,tts-Heami-degrade,tts-korean-accent+fast,none,grammar,heal [unk],heal,False,0.078
+2026-11-16T16:27:01,tts-Heami-degrade,tts-korean-accent+fast,none,filtered,heal [unk],none,True,0.057
+2026-11-16T16:27:02,tts-Heami-degrade,tts-korean-accent+fast,none,free,hey look out,none,True,0.942
+2026-11-16T16:27:02,tts-Heami-degrade,tts-korean-accent+cut,none,grammar,heal [unk],heal,False,0.073
+2026-11-16T16:27:02,tts-Heami-degrade,tts-korean-accent+cut,none,filtered,heal [unk],none,True,0.073
+2026-11-16T16:27:03,tts-Heami-degrade,tts-korean-accent+cut,none,free,hello there,none,True,1.133
+2026-11-16T16:27:03,tts-Heami-degrade,tts-korean-accent+mixed,none,grammar,[unk],none,True,0.046
+2026-11-16T16:27:03,tts-Heami-degrade,tts-korean-accent+mixed,none,filtered,[unk],none,True,0.076
+2026-11-16T16:27:05,tts-Heami-degrade,tts-korean-accent+mixed,none,free,the born,none,True,1.782
+2026-11-16T16:27:05,tts-Heami-degrade,tts-korean-accent,none,grammar,[unk],none,True,0.184
+2026-11-16T16:27:05,tts-Heami-degrade,tts-korean-accent,none,filtered,[unk],none,True,0.151
+2026-11-16T16:27:07,tts-Heami-degrade,tts-korean-accent,none,free,what to pay pain easy to,none,True,1.795
+2026-11-16T16:27:07,tts-Heami-degrade,tts-korean-accent+noise10,none,grammar,[unk],none,True,0.114
+2026-11-16T16:27:08,tts-Heami-degrade,tts-korean-accent+noise10,none,filtered,[unk],none,True,0.179
+2026-11-16T16:27:10,tts-Heami-degrade,tts-korean-accent+noise10,none,free,easy,none,True,2.337
+2026-11-16T16:27:10,tts-Heami-degrade,tts-korean-accent+noise5,none,grammar,,none,True,0.142
+2026-11-16T16:27:10,tts-Heami-degrade,tts-korean-accent+noise5,none,filtered,,none,True,0.087
+2026-11-16T16:27:12,tts-Heami-degrade,tts-korean-accent+noise5,none,free,he,none,True,2.252
+2026-11-16T16:27:13,tts-Heami-degrade,tts-korean-accent+muffled,none,grammar,[unk],none,True,0.139
+2026-11-16T16:27:13,tts-Heami-degrade,tts-korean-accent+muffled,none,filtered,[unk],none,True,0.138
+2026-11-16T16:27:15,tts-Heami-degrade,tts-korean-accent+muffled,none,free,what the pain easy to,none,True,1.781
+2026-11-16T16:27:15,tts-Heami-degrade,tts-korean-accent+quiet,none,grammar,[unk],none,True,0.141
+2026-11-16T16:27:15,tts-Heami-degrade,tts-korean-accent+quiet,none,filtered,[unk],none,True,0.158
+2026-11-16T16:27:17,tts-Heami-degrade,tts-korean-accent+quiet,none,free,what to pay pain easy to,none,True,1.93
+2026-11-16T16:27:17,tts-Heami-degrade,tts-korean-accent+fast,none,grammar,[unk],none,True,0.121
+2026-11-16T16:27:17,tts-Heami-degrade,tts-korean-accent+fast,none,filtered,[unk],none,True,0.113
+2026-11-16T16:27:20,tts-Heami-degrade,tts-korean-accent+fast,none,free,like a t v pick,none,True,2.771
+2026-11-16T16:27:20,tts-Heami-degrade,tts-korean-accent+cut,none,grammar,[unk],none,True,0.074
+2026-11-16T16:27:20,tts-Heami-degrade,tts-korean-accent+cut,none,filtered,[unk],none,True,0.1
+2026-11-16T16:27:21,tts-Heami-degrade,tts-korean-accent+cut,none,free,what to pay pain easy,none,True,1.277
+2026-11-16T16:27:22,tts-Heami-degrade,tts-korean-accent+mixed,none,grammar,,none,True,0.08
+2026-11-16T16:27:22,tts-Heami-degrade,tts-korean-accent+mixed,none,filtered,,none,True,0.071
+2026-11-16T16:27:24,tts-Heami-degrade,tts-korean-accent+mixed,none,free,for,none,True,2.224
+2026-11-16T16:27:24,tts-Heami-degrade,tts-korean-accent,none,grammar,[unk],none,True,0.142
+2026-11-16T16:27:24,tts-Heami-degrade,tts-korean-accent,none,filtered,[unk],none,True,0.17
+2026-11-16T16:27:26,tts-Heami-degrade,tts-korean-accent,none,free,i like pizza so,none,True,1.919
+2026-11-16T16:27:27,tts-Heami-degrade,tts-korean-accent+noise10,none,grammar,[unk] defend,shield,False,0.183
+2026-11-16T16:27:27,tts-Heami-degrade,tts-korean-accent+noise10,none,filtered,[unk] defend,none,True,0.162
+2026-11-16T16:27:29,tts-Heami-degrade,tts-korean-accent+noise10,none,free,hi right now,none,True,2.429
+2026-11-16T16:27:29,tts-Heami-degrade,tts-korean-accent+noise5,none,grammar,,none,True,0.099
+2026-11-16T16:27:29,tts-Heami-degrade,tts-korean-accent+noise5,none,filtered,,none,True,0.108
+2026-11-16T16:27:32,tts-Heami-degrade,tts-korean-accent+noise5,none,free,hi,none,True,2.421
+2026-11-16T16:27:32,tts-Heami-degrade,tts-korean-accent+muffled,none,grammar,[unk],none,True,0.093
+2026-11-16T16:27:32,tts-Heami-degrade,tts-korean-accent+muffled,none,filtered,[unk],none,True,0.075
+2026-11-16T16:27:34,tts-Heami-degrade,tts-korean-accent+muffled,none,free,i like pizza so,none,True,1.887
+2026-11-16T16:27:34,tts-Heami-degrade,tts-korean-accent+quiet,none,grammar,[unk],none,True,0.132
+2026-11-16T16:27:34,tts-Heami-degrade,tts-korean-accent+quiet,none,filtered,[unk],none,True,0.141
+2026-11-16T16:27:36,tts-Heami-degrade,tts-korean-accent+quiet,none,free,i like pizza so,none,True,1.761
+2026-11-16T16:27:36,tts-Heami-degrade,tts-korean-accent+fast,none,grammar,[unk],none,True,0.091
+2026-11-16T16:27:36,tts-Heami-degrade,tts-korean-accent+fast,none,filtered,[unk],none,True,0.121
+2026-11-16T16:27:39,tts-Heami-degrade,tts-korean-accent+fast,none,free,i'll pick a felt,none,True,2.941
+2026-11-16T16:27:39,tts-Heami-degrade,tts-korean-accent+cut,none,grammar,[unk],none,True,0.123
+2026-11-16T16:27:40,tts-Heami-degrade,tts-korean-accent+cut,none,filtered,[unk],none,True,0.119
+2026-11-16T16:27:41,tts-Heami-degrade,tts-korean-accent+cut,none,free,i like pete,none,True,1.536
+2026-11-16T16:27:41,tts-Heami-degrade,tts-korean-accent+mixed,none,grammar,,none,True,0.123
+2026-11-16T16:27:42,tts-Heami-degrade,tts-korean-accent+mixed,none,filtered,,none,True,0.148
+2026-11-16T16:27:44,tts-Heami-degrade,tts-korean-accent+mixed,none,free,oh wow,none,True,2.564
+2026-11-16T16:27:44,tts-Heami-degrade,tts-korean-accent,shield,grammar,[unk],none,False,0.114
+2026-11-16T16:27:44,tts-Heami-degrade,tts-korean-accent,shield,filtered,[unk],none,False,0.112
+2026-11-16T16:27:46,tts-Heami-degrade,tts-korean-accent,shield,free,she did,none,False,2.118
+2026-11-16T16:27:47,tts-Heami-degrade,tts-korean-accent+noise10,shield,grammar,[unk],none,False,0.131
+2026-11-16T16:27:47,tts-Heami-degrade,tts-korean-accent+noise10,shield,filtered,[unk],none,False,0.126
+2026-11-16T16:27:49,tts-Heami-degrade,tts-korean-accent+noise10,shield,free,they do,none,False,1.968
+2026-11-16T16:27:49,tts-Heami-degrade,tts-korean-accent+noise5,shield,grammar,,none,False,0.1
+2026-11-16T16:27:49,tts-Heami-degrade,tts-korean-accent+noise5,shield,filtered,,none,False,0.105
+2026-11-16T16:27:51,tts-Heami-degrade,tts-korean-accent+noise5,shield,free,the,none,False,1.794
+2026-11-16T16:27:51,tts-Heami-degrade,tts-korean-accent+muffled,shield,grammar,heal,heal,False,0.126
+2026-11-16T16:27:51,tts-Heami-degrade,tts-korean-accent+muffled,shield,filtered,thunder,lightning,False,0.117
+2026-11-16T16:27:53,tts-Heami-degrade,tts-korean-accent+muffled,shield,free,he did,none,False,1.504
+2026-11-16T16:27:53,tts-Heami-degrade,tts-korean-accent+quiet,shield,grammar,[unk],none,False,0.102
+2026-11-16T16:27:53,tts-Heami-degrade,tts-korean-accent+quiet,shield,filtered,[unk],none,False,0.12
+2026-11-16T16:27:55,tts-Heami-degrade,tts-korean-accent+quiet,shield,free,she did,none,False,2.124
+2026-11-16T16:27:55,tts-Heami-degrade,tts-korean-accent+fast,shield,grammar,fireball,fireball,False,0.09
+2026-11-16T16:27:55,tts-Heami-degrade,tts-korean-accent+fast,shield,filtered,fireball,fireball,False,0.092
+2026-11-16T16:27:57,tts-Heami-degrade,tts-korean-accent+fast,shield,free,siegel,none,False,2.06
+2026-11-16T16:27:57,tts-Heami-degrade,tts-korean-accent+cut,shield,grammar,shield,shield,True,0.096
+2026-11-16T16:27:58,tts-Heami-degrade,tts-korean-accent+cut,shield,filtered,shield,shield,True,0.083
+2026-11-16T16:27:59,tts-Heami-degrade,tts-korean-accent+cut,shield,free,sid,none,False,1.846
+2026-11-16T16:28:00,tts-Heami-degrade,tts-korean-accent+mixed,shield,grammar,,none,False,0.107
+2026-11-16T16:28:00,tts-Heami-degrade,tts-korean-accent+mixed,shield,filtered,,none,False,0.09
+2026-11-16T16:28:01,tts-Heami-degrade,tts-korean-accent+mixed,shield,free,the both,none,False,1.745
+2026-11-16T16:28:02,tts-Heami-degrade,tts-korean-accent,shield,grammar,protect heal,shield,True,0.12
+2026-11-16T16:28:02,tts-Heami-degrade,tts-korean-accent,shield,filtered,protect heal,shield,True,0.129
+2026-11-16T16:28:04,tts-Heami-degrade,tts-korean-accent,shield,free,predicted too,none,False,1.975
+2026-11-16T16:28:04,tts-Heami-degrade,tts-korean-accent+noise10,shield,grammar,,none,False,0.132
+2026-11-16T16:28:04,tts-Heami-degrade,tts-korean-accent+noise10,shield,filtered,,none,False,0.156
+2026-11-16T16:28:07,tts-Heami-degrade,tts-korean-accent+noise10,shield,free,that you,none,False,2.554
+2026-11-16T16:28:07,tts-Heami-degrade,tts-korean-accent+noise5,shield,grammar,,none,False,0.137
+2026-11-16T16:28:07,tts-Heami-degrade,tts-korean-accent+noise5,shield,filtered,,none,False,0.119
+2026-11-16T16:28:09,tts-Heami-degrade,tts-korean-accent+noise5,shield,free,the,none,False,2.135
+2026-11-16T16:28:09,tts-Heami-degrade,tts-korean-accent+muffled,shield,grammar,protect,shield,True,0.121
+2026-11-16T16:28:09,tts-Heami-degrade,tts-korean-accent+muffled,shield,filtered,protect,shield,True,0.12
+2026-11-16T16:28:12,tts-Heami-degrade,tts-korean-accent+muffled,shield,free,i did too,none,False,2.227
+2026-11-16T16:28:12,tts-Heami-degrade,tts-korean-accent+quiet,shield,grammar,protect,shield,True,0.121
+2026-11-16T16:28:12,tts-Heami-degrade,tts-korean-accent+quiet,shield,filtered,protect,shield,True,0.125
+2026-11-16T16:28:13,tts-Heami-degrade,tts-korean-accent+quiet,shield,free,productive,none,False,1.496
+2026-11-16T16:28:14,tts-Heami-degrade,tts-korean-accent+fast,shield,grammar,protect,shield,True,0.093
+2026-11-16T16:28:14,tts-Heami-degrade,tts-korean-accent+fast,shield,filtered,protect,shield,True,0.09
+2026-11-16T16:28:16,tts-Heami-degrade,tts-korean-accent+fast,shield,free,could i could keep,none,False,2.151
+2026-11-16T16:28:16,tts-Heami-degrade,tts-korean-accent+cut,shield,grammar,protect,shield,True,0.077
+2026-11-16T16:28:16,tts-Heami-degrade,tts-korean-accent+cut,shield,filtered,protect,shield,True,0.077
+2026-11-16T16:28:18,tts-Heami-degrade,tts-korean-accent+cut,shield,free,productive,none,False,1.872
+2026-11-16T16:28:18,tts-Heami-degrade,tts-korean-accent+mixed,shield,grammar,,none,False,0.088
+2026-11-16T16:28:18,tts-Heami-degrade,tts-korean-accent+mixed,shield,filtered,,none,False,0.088
+2026-11-16T16:28:20,tts-Heami-degrade,tts-korean-accent+mixed,shield,free,nothing,none,False,2.121
+2026-11-16T16:28:23,tts-DavidFast-degrade,tts-fast-speech,drain,grammar,drain,drain,True,0.058
+2026-11-16T16:28:23,tts-DavidFast-degrade,tts-fast-speech,drain,filtered,drain,drain,True,0.055
+2026-11-16T16:28:25,tts-DavidFast-degrade,tts-fast-speech,drain,free,print,none,False,1.17
+2026-11-16T16:28:25,tts-DavidFast-degrade,tts-fast-speech,fireball,grammar,fireball,fireball,True,0.049
+2026-11-16T16:28:25,tts-DavidFast-degrade,tts-fast-speech,fireball,filtered,fireball,fireball,True,0.055
+2026-11-16T16:28:26,tts-DavidFast-degrade,tts-fast-speech,fireball,free,viable,none,False,1.525
+2026-11-16T16:28:26,tts-DavidFast-degrade,tts-fast-speech,fireball,grammar,fireball,fireball,True,0.059
+2026-11-16T16:28:26,tts-DavidFast-degrade,tts-fast-speech,fireball,filtered,fireball,fireball,True,0.06
+2026-11-16T16:28:28,tts-DavidFast-degrade,tts-fast-speech,fireball,free,fireball,fireball,True,1.486
+2026-11-16T16:28:28,tts-DavidFast-degrade,tts-fast-speech,focus,grammar,focus,focus,True,0.051
+2026-11-16T16:28:28,tts-DavidFast-degrade,tts-fast-speech,focus,filtered,focus,focus,True,0.049
+2026-11-16T16:28:29,tts-DavidFast-degrade,tts-fast-speech,focus,free,focus,focus,True,1.561
+2026-11-16T16:28:30,tts-DavidFast-degrade,tts-fast-speech,focus,grammar,meditate,focus,True,0.049
+2026-11-16T16:28:30,tts-DavidFast-degrade,tts-fast-speech,focus,filtered,meditate,focus,True,0.052
+2026-11-16T16:28:31,tts-DavidFast-degrade,tts-fast-speech,focus,free,medic,none,False,1.705
+2026-11-16T16:28:31,tts-DavidFast-degrade,tts-fast-speech,heal,grammar,heal,heal,True,0.048
+2026-11-16T16:28:31,tts-DavidFast-degrade,tts-fast-speech,heal,filtered,heal,heal,True,0.047
+2026-11-16T16:28:32,tts-DavidFast-degrade,tts-fast-speech,heal,free,you,none,False,1.028
+2026-11-16T16:28:32,tts-DavidFast-degrade,tts-fast-speech,heal,grammar,cure,heal,True,0.051
+2026-11-16T16:28:33,tts-DavidFast-degrade,tts-fast-speech,heal,filtered,cure,heal,True,0.058
+2026-11-16T16:28:34,tts-DavidFast-degrade,tts-fast-speech,heal,free,your,none,False,1.27
+2026-11-16T16:28:34,tts-DavidFast-degrade,tts-fast-speech,ice,grammar,ice,ice,True,0.046
+2026-11-16T16:28:34,tts-DavidFast-degrade,tts-fast-speech,ice,filtered,ice,ice,True,0.054
+2026-11-16T16:28:35,tts-DavidFast-degrade,tts-fast-speech,ice,free,ice,ice,True,1.125
+2026-11-16T16:28:35,tts-DavidFast-degrade,tts-fast-speech,ice,grammar,freeze,ice,True,0.056
+2026-11-16T16:28:35,tts-DavidFast-degrade,tts-fast-speech,ice,filtered,freeze,ice,True,0.054
+2026-11-16T16:28:36,tts-DavidFast-degrade,tts-fast-speech,ice,free,freeze,ice,True,1.186
+2026-11-16T16:28:36,tts-DavidFast-degrade,tts-fast-speech,lightning,grammar,lightning,lightning,True,0.061
+2026-11-16T16:28:36,tts-DavidFast-degrade,tts-fast-speech,lightning,filtered,lightning,lightning,True,0.054
+2026-11-16T16:28:38,tts-DavidFast-degrade,tts-fast-speech,lightning,free,like,none,False,1.181
+2026-11-16T16:28:38,tts-DavidFast-degrade,tts-fast-speech,lightning,grammar,thunder,lightning,True,0.057
+2026-11-16T16:28:38,tts-DavidFast-degrade,tts-fast-speech,lightning,filtered,thunder,lightning,True,0.059
+2026-11-16T16:28:39,tts-DavidFast-degrade,tts-fast-speech,lightning,free,better,none,False,1.413
+2026-11-16T16:28:39,tts-DavidFast-degrade,tts-fast-speech,meteor,grammar,meteor,meteor,True,0.056
+2026-11-16T16:28:39,tts-DavidFast-degrade,tts-fast-speech,meteor,filtered,meteor,meteor,True,0.051
+2026-11-16T16:28:41,tts-DavidFast-degrade,tts-fast-speech,meteor,free,meteor,meteor,True,1.652
+2026-11-16T16:28:41,tts-DavidFast-degrade,tts-fast-speech,none,grammar,[unk],none,True,0.06
+2026-11-16T16:28:41,tts-DavidFast-degrade,tts-fast-speech,none,filtered,[unk],none,True,0.06
+2026-11-16T16:28:43,tts-DavidFast-degrade,tts-fast-speech,none,free,hello there,none,True,1.825
+2026-11-16T16:28:43,tts-DavidFast-degrade,tts-fast-speech,none,grammar,[unk],none,True,0.076
+2026-11-16T16:28:43,tts-DavidFast-degrade,tts-fast-speech,none,filtered,[unk],none,True,0.069
+2026-11-16T16:28:45,tts-DavidFast-degrade,tts-fast-speech,none,free,what time is it,none,True,1.639
+2026-11-16T16:28:45,tts-DavidFast-degrade,tts-fast-speech,none,grammar,[unk],none,True,0.072
+2026-11-16T16:28:45,tts-DavidFast-degrade,tts-fast-speech,none,filtered,[unk],none,True,0.065
+2026-11-16T16:28:47,tts-DavidFast-degrade,tts-fast-speech,none,free,i like either,none,True,2.046
+2026-11-16T16:28:47,tts-DavidFast-degrade,tts-fast-speech,shield,grammar,shield,shield,True,0.048
+2026-11-16T16:28:47,tts-DavidFast-degrade,tts-fast-speech,shield,filtered,shield,shield,True,0.051
+2026-11-16T16:28:48,tts-DavidFast-degrade,tts-fast-speech,shield,free,field,none,False,1.404
+2026-11-16T16:28:48,tts-DavidFast-degrade,tts-fast-speech,shield,grammar,protect,shield,True,0.064
+2026-11-16T16:28:49,tts-DavidFast-degrade,tts-fast-speech,shield,filtered,protect,shield,True,0.055
+2026-11-16T16:28:50,tts-DavidFast-degrade,tts-fast-speech,shield,free,protect,shield,True,1.751
+2026-11-16T16:28:53,tts-ZiraFast-degrade,tts-fast-speech,drain,grammar,drain,drain,True,0.058
+2026-11-16T16:28:53,tts-ZiraFast-degrade,tts-fast-speech,drain,filtered,drain,drain,True,0.048
+2026-11-16T16:28:55,tts-ZiraFast-degrade,tts-fast-speech,drain,free,dream,none,False,1.456
+2026-11-16T16:28:55,tts-ZiraFast-degrade,tts-fast-speech,fireball,grammar,fireball,fireball,True,0.06
+2026-11-16T16:28:55,tts-ZiraFast-degrade,tts-fast-speech,fireball,filtered,fireball,fireball,True,0.063
+2026-11-16T16:28:57,tts-ZiraFast-degrade,tts-fast-speech,fireball,free,fiber,none,False,1.596
+2026-11-16T16:28:57,tts-ZiraFast-degrade,tts-fast-speech,fireball,grammar,fireball,fireball,True,0.048
+2026-11-16T16:28:57,tts-ZiraFast-degrade,tts-fast-speech,fireball,filtered,fireball,fireball,True,0.05
+2026-11-16T16:28:58,tts-ZiraFast-degrade,tts-fast-speech,fireball,free,fireball,fireball,True,0.759
+2026-11-16T16:28:58,tts-ZiraFast-degrade,tts-fast-speech,focus,grammar,focus,focus,True,0.021
+2026-11-16T16:28:58,tts-ZiraFast-degrade,tts-fast-speech,focus,filtered,focus,focus,True,0.019
+2026-11-16T16:28:58,tts-ZiraFast-degrade,tts-fast-speech,focus,free,focus,focus,True,0.587
+2026-11-16T16:28:58,tts-ZiraFast-degrade,tts-fast-speech,focus,grammar,meditate,focus,True,0.018
+2026-11-16T16:28:58,tts-ZiraFast-degrade,tts-fast-speech,focus,filtered,meditate,focus,True,0.018
+2026-11-16T16:28:59,tts-ZiraFast-degrade,tts-fast-speech,focus,free,well it it,none,False,0.629
+2026-11-16T16:28:59,tts-ZiraFast-degrade,tts-fast-speech,heal,grammar,heal,heal,True,0.019
+2026-11-16T16:28:59,tts-ZiraFast-degrade,tts-fast-speech,heal,filtered,heal,heal,True,0.017
+2026-11-16T16:28:59,tts-ZiraFast-degrade,tts-fast-speech,heal,free,yeah,none,False,0.43
+2026-11-16T16:28:59,tts-ZiraFast-degrade,tts-fast-speech,heal,grammar,cure,heal,True,0.023
+2026-11-16T16:28:59,tts-ZiraFast-degrade,tts-fast-speech,heal,filtered,cure,heal,True,0.021
+2026-11-16T16:29:00,tts-ZiraFast-degrade,tts-fast-speech,heal,free,your,none,False,0.411
+2026-11-16T16:29:00,tts-ZiraFast-degrade,tts-fast-speech,ice,grammar,ice,ice,True,0.019
+2026-11-16T16:29:00,tts-ZiraFast-degrade,tts-fast-speech,ice,filtered,ice,ice,True,0.021
+2026-11-16T16:29:00,tts-ZiraFast-degrade,tts-fast-speech,ice,free,ice,ice,True,0.399
+2026-11-16T16:29:00,tts-ZiraFast-degrade,tts-fast-speech,ice,grammar,freeze,ice,True,0.023
+2026-11-16T16:29:00,tts-ZiraFast-degrade,tts-fast-speech,ice,filtered,freeze,ice,True,0.018
+2026-11-16T16:29:01,tts-ZiraFast-degrade,tts-fast-speech,ice,free,freeze,ice,True,0.556
+2026-11-16T16:29:01,tts-ZiraFast-degrade,tts-fast-speech,lightning,grammar,lightning,lightning,True,0.019
+2026-11-16T16:29:01,tts-ZiraFast-degrade,tts-fast-speech,lightning,filtered,lightning,lightning,True,0.019
+2026-11-16T16:29:01,tts-ZiraFast-degrade,tts-fast-speech,lightning,free,lightning,lightning,True,0.533
+2026-11-16T16:29:01,tts-ZiraFast-degrade,tts-fast-speech,lightning,grammar,thunder,lightning,True,0.019
+2026-11-16T16:29:01,tts-ZiraFast-degrade,tts-fast-speech,lightning,filtered,thunder,lightning,True,0.017
+2026-11-16T16:29:02,tts-ZiraFast-degrade,tts-fast-speech,lightning,free,hunter,none,False,0.541
+2026-11-16T16:29:02,tts-ZiraFast-degrade,tts-fast-speech,meteor,grammar,meteor,meteor,True,0.025
+2026-11-16T16:29:02,tts-ZiraFast-degrade,tts-fast-speech,meteor,filtered,meteor,meteor,True,0.023
+2026-11-16T16:29:03,tts-ZiraFast-degrade,tts-fast-speech,meteor,free,meteor,meteor,True,1.157
+2026-11-16T16:29:03,tts-ZiraFast-degrade,tts-fast-speech,none,grammar,[unk],none,True,0.051
+2026-11-16T16:29:03,tts-ZiraFast-degrade,tts-fast-speech,none,filtered,[unk],none,True,0.054
+2026-11-16T16:29:04,tts-ZiraFast-degrade,tts-fast-speech,none,free,hello there,none,True,0.936
+2026-11-16T16:29:04,tts-ZiraFast-degrade,tts-fast-speech,none,grammar,[unk],none,True,0.059
+2026-11-16T16:29:04,tts-ZiraFast-degrade,tts-fast-speech,none,filtered,[unk],none,True,0.059
+2026-11-16T16:29:06,tts-ZiraFast-degrade,tts-fast-speech,none,free,what time is it,none,True,1.391
+2026-11-16T16:29:06,tts-ZiraFast-degrade,tts-fast-speech,none,grammar,[unk],none,True,0.059
+2026-11-16T16:29:06,tts-ZiraFast-degrade,tts-fast-speech,none,filtered,[unk],none,True,0.063
+2026-11-16T16:29:07,tts-ZiraFast-degrade,tts-fast-speech,none,free,i'm like to,none,True,1.4
+2026-11-16T16:29:07,tts-ZiraFast-degrade,tts-fast-speech,shield,grammar,shield,shield,True,0.044
+2026-11-16T16:29:07,tts-ZiraFast-degrade,tts-fast-speech,shield,filtered,shield,shield,True,0.044
+2026-11-16T16:29:09,tts-ZiraFast-degrade,tts-fast-speech,shield,free,shield,shield,True,1.22
+2026-11-16T16:29:09,tts-ZiraFast-degrade,tts-fast-speech,shield,grammar,protect,shield,True,0.047
+2026-11-16T16:29:09,tts-ZiraFast-degrade,tts-fast-speech,shield,filtered,protect,shield,True,0.041
+2026-11-16T16:29:10,tts-ZiraFast-degrade,tts-fast-speech,shield,free,protect,shield,True,1.245
