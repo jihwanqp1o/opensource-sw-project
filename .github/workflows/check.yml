@@ -39,6 +39,7 @@ jobs:
           python -m ascii_art.spell_text
           python -m ui.screen
           python -m ui.menu
+          python -m ascii_art.intro
 
       - name: 게임 전체 실행 (테스트 모드)
         run: |
@@ -54,3 +55,11 @@ jobs:
           # 타이틀 → 주문 목록 → 전투 → 결과 → 타이틀 → 종료
           { printf 'h\n\n\n'; cat .github/ci-input.txt; printf 'q\n'; } | python main.py > play.log
           grep -q "도달 스테이지" play.log
+
+      - name: 게임 전체 실행 (시연 모드 --demo)
+        env:
+          INPUT_MODE: keyboard
+        run: |
+          # 몬스터 체력이 줄어 4스테이지까지 가서 끝나야 한다
+          { printf '\n'; cat .github/ci-input.txt; printf 'q\n'; } | python main.py --demo > demo.log
+          grep -qE "도달 스테이지 +4/4" demo.log

@@ -1,9 +1,11 @@
 """게임 시작점. 각 모듈을 연결만 한다. (연결 규칙: docs/INTERFACES.md)
 
-실행: python main.py         플레이 모드 (시연용: 타이틀 → 전투 → 결과, 마이크)
+실행: python main.py         플레이 모드 (시연용: 오프닝 → 타이틀 → 전투 → 결과, 마이크)
+      python main.py --demo  플레이 모드 + 빠른 모드 (몬스터 체력을 줄여 2분 안팎에 끝남)
       python main.py --test  테스트 모드 (개발용: 바로 전투, 키보드, 화면 위에 TEST MODE)
 """
 import argparse
+import os
 import sys
 import time
 from collections import Counter
@@ -13,6 +15,7 @@ for _stream in (sys.stdout, sys.stderr):
     _stream.reconfigure(encoding="utf-8", errors="replace")
 
 import config
+from ascii_art.intro import boot_lines
 from ascii_art.monster import image_to_ascii
 from ascii_art.spell_text import spell_banner
 from battle.engine import (STAGES, apply_upgrade, get_upgrade_prompt, monster_turn, new_battle,
@@ -49,9 +52,42 @@ def choose_upgrade(state):
             continue  # 1/2/3이 아니면 다시 묻는다
 
 
-def run_battle(listener, art, input_mode, test_mode):
+def maximize_window():
+    """Windows 콘솔 창을 최대화하고 제목을 바꾼다. 게임 화면이 40줄 정도라 기본 크기 창에서는 잘린다."""
+    if os.name != "nt" or not sys.stdout.isatty():
+        return
+    import ctypes
+
+    ctypes.windll.kernel32.SetConsoleTitleW("VOICE SHELL")
+    hwnd = ctypes.windll.kernel32.GetConsoleWindow()
+    if hwnd:
+        ctypes.windll.user32.ShowWindow(hwnd, 3)  # 3 = 최대화
+        time.sleep(0.3)  # 창 크기가 바뀐 뒤에 화면 크기를 다시 읽게 기다린다
+
+
+def play_intro():
+    """부팅 오프닝을 한 줄씩 보여 준다. 아무 키나 누르면 건너뛴다. 자동 입력(파이프)일 때는 건너뛴다."""
+    if not sys.stdin.isatty():
+        return
+    try:
+        import msvcrt  # Windows에서 키 눌림 확인
+    except ImportError:
+        msvcrt = None
+
+    screen.console.clear()
+    for line, delay in boot_lines():
+        screen.console.print(line)
+        end = time.monotonic() + delay
+        while time.monotonic() < end:
+            if msvcrt and msvcrt.kbhit():
+                msvcrt.getwch()  # 누른 키는 버린다
+                return
+            time.sleep(0.05)
+
+
+def run_battle(listener, art, input_mode, test_mode, monster_hp_rate=1.0):
     """4연전 한 판을 진행하고 (이겼는지, 결과 통계)를 돌려준다."""
-    state = new_battle()
+    state = new_battle(monster_hp_rate)
     logs = []
     stats = {"spells": Counter(), "recognized": 0, "missed": 0}
     start = time.monotonic()
@@ -108,17 +144,19 @@ def show_page(renderable):
     return input("> ").strip().lower()
 
 
-def play_mode(listener, art, input_mode):
-    """시연용 흐름: 타이틀 → 전투 → 결과 → 타이틀"""
+def play_mode(listener, art, input_mode, monster_hp_rate):
+    """시연용 흐름: 오프닝 → 타이틀 → 전투 → 결과 → 타이틀"""
+    play_intro()
     while True:
-        key = show_page(menu.title_screen())
+        key = show_page(menu.title_screen(demo=monster_hp_rate != 1.0))
         if key == "q":
             return
         if key == "h":
             show_page(menu.spell_list_screen(SPELLS))
         elif key == "":
             # 시연 중 실수로 다른 키를 눌러도 시작되지 않게 Enter만 받는다
-            won, stats = run_battle(listener, art, input_mode, test_mode=False)
+            won, stats = run_battle(listener, art, input_mode, test_mode=False,
+                                    monster_hp_rate=monster_hp_rate)
             show_page(menu.result_screen(won, stats))
 
 
@@ -126,18 +164,23 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--test", "--keyboard", dest="test", action="store_true",
                         help="테스트 모드: 메뉴 없이 바로 전투, 키보드 입력, 화면 위에 TEST MODE")
+    parser.add_argument("--demo", action="store_true",
+                        help="시연용 빠른 모드: 몬스터 체력을 줄여 2분 안팎에 끝난다 (배율: DEMO_HP_RATE)")
     args = parser.parse_args()
 
+    maximize_window()
     input_mode = "keyboard" if args.test else config.INPUT_MODE
+    monster_hp_rate = config.DEMO_HP_RATE if args.demo else 1.0
     listener = make_listener(input_mode)
     art = image_to_ascii(config.MONSTER_IMAGE, config.MONSTER_ART_WIDTH)
 
     try:
         if args.test:
-            won, _ = run_battle(listener, art, input_mode, test_mode=True)
+            won, _ = run_battle(listener, art, input_mode, test_mode=True,
+                                monster_hp_rate=monster_hp_rate)
             screen.console.print(spell_banner("VICTORY" if won else "GAME OVER"))
         else:
-            play_mode(listener, art, input_mode)
+            play_mode(listener, art, input_mode, monster_hp_rate)
     except KeyboardInterrupt:
         pass  # Ctrl+C로 끄면 오류 메시지 없이 끝낸다
 

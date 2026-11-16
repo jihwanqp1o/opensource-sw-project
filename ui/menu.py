@@ -13,8 +13,8 @@ TAGLINE = "키보드가 고장 난 낡은 터미널. 목소리로 명령을 외�
 GREEN = "bright_green"
 
 
-def title_screen():
-    """타이틀(메인) 화면. 메뉴 키는 main.py에서 받는다."""
+def title_screen(demo=False):
+    """타이틀(메인) 화면. 메뉴 키는 main.py에서 받는다. demo=True면 오른쪽 아래에 빠른 모드 표시."""
     menu = Table.grid(padding=(0, 2))
     menu.add_row(Text("[Enter]", style=f"bold {GREEN}"), Text("시스템 복구 시작"))
     menu.add_row(Text("[H]", style=f"bold {GREEN}"), Text("주문 목록"))
@@ -29,7 +29,8 @@ def title_screen():
         Text(""),
         Align.center(menu),
         Text(""),
-    ), border_style=GREEN, title="[bold] admin@voice-shell:~ [/]")
+    ), border_style=GREEN, title="[bold] admin@voice-shell:~ [/]",
+        subtitle="[dim] DEMO [/]" if demo else None, subtitle_align="right")
 
 
 def spell_list_screen(spells):

@@ -47,6 +47,8 @@ jobs:
         run: |
           cmd //c "dist\\portable\\VoiceShell\\VoiceShell.bat --test" < .github/ci-input.txt > zip.log
           dist/release/VoiceShell.exe --test < .github/ci-input.txt > exe.log
+          cmd //c "dist\\portable\\VoiceShell\\VoiceShell-demo.bat --test" < .github/ci-input.txt > demo.log
+          grep -q "데미지" demo.log
           grep -q "데미지" zip.log
           grep -q "데미지" exe.log
 

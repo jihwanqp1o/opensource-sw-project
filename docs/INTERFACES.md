@@ -34,7 +34,7 @@ winner(state)                → "player"(마지막 스테이지 처치) / "mons
 | 함수 | 인자 → 반환 | 설명 |
 |---|---|---|
 | `STAGES` | `dict[int, (이름, 체력, 기본 공격, 강화 공격)]` | 4연전 몬스터 표. 이름은 docs/CONCEPT.md를 따름 |
-| `new_battle()` | → `BattleState` | 1스테이지부터 시작하는 새 전투 상태 |
+| `new_battle(monster_hp_rate=1.0)` | → `BattleState` | 1스테이지부터 시작하는 새 전투 상태. `monster_hp_rate`로 모든 몬스터 체력을 줄임 (시연 모드 0.4) |
 | `player_turn(state, spell_key)` | → `str` | 주문 효과 적용, 기록 문장 반환. `spell_key`가 `None`이거나 없는 주문이면 턴을 넘기는 문장 반환. 중간 스테이지 몬스터를 쓰러뜨리면 `state.awaiting_upgrade = True` |
 | `monster_turn(state)` | → `str` | 몬스터 반격, 기록 문장 반환 |
 | `get_upgrade_prompt()` | → `str` | 업그레이드 선택지 문장 |
@@ -64,6 +64,7 @@ winner(state)                → "player"(마지막 스테이지 처치) / "mons
 |---|---|---|
 | `monster.image_to_ascii(path, width=40)` | → `str` (여러 줄) | 이미지 → 아스키 아트 |
 | `spell_text.spell_banner(text)` | → `str` (여러 줄) | 영어 글자 → 큰 아스키 글씨 (한글 불가) |
+| `intro.boot_lines()` | → `list[(str, float)]` | 부팅 오프닝 (한 줄, 그 줄 뒤에 기다릴 초). 글자에 rich 색 표시 가능. 화면에 찍는 건 main.py |
 
 ## ui — 화면 (담당: 수빈)
 
@@ -76,7 +77,7 @@ winner(state)                → "player"(마지막 스테이지 처치) / "mons
 `ui/menu.py` (전투 밖 화면, 플레이 모드용)
 | 함수 | 인자 → 반환 | 설명 |
 |---|---|---|
-| `title_screen()` | → rich 렌더러블 | 타이틀(메인) 화면과 메뉴 안내 |
+| `title_screen(demo=False)` | → rich 렌더러블 | 타이틀(메인) 화면과 메뉴 안내. `demo=True`면 `DEMO` 표시 |
 | `spell_list_screen(SPELLS)` | → rich 렌더러블 | 주문 목록 |
 | `upgrade_screen(state, options_text, total_stages)` | → rich 렌더러블 | 스테이지를 깬 뒤 업그레이드 고르는 화면 |
 | `result_screen(won, stats)` | → rich 렌더러블 | 결과 화면. `stats`: `seconds`, `turns`, `spells`(Counter), `recognized`, `missed`, `stage`(예: `"3/4"`) |
@@ -97,6 +98,7 @@ winner(state)                → "player"(마지막 스테이지 처치) / "mons
 | `MONSTER_IMAGE` | `MONSTER_IMAGE` | `assets/monsters/slime.png` |
 | `MONSTER_ART_WIDTH` | `MONSTER_ART_WIDTH` | `40` |
 | `EFFECT_DELAY` | `EFFECT_DELAY` | `1.2` (초) |
+| `DEMO_HP_RATE` | `DEMO_HP_RATE` | `0.4` (`--demo`일 때 몬스터 체력 배율) |
 | `VOICE_MIN_CONFIDENCE` | `VOICE_MIN_CONFIDENCE` | `0.4` (이보다 낮은 신뢰도는 버림, 0이면 끔) |
 | `VOICE_REJECT_UNKNOWN` | `VOICE_REJECT_UNKNOWN` | `1` (주문 옆에 모르는 말이 섞이면 버림, `0`이면 끔) |
 | `VOICE_TIMEOUT` | `VOICE_TIMEOUT` | `10` (초, 이 안에 주문이 인식되지 않으면 턴 넘김, 0이면 제한 없음) |
@@ -111,6 +113,7 @@ winner(state)                → "player"(마지막 스테이지 처치) / "mons
 | `python -m battle.engine` | 턴별 전투 기록이 출력되고 마지막에 `승자: player` |
 | `python -m ascii_art.monster` | 슬라임 모양 아스키 아트 |
 | `python -m ascii_art.spell_text` | 큰 글씨 `FIREBALL` |
+| `python -m ascii_art.intro` | 부팅 오프닝이 한 줄씩 찍힘 |
 | `python -m ui.screen` | 가짜 값으로 그린 전투 화면 (체력바, 주문 칸, 기록 칸) |
 | `python -m ui.menu` | 타이틀, 주문 목록, 결과 화면, TEST MODE 줄 |
 | `python -m voice.recognizer` | 마이크에 "fireball"이라고 말하면 `인식 결과: fireball` |

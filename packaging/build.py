@@ -32,9 +32,11 @@ GUIDE = Path(__file__).resolve().parent / "READ_ME.txt"
 LAUNCHER = """@echo off
 title VOICE SHELL
 cd /d "%~dp0game"
-"%~dp0python\\python.exe" main.py %*
+"%~dp0python\\python.exe" main.py {args}%*
 if errorlevel 1 pause
 """
+# 실행 파일 이름 → main.py에 넘길 옵션. 발표 시연은 VoiceShell-demo.bat (몬스터 체력을 줄인 빠른 모드)
+LAUNCHERS = {f"{NAME}.bat": "", f"{NAME}-demo.bat": "--demo "}
 
 
 def download(url, dest):
@@ -84,7 +86,8 @@ def build_portable(release):
             shutil.copy(src, game_dir / name)
     shutil.copytree(MODEL_DIR, game_dir / "models" / MODEL_NAME)
 
-    (folder / f"{NAME}.bat").write_text(LAUNCHER, encoding="ascii", newline="\r\n")
+    for bat_name, args in LAUNCHERS.items():
+        (folder / bat_name).write_text(LAUNCHER.format(args=args), encoding="ascii", newline="\r\n")
     shutil.copy(GUIDE, folder / GUIDE.name)
     shutil.make_archive(str(release / NAME), "zip", folder.parent, NAME)
 
