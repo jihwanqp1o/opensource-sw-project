@@ -168,7 +168,7 @@ opensource-sw-project/
 ├── ui/
 │   ├── screen.py            # rich 전투 화면: 체력바, 화면 분할, 피격 색 (수빈)
 │   └── menu.py              # 타이틀, 주문 목록, 결과 화면, TEST MODE 줄 (수빈)
-├── assets/monsters/         # 몬스터 이미지 (slime.png는 임시 그림)
+├── assets/monsters/         # 몬스터 이미지 (스테이지별: slime, goblin, zombie, dragon.png. 없으면 slime으로 대신)
 ├── models/                  # Vosk 모델 (저장소에 올리지 않음)
 ├── docs/
 │   ├── INTERFACES.md        # 연결 규칙

@@ -28,6 +28,7 @@
   - `BattleState` 필수 필드: `monster_name, player_hp, player_max_hp, player_mp, player_max_mp, monster_hp, monster_max_hp, shield, turn, stage, awaiting_upgrade, bonus_attack, bonus_heal, bonus_crit, known_spells, monster_frozen`
   - battle은 print하지 않는다
 - `voice.recognizer`: `VoiceListener(model_path, SPELLS, min_confidence=..., reject_unknown=..., device=..., timeout=..., on_status=...).listen()`, `KeyboardListener(SPELLS).listen()` → 주문 key 또는 None
+- 몬스터 그림: 스테이지별 파일 이름은 `config.STAGE_MONSTER_IMAGES` (`assets/monsters/slime.png`, `goblin.png`, `zombie.png`, `dragon.png`). 파일만 넣으면 `main.py`가 연결하고, 없으면 슬라임 그림으로 대신 보여 준다
 - `ascii_art.monster.image_to_ascii(path, width=40) -> str`, `ascii_art.spell_text.spell_banner(text) -> str` (영어만), `ascii_art.intro.boot_lines() -> list[(str, float)]`
 - `ui.screen.render(state, monster_art, banner=None, logs=(), hit=False, prompt="")`, `ui.screen.show(...)` 같은 인자
   - ui는 게임 로직을 계산하지 않는다
