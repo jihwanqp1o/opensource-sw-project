@@ -306,6 +306,9 @@ python packaging/build.py
 | 파일 | 출처 | 라이선스 |
 |---|---|---|
 | `assets/monsters/slime.png` | 팀 자체 제작 (Pillow로 그린 임시 그림) | MIT (이 프로젝트) |
+| `assets/rooms/fork.png` | 팀 자체 제작 (Pillow로 그린 갈림길 아이콘) | MIT (이 프로젝트) |
+| `assets/rooms/spring.png` | 팀 자체 제작 (Pillow로 그린 회복 샘 아이콘) | MIT (이 프로젝트) |
+| `assets/rooms/treasure.png` | 팀 자체 제작 (Pillow로 그린 `.patch` 패치 파일 아이콘) | MIT (이 프로젝트) |
 
 새 이미지나 리소스를 추가할 때는 직접 만들었거나 사용이 허용된 라이선스(CC0 등)인지 확인하고, 이 표에 출처를 함께 적습니다.
 
