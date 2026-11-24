@@ -5,10 +5,10 @@ import time
 from rich.console import Console, Group
 from rich import box
 from rich.panel import Panel
-from rich.progress_bar import ProgressBar
 from rich.table import Table
 from rich.text import Text
 
+from battle.engine import STAGES
 from battle.spells import SPELLS
 
 console = Console(force_terminal=True, legacy_windows=False)
@@ -21,9 +21,9 @@ def _get_hp_color(current, maximum):
 
     rate = current / maximum
     if rate >= 0.7:
-        return "cyan"
+        return "bright_green"
     if rate < 0.3:
-        return "red"
+        return "bright_red"
     return "yellow"
 
 
@@ -33,15 +33,15 @@ def _hp_bar(label, hp, max_hp, color=None, width=14):
     total = max(max_hp, 1)
     completed = max(0, min(hp, total))
     displayed_max = max(max_hp, 0)
+    filled = round(width * completed / total)
 
     row = Table.grid(padding=(0, 1))
-    row.add_column(no_wrap=True)
-    row.add_column()
-    row.add_column(justify="right", no_wrap=True)
+    row.add_column(no_wrap=True, overflow="crop")
+    row.add_column(no_wrap=True, overflow="crop")
+    row.add_column(justify="right", no_wrap=True, overflow="crop")
     row.add_row(
-        Text(label, style="bold white"),
-        ProgressBar(total=total, completed=completed, width=width,
-                    complete_style=color, finished_style=color),
+        Text(label, style=f"bold {color}"),
+        Text("■" * filled + "□" * (width - filled), style=color, no_wrap=True),
         Text(f"{hp}/{displayed_max}", style=f"bold {color}"),
     )
     return row
@@ -52,18 +52,72 @@ SPELL_LINES = 6
 LOG_LINES = 3
 
 
+def _privilege_name(level):
+    """숫자 레벨을 터미널 권한 이름으로 바꾼다."""
+    if level <= 1:
+        return "guest"
+    if level == 2:
+        return "user"
+    if level == 3:
+        return "admin"
+    return "root"
+
+
 def _mana_cost_text(state):
-    """배운 주문별 마나 비용 한 줄. 마나 데이터가 아직 없으면 None (시연 화면에 빈 값을 보이지 않는다)."""
-    known = getattr(state, "known_spells", SPELLS)
-    costs = [f"{key}({SPELLS[key].mana_cost})" for key in known
-             if getattr(SPELLS[key], "mana_cost", None) is not None]
-    return "MP: " + " / ".join(costs) if costs else None
+    """주문 비용을 두 개씩 묶고 잠긴 주문은 흐리게 만든다."""
+    known = set(getattr(state, "known_spells", ()))
+    level = getattr(state, "level", 1)
+    rows = []
+    row = Text()
+    for index, (key, spell) in enumerate(SPELLS.items()):
+        if index and index % 2 == 0:
+            rows.append(row)
+            row = Text()
+        if row:
+            row.append(" / ", style="bright_green")
+
+        mana_cost = getattr(spell, "mana_cost", None)
+        label = f"{key}({mana_cost})" if mana_cost is not None else key
+        min_level = getattr(spell, "min_level", None)
+        locked = key not in known or (min_level is not None and level < min_level)
+        row.append(label, style="dim" if locked else "bright_green")
+    if row:
+        rows.append(row)
+    return rows
 
 
-def _art_line_budget():
-    """창 높이에서 다른 칸을 빼고 몬스터 그림에 쓸 수 있는 줄 수 (최대화한 49줄 창에서는 잘리지 않음)."""
-    fixed = 4 + (SPELL_LINES + 2) + (LOG_LINES + 2) + 2 + 2  # 상태, 주문, 기록, 몬스터 테두리, 입력 줄
-    return max(4, console.height - fixed)
+def _has_experience(state):
+    return (getattr(state, "experience", None) is not None
+            and getattr(state, "experience_to_next", None) is not None)
+
+
+def _bonus_text(state):
+    """상태에 전달된 강화 수치 중 0보다 큰 항목만 표시한다."""
+    bonuses = []
+    attack = getattr(state, "bonus_attack", 0)
+    heal = getattr(state, "bonus_heal", 0)
+    crit = getattr(state, "bonus_crit", 0)
+    if attack > 0:
+        bonuses.append(f"공격력 +{attack}")
+    if heal > 0:
+        bonuses.append(f"힐량 +{heal}")
+    if crit > 0:
+        bonuses.append(f"크리티컬 +{crit:.0%}")
+    return bonuses
+
+
+def _ascii_banner(message):
+    """터미널에서 깨지지 않도록 ASCII 테두리 배너를 만든다."""
+    border = "+" + "-" * (len(message) + 2) + "+"
+    return f"{border}\n| {message} |\n{border}"
+
+
+def _art_line_budget(state, spell_height, action_lines):
+    """다른 패널 높이를 고려해 몬스터 그림에 쓸 줄 수를 정한다."""
+    status_lines = 2 + 2 + int(_has_experience(state)) + int(bool(_bonus_text(state)))
+    bottom_lines = max(LOG_LINES + 2, action_lines + 2)
+    fixed = status_lines + spell_height + bottom_lines + 2
+    return max(1, console.height - fixed)
 
 
 def _compact_monster_art(monster_art, max_lines):
@@ -78,113 +132,159 @@ def _compact_monster_art(monster_art, max_lines):
 
 def render(state, monster_art, banner=None, logs=(), hit=False, prompt=""):
     """전투 상태를 Rich 렌더러블로 만든다."""
-    monster_art = _compact_monster_art(monster_art, _art_line_budget())
+    logs = list(logs)
+    privilege = _privilege_name(getattr(state, "level", 1))
+    stage = getattr(state, "stage", 1)
+    terminal_result = None
+    if state.player_hp <= 0:
+        terminal_result = "SEGMENTATION FAULT"
+    elif stage >= len(STAGES) and state.monster_hp <= 0:
+        terminal_result = "SYSTEM RESTORED"
+    promotion = bool(logs and "[ OK ] PERMISSION GRANTED" in logs[-1])
+
+    if terminal_result:
+        banner_text = _ascii_banner(terminal_result)
+        banner_style = "bold bright_red" if state.player_hp <= 0 else "bold bright_green"
+    elif promotion:
+        banner_text = _ascii_banner("PERMISSION GRANTED")
+        banner_style = "bold bright_green"
+    else:
+        banner_text = banner
+        banner_style = "bold bright_red" if hit else "bold bright_green"
+
+    cost_rows = _mana_cost_text(state)
+    action_prompt = (
+        f"{privilege}@voice-shell:/home$ 주문을 외치세요"
+        if not prompt or prompt.startswith("STAGE ")
+        else f"{privilege}@voice-shell:/home$ {prompt}"
+    )
+    spell_height = SPELL_LINES + 2 if banner_text else 3
+    monster_art = _compact_monster_art(
+        monster_art,
+        _art_line_budget(state, spell_height, len(cost_rows) + 1),
+    )
     monster = Panel(
-        Text(monster_art, style="bold red" if hit else "white",
-             justify="center"),
-        title=f"[bold white] {state.monster_name} [/]",
-        subtitle="[bold red]HIT![/]" if hit else "[dim]ENEMY[/]",
-        box=box.ROUNDED,
-        border_style="bold red" if hit else "bright_black",
+        Text(monster_art, style="bold bright_red" if hit else "bright_green",
+             justify="center", no_wrap=True, overflow="crop"),
+        title=f"[bold bright_green] {state.monster_name} [/]",
+        subtitle="[bold bright_red]HIT![/]" if hit else "[dim]ENEMY[/]",
+        box=box.ASCII,
+        border_style="bright_red" if hit else "bright_green",
         padding=(0, 1),
     )
 
     shield_badge = (
-        Text(" SHIELD ACTIVE ", style="bold white on bright_black")
+        Text(" SHIELD ACTIVE ", style="bold bright_green")
         if state.shield
-        else Text(" SHIELD OFF ", style="dim")
+        else Text(" SHIELD OFF ", style="dim bright_green")
     )
     player_mp = getattr(state, "player_mp", None)
     player_max_mp = getattr(state, "player_max_mp", None)
-    # 마나 바는 마나 데이터가 있을 때만 보여 준다 (1단계 #31 이후)
     resources = [_hp_bar("PLAYER", state.player_hp, state.player_max_hp)]
     if player_mp is not None and player_max_mp is not None:
-        resources.append(_hp_bar("MP", player_mp, player_max_mp, color="bright_blue", width=8))
+        resources.append(_hp_bar("MEM", player_mp, player_max_mp, color="bright_blue", width=6))
     player_resources = Table.grid(padding=(0, 1))
     for _ in resources:
-        player_resources.add_column(ratio=1)
+        player_resources.add_column(ratio=1, overflow="crop")
     player_resources.add_row(*resources)
     hp_row = Table.grid(expand=True, padding=(0, 2))
-    hp_row.add_column(ratio=2)
-    hp_row.add_column(ratio=1)
+    hp_row.add_column(ratio=2, overflow="crop")
+    hp_row.add_column(ratio=1, overflow="crop")
     hp_row.add_row(
         player_resources,
         _hp_bar("MONSTER", state.monster_hp, state.monster_max_hp),
     )
 
+    status_content = [hp_row]
+    if _has_experience(state):
+        status_content.append(_hp_bar(
+            "EXP",
+            state.experience,
+            state.experience_to_next,
+            color="bright_green",
+            width=14,
+        ))
     status_footer = Table.grid(expand=True)
-    status_footer.add_column(ratio=1)
-    status_footer.add_column(justify="right")
+    status_footer.add_column(ratio=1, overflow="crop")
+    status_footer.add_column(justify="right", overflow="crop")
     status_footer.add_row(
-        Text.assemble(
-            ("TURN ", "bold white"),
-            (str(state.turn), "bold white"),
+        Text(
+            f"STAGE {stage}/{len(STAGES)} | TURN {state.turn} | "
+            f"PRIVILEGE: {privilege}",
+            style="bold bright_green",
         ),
         shield_badge,
     )
+    status_content.append(status_footer)
+    bonuses = _bonus_text(state)
+    if bonuses:
+        status_content.append(Text(" | ".join(bonuses), style="bright_green"))
     status = Panel(
-        Group(hp_row, status_footer),
-        title="[bold white] BATTLE STATUS [/]",
-        box=box.ROUNDED,
-        border_style="bright_black",
+        Group(*status_content),
+        title="[bold bright_green] BATTLE STATUS [/]",
+        box=box.ASCII,
+        border_style="bright_green",
         padding=(0, 1),
     )
 
     # 큰 글씨는 여러 줄 그대로 보여 주고, 창이 좁으면 줄마다 오른쪽만 자른다
-    spell_text = Text(banner or "주문을 기다리는 중...", justify="center",
+    spell_text = Text(banner_text or "주문을 기다리는 중...", justify="center",
                       no_wrap=True, overflow="crop")
-    if banner:
-        spell_text.stylize("bold red" if hit else "bold white")
+    if banner_text:
+        spell_text.stylize(banner_style)
     else:
-        spell_text.stylize("dim")
+        spell_text.stylize("bright_green")
     spell = Panel(
         spell_text,
-        title="[bold white] SPELL | 주문 발동 [/]",
-        box=box.ROUNDED,
-        border_style="bright_black",
-        height=SPELL_LINES + 2,
+        title="[bold bright_green] SPELL | COMMAND [/]",
+        box=box.ASCII,
+        border_style="bright_red" if hit or state.player_hp <= 0 else "bright_green",
+        height=spell_height,
         padding=(0, 1),
     )
 
-    recent_logs = list(logs)[-LOG_LINES:]
-    log_content = Text()
+    recent_logs = logs[-LOG_LINES:]
+    log_content = Text(no_wrap=True, overflow="crop")
     if recent_logs:
         for index, log_line in enumerate(recent_logs):
             if index:
                 log_content.append("\n")
-            style = (
-                "bold bright_red"
-                if "마나가 부족하다" in log_line
-                else "white"
-            )
+            if "[FAIL]" in log_line or "마나가 부족하다" in log_line:
+                style = "bold bright_red"
+            elif "[WARN]" in log_line:
+                style = "bold yellow"
+            elif "[ OK ]" in log_line:
+                style = "bold bright_green"
+            else:
+                style = "bright_green"
             log_content.append(log_line, style=style)
     else:
-        log_content.append("전투 기록이 없습니다.", style="white")
+        log_content.append("전투 기록이 없습니다.", style="bright_green")
     log = Panel(
         log_content,
-        title="[bold white] BATTLE LOG · 최근 기록 [/]",
-        box=box.ROUNDED,
-        border_style="bright_black",
+        title="[bold bright_green] BATTLE LOG | RECENT [/]",
+        box=box.ASCII,
+        border_style="bright_green",
         height=LOG_LINES + 2,
         padding=(0, 1),
     )
-    # 입력 안내는 잘리지 않게 칸 안에 보여 주고, 마나 비용은 데이터가 있을 때만 덧붙인다
-    prompt_lines = [Text(prompt or "입력 대기 중...", style="bold white", justify="center")]
-    mana_text = _mana_cost_text(state)
-    if mana_text:
-        prompt_lines.append(Text(mana_text, style="cyan", justify="center", no_wrap=True))
+    prompt_lines = [
+        Text(action_prompt, style="bold bright_green", justify="center",
+             no_wrap=True, overflow="crop"),
+    ]
+    for row in cost_rows:
+        prompt_lines.append(row)
     prompt_panel = Panel(
         Group(*prompt_lines),
-        title="[bold white] ACTION [/]",
-        box=box.ROUNDED,
-        border_style="bright_black",
-        height=LOG_LINES + 2,
+        title="[bold bright_green] ACTION [/]",
+        box=box.ASCII,
+        border_style="bright_green",
         padding=(0, 1),
     )
 
     bottom = Table.grid(expand=True, padding=(0, 1))
-    bottom.add_column(ratio=1)
-    bottom.add_column(ratio=1)
+    bottom.add_column(ratio=1, overflow="crop")
+    bottom.add_column(ratio=2, overflow="crop")
     bottom.add_row(log, prompt_panel)
 
     return Group(monster, status, spell, bottom)
@@ -288,11 +388,9 @@ def play_turn_sequence(state, monster_art, spell_name, kind, logs=(),
             )
             time.sleep(0.1)
 
-    final_banner = "VICTORY!" if state.monster_hp <= 0 else None
     show(
         state,
         monster_art,
-        banner=final_banner,
         logs=logs,
         prompt=prompt or "입력 대기 중...",
     )
@@ -310,10 +408,18 @@ if __name__ == "__main__":
         player_max_hp=100,
         player_mp=25,
         player_max_mp=40,
+        known_spells=["fireball", "lightning", "shield", "heal"],
+        experience=35,
+        experience_to_next=60,
+        level=3,
         monster_hp=20,
         monster_max_hp=80,
         shield=True,
         turn=4,
+        stage=1,
+        bonus_attack=10,
+        bonus_heal=15,
+        bonus_crit=0.15,
     )
     test_art = "      .---.\n     ( o o )\n      \\___/"
     test_cases = (
@@ -337,3 +443,9 @@ if __name__ == "__main__":
             player_hit=player_hit,
             prompt="다음 주문을 입력하세요",
         )
+    show(
+        test_state,
+        test_art,
+        logs=["[ OK ] PERMISSION GRANTED"],
+        prompt="권한 상승 완료",
+    )
