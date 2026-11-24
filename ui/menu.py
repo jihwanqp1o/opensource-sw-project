@@ -88,8 +88,6 @@ def result_screen(won, stats):
     table = Table.grid(padding=(0, 2))
     table.add_column(style="white")
     table.add_column(style="bold bright_cyan")
-    if "stage" in stats:
-        table.add_row("도달 스테이지", stats["stage"])
     table.add_row("걸린 시간", f"{stats['seconds']:.0f}초")
     table.add_row("턴 수", str(stats["turns"]))
     used = ", ".join(f"{key} {n}회" for key, n in stats["spells"].most_common()) or "-"
@@ -97,8 +95,13 @@ def result_screen(won, stats):
     total = stats["recognized"] + stats["missed"]
     table.add_row("명령 인식", f"{stats['recognized']}/{total}회" if total else "-")
 
+    stage_line = (
+        Align.center(Text(f"도달 스테이지   {stats['stage']}", style=f"bold {GREEN}"))
+        if "stage" in stats else None
+    )
     return _frame(Group(
         Align.center(Text(spell_banner(headline), style=f"bold {color}")),
+        *([stage_line] if stage_line else []),
         Align.center(table),
         Align.center(Text("[Enter] 타이틀로", style="bold bright_cyan")),
     ), f"[bold {color}] SYSTEM REPORT [/]", border_style=color)
@@ -194,7 +197,7 @@ def fork_screen(room, exits, path, art=""):
         tree.append("    " * len(visited_rooms) + prefix, style="dim green")
         direction_label = direction.upper()
         tree.append(f"[{direction_label}] ", style="bold bright_cyan")
-        tree.append(f"{target.name} ", style="white")
+        tree.append(f"cd {target.name} ", style="bright_green")
         tree.append(f"({KIND_LABELS[target.kind]})\n", style="dim green")
 
     map_panel = Panel(
@@ -217,10 +220,10 @@ def fork_screen(room, exits, path, art=""):
         padding=(0, 1),
     )
     choices.add_column("방향", style="bold bright_cyan", no_wrap=True)
-    choices.add_column("대상 디렉터리", style="white")
+    choices.add_column("대상 명령", style="bright_green")
     choices.add_column("방 종류", style="dim green")
     for direction, target in exits:
-        choices.add_row(direction.upper(), target.name, KIND_LABELS[target.kind])
+        choices.add_row(direction.upper(), f"cd {target.name}", KIND_LABELS[target.kind])
 
     content = Group(
         Align.center(Text(art, style="bright_cyan")) if art else Text(""),
@@ -263,6 +266,7 @@ def room_screen(room, log, art=""):
     return _frame(Group(
         Align.center(Text(art, style=color)),
         Align.center(Text(title, style=f"bold {color}")),
+        Align.center(Text(f"cd {room.name}", style=f"bold {GREEN}")),
         log_panel,
     ), f"[bold bright_green] admin@voice-shell:{room.name}$ [/]",
        border_style=color, subtitle=f"[bold bright_yellow] {room.name} | SYSTEM EVENT [/]")
