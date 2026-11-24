@@ -281,7 +281,7 @@ def test_banner(state, input_mode):
 
 
 if __name__ == "__main__":
-    # 단독 실행: python -m ui.menu  (Enter를 눌러 화면을 하나씩 미리 본다)
+    # 단독 실행: python -m ui.menu  (화면 예시를 차례로 출력)
     from collections import Counter
     from types import SimpleNamespace
 
@@ -318,7 +318,5 @@ if __name__ == "__main__":
         dungeon.get_room("home_backup"),
         "[ OK ] 백업 파일 복원: 체력 +20, 마나 +20",
     ))
-    for index, preview in enumerate(previews):
+    for preview in previews:
         show_test_screen(preview)
-        if index < len(previews) - 1:
-            input(" [Enter] 다음 화면 미리보기... ")
