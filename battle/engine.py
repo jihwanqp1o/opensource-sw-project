@@ -61,9 +61,9 @@ def new_battle(monster_hp_rate: float = 1.0) -> BattleState:
 
 
 STAT_UPGRADES = {
-    "1": "공격력 +10",
-    "2": "최대·현재 체력 +20",
-    "3": "마력: 힐량 +15, 크리티컬 확률 +15%, 최대 마나 +10",
+    "1": "공격 패치 방 (주문 위력 +10)",
+    "2": "백업 복구 방 (최대 체력 +20)",
+    "3": "코어 오버클럭 방 (힐량 +15, 치명타율 +15%, 최대·현재 마나 +10)",
 }
 # 상점에서 배우는 주문의 고정 번호 (starter가 아닌 주문 순서대로 4부터)
 SHOP_SPELL_NUMBERS = {str(4 + i): key for i, key in
@@ -82,8 +82,8 @@ def get_shop_options(state: BattleState) -> list[tuple[str, str]]:
 
 
 def get_upgrade_prompt() -> str:
-    """업그레이드 선택지를 한국어로 돌려준다. (스탯만, 주문까지 보려면 get_shop_options)"""
-    return "몬스터 처치! 강화할 것을 선택하세요: " + "  ".join(
+    """다음 방의 스탯 업그레이드 선택지를 돌려준다."""
+    return "몬스터 처치! 다음 방을 선택하세요: " + "  ".join(
         f"[{key}] {label}" for key, label in STAT_UPGRADES.items())
 
 
@@ -109,11 +109,11 @@ def apply_upgrade(state: BattleState, choice: str) -> str:
     normalized = choice.strip().lower()
     if normalized in ("1", "attack", "공격력"):
         state.bonus_attack += 10
-        result = "공격력이 +10 상승했습니다."
+        result = "공격 패치 방 적용: 주문 위력 +10"
     elif normalized in ("2", "hp", "체력"):
         state.player_max_hp += 20
         state.player_hp += 20
-        result = "최대 체력과 현재 체력이 각각 +20 상승했습니다."
+        result = "백업 복구 방 적용: 최대·현재 체력 +20"
     elif normalized in ("3", "magic", "마력"):
         state.bonus_heal += 15
         previous_crit = state.bonus_crit
@@ -121,7 +121,8 @@ def apply_upgrade(state: BattleState, choice: str) -> str:
         crit_gain = round((state.bonus_crit - previous_crit) * 100)
         state.player_max_mp += 10
         state.player_mp += 10
-        result = f"힐량이 +15, 크리티컬 확률이 +{crit_gain}%, 최대 마나가 +10 상승했습니다."
+        result = (f"코어 오버클럭 방 적용: 힐량 +15, 치명타율 +{crit_gain}%, "
+                  "최대·현재 마나 +10")
     else:
         # 4번부터는 상점에서 주문 배우기. 번호 대신 주문 이름을 넣어도 된다
         key = SHOP_SPELL_NUMBERS.get(normalized, normalized)
@@ -131,7 +132,7 @@ def apply_upgrade(state: BattleState, choice: str) -> str:
         result = f"{key} 명령을 설치했습니다 (MP {SPELLS[key].mana_cost})."
 
     advance_stage(state)
-    return f"[ OK ] 업그레이드 완료: {result} 다음 스테이지({state.stage})로 이동합니다."
+    return f"[ OK ] 다음 방 강화 완료: {result} 다음 스테이지({state.stage})로 이동합니다."
 
 
 def _hit_monster(state: BattleState, power: int) -> None:
@@ -214,18 +215,21 @@ def monster_turn(state: BattleState) -> str:
 
 def room_event(state: BattleState, kind: str) -> str:
     """던전에서 전투가 아닌 방에 들어갔을 때의 효과. 상태를 바꾸고 기록 문장을 돌려준다.
-    kind: "spring"(회복 샘 = 백업 파일) / "treasure"(보물 = 패치 파일)
-    지금 수치와 보상은 뼈대용 임시 값이다. 회복량과 보물 종류는 #39에서 정한다."""
+    kind: "spring"(백업 파일) / "treasure"(패치 파일)."""
     if kind == "spring":
-        hp = min(state.player_max_hp - state.player_hp, 20)
-        mp = min(state.player_max_mp - state.player_mp, 20)
-        state.player_hp += hp
-        state.player_mp += mp
-        return f"[ OK ] 백업 파일 복원: 체력 +{hp}, 마나 +{mp}"
+        state.player_hp = min(state.player_hp + 40, state.player_max_hp)
+        state.player_mp = min(state.player_mp + 30, state.player_max_mp)
+        return (
+            f"[ OK ] 백업 파일 복원: 체력 +40, 마나 +30 복구 완료 "
+            f"(현재 HP: {state.player_hp}/{state.player_max_hp}, "
+            f"MP: {state.player_mp}/{state.player_max_mp})"
+        )
     if kind == "treasure":
-        state.player_max_mp += 10
-        state.player_mp += 10
-        return "[ OK ] 패치 파일 적용: 최대 마나 +10"
+        state.bonus_attack += 10
+        state.player_max_mp += 15
+        state.player_mp += 15
+        state.bonus_crit = min(1.0, state.bonus_crit + 0.10)
+        return "[ PATCH ] 패치 파일 적용: 주문 위력 +10, 최대 마나 +15, 치명타율 +10% 강화 완료"
     raise ValueError(f"효과가 없는 방 종류: {kind}")
 
 
@@ -388,11 +392,37 @@ if __name__ == "__main__":
     assert "45 데미지" in meteor_log and shop.player_mp == 0
     print("[주문 상점 확인] ice, meteor, focus, drain 설치와 효과 정상")
 
-    # 던전 방 효과 (임시 값, #39에서 정함)
+    # 던전 방 효과
     room = new_battle()
-    room.player_hp, room.player_mp = 90, 45
-    print("[회복 샘]", room_event(room, "spring"))
-    assert room.player_hp == 100 and room.player_mp == 50  # 최대치를 넘지 않음
-    print("[보물]", room_event(room, "treasure"))
-    assert room.player_max_mp == 60 and room.player_mp == 60
-    print("[던전 방 확인] 회복 샘과 보물 효과 정상")
+    room.player_hp, room.player_mp = 50, 10
+    spring_log = room_event(room, "spring")
+    print("[백업 파일]", spring_log)
+    assert room.player_hp == 90 and room.player_mp == 40
+    assert spring_log == (
+        "[ OK ] 백업 파일 복원: 체력 +40, 마나 +30 복구 완료 "
+        "(현재 HP: 90/100, MP: 40/50)"
+    )
+
+    capped_spring_state = new_battle()
+    capped_spring_state.player_hp, capped_spring_state.player_mp = 90, 45
+    capped_spring_log = room_event(capped_spring_state, "spring")
+    print("[백업 파일 상한 확인]", capped_spring_log)
+    assert capped_spring_state.player_hp == 100 and capped_spring_state.player_mp == 50
+
+    patch_state = new_battle()
+    patch_state.player_mp = 20
+    patch_log = room_event(patch_state, "treasure")
+    print("[패치 파일]", patch_log)
+    assert patch_state.bonus_attack == 10
+    assert patch_state.player_max_mp == 65 and patch_state.player_mp == 35
+    assert patch_state.bonus_crit == 0.1
+    assert patch_log == (
+        "[ PATCH ] 패치 파일 적용: 주문 위력 +10, 최대 마나 +15, "
+        "치명타율 +10% 강화 완료"
+    )
+
+    capped_patch_state = new_battle()
+    capped_patch_state.bonus_crit = 0.95
+    room_event(capped_patch_state, "treasure")
+    assert capped_patch_state.bonus_crit == 1.0
+    print("[던전 방 확인] 백업 파일 회복량 clamp, 패치 파일 영구 강화 및 치명타 상한 정상")
