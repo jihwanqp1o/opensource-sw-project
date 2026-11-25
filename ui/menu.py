@@ -181,46 +181,40 @@ def fork_screen(room, exits, path, art=""):
 
     tree = Text()
     for index, visited in enumerate(visited_rooms):
-        prefix = "└── " if index == len(visited_rooms) - 1 else ("├── " if index < len(visited_rooms) - 1 else "")
         if index:
-            tree.append("    " * (index - 1) + prefix, style="dim green")
-        if index == len(visited_rooms) - 1:
-            tree.append("[* CURRENT] ", style="bold bright_green")
-            tree.append(visited.name, style="bold bright_green")
-        else:
-            tree.append(visited.name, style="dim green")
+            tree.append("    " * (index - 1) + "└── ", style="dim green")
+        current = index == len(visited_rooms) - 1
+        marker = "[>]" if current else "[v]"
+        style = "bold bright_green" if current else "bright_green"
+        tree.append(f"{marker} ", style=style)
+        tree.append(visited.name, style=style)
         tree.append("\n")
 
     for index, (direction, target) in enumerate(exits):
         is_last = index == len(exits) - 1
         prefix = "└── " if is_last else "├── "
         tree.append("    " * len(visited_rooms) + prefix, style="dim green")
-        direction_label = direction.upper()
-        tree.append(f"[{direction_label}] ", style="bold bright_cyan")
-        tree.append(f"cd {target.name} ", style="bright_green")
-        tree.append(f"({KIND_LABELS[target.kind]})\n", style="dim green")
+        tree.append(f"{direction.upper()} -> ", style="bold bright_cyan")
+        tree.append(f"{target.name}\n", style="bright_green")
 
     map_panel = Panel(
-        Group(
-            Text("PATH: " + " > ".join(visited.name for visited in visited_rooms), style="dim green"),
-            tree,
-        ),
+        tree,
         title="[bold bright_green] DIRECTORY MAP [/]",
-        border_style="bright_cyan",
-        box=box.HEAVY,
+        border_style=GREEN,
+        box=box.ASCII,
         width=84,
-        padding=(0, 2),
+        padding=(0, 1),
     )
 
     choices = Table(
-        box=box.HEAVY,
-        border_style="bright_cyan",
+        box=box.ASCII,
+        border_style=GREEN,
         header_style="bold bright_green",
         expand=True,
         padding=(0, 1),
     )
     choices.add_column("방향", style="bold bright_cyan", no_wrap=True)
-    choices.add_column("대상 명령", style="bright_green")
+    choices.add_column("대상 경로", style="bright_green")
     choices.add_column("방 종류", style="dim green")
     for direction, target in exits:
         choices.add_row(direction.upper(), f"cd {target.name}", KIND_LABELS[target.kind])
@@ -228,11 +222,11 @@ def fork_screen(room, exits, path, art=""):
     content = Group(
         Align.center(Text(art, style="bright_cyan")) if art else Text(""),
         Align.center(map_panel),
-        Align.center(Text("갈림길입니다. 다음 폴더를 선택하세요", style="bold white")),
+        Align.center(Text("갈림길 | 다음 디렉터리를 선택하세요", style="bold bright_green")),
         choices,
         Align.center(Text(
-            "방향을 외치거나 키보드로 입력하고 Enter",
-            style="dim green",
+            "방향을 말하거나 키보드로 입력하고 Enter",
+            style="bold bright_cyan",
         )),
     )
     return _frame(
@@ -244,32 +238,51 @@ def fork_screen(room, exits, path, art=""):
 
 def room_screen(room, log, art=""):
     """회복 샘·보물 방과 room_event 결과를 보여 준다."""
-    color = "bright_cyan" if room.kind == "spring" else "bright_yellow"
+    accents = {
+        "spring": ("bright_cyan", "bright_green", "SPRING"),
+        "treasure": ("bright_yellow", "bright_green", "TREASURE"),
+        "monster": ("bright_green", "bright_cyan", "MONSTER"),
+        "boss": ("bright_red", "bright_green", "BOSS"),
+    }
+    color, highlight, badge = accents.get(
+        room.kind, (GREEN, "bright_cyan", room.kind.upper())
+    )
     title = KIND_LABELS[room.kind]
     if not art:
         if room.kind == "spring":
             art = "       .-~~~~-.\n      /  ~~~~  \\\n     |  SPRING  |\n      \\________/"
-        else:
+        elif room.kind == "treasure":
             art = "       _________\n      /_______/|\n      |  $$$  |/\n      |_______|"
+        elif room.kind == "boss":
+            art = "       .----.\n      / .--. \\\n      | |XX| |\n      \\ '--' /\n       '----'"
+        else:
+            art = "      .-====-.\n     /  BUG   \\\n     | (x  x) |\n      '------'"
 
-    log_text = Text(log, style="white")
-    for match in re.finditer(r"(?:체력|마나)\s*[+-]?\d+|[+-]\d+", log):
-        log_text.stylize("bold bright_yellow", match.start(), match.end())
+    message = log[len("[ OK ]"):].lstrip() if log.startswith("[ OK ]") else log
+    log_text = Text("[ OK ] ", style=f"bold {GREEN}")
+    message_start = len(log_text)
+    log_text.append(message, style="white")
+    for match in re.finditer(r"(?:체력|마나)\s*[+-]?\d+|[+-]\d+", message):
+        log_text.stylize(
+            f"bold {highlight}",
+            message_start + match.start(),
+            message_start + match.end(),
+        )
     log_panel = Panel(
         Align.center(log_text),
         title="[bold bright_green] SYSTEM LOG [/]",
-        border_style="bright_yellow",
-        box=box.HEAVY,
+        border_style=GREEN,
+        box=box.ASCII,
         width=84,
-        padding=(1, 2),
+        padding=(0, 2),
     )
     return _frame(Group(
         Align.center(Text(art, style=color)),
-        Align.center(Text(title, style=f"bold {color}")),
+        Align.center(Text(f"[ {badge} ] {title}", style=f"bold {highlight}")),
         Align.center(Text(f"cd {room.name}", style=f"bold {GREEN}")),
         log_panel,
     ), f"[bold bright_green] admin@voice-shell:{room.name}$ [/]",
-       border_style=color, subtitle=f"[bold bright_yellow] {room.name} | SYSTEM EVENT [/]")
+       border_style=color, subtitle=f"[bold {highlight}] {room.name} | SYSTEM EVENT [/]")
 
 
 def test_banner(state, input_mode):
